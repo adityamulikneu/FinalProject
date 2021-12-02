@@ -6,16 +6,20 @@ package Business.Role;
 
 import Business.EcoSystem;
 
+import Business.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
  *
- * @author adityamulik
+ * @author raunak
  */
 public abstract class Role {
     
     public enum RoleType{
+        RestaurantAdmin("RestaurantAdmin"),
+        Customer("Customer"),
+        DeliveryMan("Delivery"),
         SysAdmin("Sysadmin");
         
         private String value;

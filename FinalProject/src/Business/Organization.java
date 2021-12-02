@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author adityamulik
+ * @author raunak
  */
 public abstract class Organization {
 
@@ -24,6 +24,9 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
+        RestaurantAdmin("RestaurantAdmin"),
+        Customer("Customer"),
+        DeliveryMan("Delivery"),
         SysAdmin("Sysadmin");
         
         private String value;
