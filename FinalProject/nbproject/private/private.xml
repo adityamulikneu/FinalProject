@@ -4,6 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/userinterface/MainJFrame.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/userinterface/PatientView/PatientAreaJPanel.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/Business/Role/PatientRole.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/Business/ConfigureASystem.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/Business/Role/SystemAdminRole.java</file>
+            <file>file:/Users/adityamulik/Desktop/FinalProject/FinalProject/src/userinterface/Authentication/Login.java</file>
         </group>
     </open-files>
 </project-private>

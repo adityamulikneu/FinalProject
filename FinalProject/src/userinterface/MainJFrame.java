@@ -50,13 +50,15 @@ public class MainJFrame extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1230, 723));
+        setPreferredSize(new java.awt.Dimension(1230, 723));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSplitPane.setDividerLocation(60);
         jSplitPane.setDividerSize(1);
         jSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        jSplitPane.setPreferredSize(new java.awt.Dimension(1230, 823));
+        jSplitPane.setPreferredSize(new java.awt.Dimension(1230, 723));
 
         menubar.setBackground(new java.awt.Color(204, 0, 51));
         menubar.setPreferredSize(new java.awt.Dimension(1230, 60));
@@ -82,11 +84,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane.setTopComponent(menubar);
 
-        container.setPreferredSize(new java.awt.Dimension(1230, 763));
+        container.setPreferredSize(new java.awt.Dimension(1230, 663));
         container.setLayout(new java.awt.CardLayout());
         jSplitPane.setRightComponent(container);
 
-        getContentPane().add(jSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 823));
+        getContentPane().add(jSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 723));
 
         pack();
         setLocationRelativeTo(null);

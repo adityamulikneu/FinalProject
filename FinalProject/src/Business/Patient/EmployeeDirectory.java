@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Employee;
+package Business.Patient;
 
 import java.util.ArrayList;
 

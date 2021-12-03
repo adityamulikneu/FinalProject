@@ -7,7 +7,7 @@ package userinterface.Authentication;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
-import Business.Employee.Employee;
+import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -48,7 +48,7 @@ public class Login extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
 
-        setPreferredSize(new java.awt.Dimension(1230, 763));
+        setPreferredSize(new java.awt.Dimension(1230, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Login");
@@ -78,6 +78,11 @@ public class Login extends javax.swing.JPanel {
                     System.out.println("This is sys admin!");
                     Employee e = user.getEmployee();   
 //                    System.out.println(e);   
+                    
+                    container.add("workArea", user.getRole().createWorkArea(container, user, system));
+                    layout.next(container);
+                } else if (user.getRole().toString() == "Business.Role.PatientRole") {
+                    System.out.println("This is patient role");
                     
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class CustomerRole extends Role{
+public class PatientRole extends Role{
 
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
