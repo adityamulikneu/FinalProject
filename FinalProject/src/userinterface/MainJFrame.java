@@ -77,7 +77,7 @@ public class MainJFrame extends javax.swing.JFrame {
         menubar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
-        jLabel2.setText("Hello, Aditya Mulik");
+        jLabel2.setText("Hello,");
         menubar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, 60));
 
         jSplitPane.setTopComponent(menubar);
