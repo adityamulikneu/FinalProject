@@ -16,7 +16,7 @@ import userinterface.Authentication.Login;
 
 /**
  *
- * @author Lingfeng
+ * @author adityamulik
  */
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -25,12 +25,12 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    private Boolean flag = true;
+    private boolean flag = true;
+    
 
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
-        this.setSize(1680, 1050);
     }
 
     /**
@@ -42,88 +42,66 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        splitPane = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
+        jSplitPane = new javax.swing.JSplitPane();
+        menubar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        container = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        splitPane.setDividerLocation(50);
-        splitPane.setDividerSize(1);
-        splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        splitPane.setPreferredSize(new java.awt.Dimension(1600, 1000));
+        jSplitPane.setDividerLocation(60);
+        jSplitPane.setDividerSize(1);
+        jSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane.setPreferredSize(new java.awt.Dimension(1230, 823));
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 30));
+        menubar.setBackground(new java.awt.Color(204, 0, 51));
+        menubar.setPreferredSize(new java.awt.Dimension(1230, 60));
+        menubar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Login");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_menu_48px_1.png"))); // NOI18N
+        menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 60));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login-png.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                jLabel3MouseClicked(evt);
             }
         });
+        menubar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(613, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
+        jLabel2.setText("Hello, Aditya Mulik");
+        menubar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, 60));
 
-        splitPane.setLeftComponent(jPanel1);
+        jSplitPane.setTopComponent(menubar);
 
-        container.setBackground(new java.awt.Color(255, 255, 255));
-        container.setPreferredSize(new java.awt.Dimension(1200, 970));
+        container.setPreferredSize(new java.awt.Dimension(1230, 763));
         container.setLayout(new java.awt.CardLayout());
+        jSplitPane.setRightComponent(container);
 
-        jLabel2.setText("CVS");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(327, 327, 327)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-
-        container.add(jPanel2, "card2");
-
-        splitPane.setRightComponent(container);
-
-        getContentPane().add(splitPane, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 823));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        Login newLogin = new Login();
-        splitPane.setRightComponent(newLogin);
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+//        Login newLogin = new Login(container);       
+//        container.add(newLogin);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         
-        
-    }//GEN-LAST:event_jLabel1MouseClicked
+        Login newLogin = new Login(container);       
+        container.add(newLogin);    
+    }//GEN-LAST:event_jLabel3MousePressed
 
     /**
      * @param args the command line arguments
@@ -163,8 +141,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane splitPane;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSplitPane jSplitPane;
+    private javax.swing.JPanel menubar;
     // End of variables declaration//GEN-END:variables
 }
