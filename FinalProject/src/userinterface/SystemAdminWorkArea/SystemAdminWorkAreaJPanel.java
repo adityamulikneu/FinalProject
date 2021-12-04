@@ -10,6 +10,8 @@ import Business.EcoSystem;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -23,6 +25,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
+    ManageNetworkJPanel manageNetworkPanel;
     JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount user;
@@ -32,6 +35,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
+        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
     }
     
     public SystemAdminWorkAreaJPanel() {
@@ -47,10 +52,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jPanel1 = new javax.swing.JPanel();
+        sysAdminMenuPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblNetwork = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -59,24 +61,25 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        sysAdminWorkAreaContainer = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
 
-        jLabel2.setText("Sys Admin Panel");
-
-        jTree1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane1.setViewportView(jTree1);
-
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        sysAdminMenuPanel.setBackground(new java.awt.Color(51, 51, 51));
+        sysAdminMenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblNetwork.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblNetwork.setForeground(new java.awt.Color(255, 255, 255));
+        lblNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNetwork.setText("Manage Network");
         lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblNetworkMousePressed(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNetworkMouseClicked(evt);
             }
@@ -95,7 +98,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 290, 50));
+        sysAdminMenuPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -122,7 +125,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 50));
+        sysAdminMenuPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -149,7 +152,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 290, 50));
+        sysAdminMenuPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -176,86 +179,148 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblOrganizations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 290, 50));
+        sysAdminMenuPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
+
+        jTree1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane1.setViewportView(jTree1);
+
+        sysAdminMenuPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 149, 240));
+
+        sysAdminWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
+        sysAdminWorkAreaContainer.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(608, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(335, 335, 335))))
+                .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblNetworkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMouseClicked
-        // TODO add your handling code here:
-        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(userProcessContainer, system);
-        userProcessContainer.removeAll();
-        
-        userProcessContainer.add("workArea", manageNetwork);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        
-        layout.next(userProcessContainer);
+        // TODO add your handling code here:                
     }//GEN-LAST:event_lblNetworkMouseClicked
 
     private void lblEnterprisesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEnterprisesMousePressed
         // TODO add your handling code here:
-        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(userProcessContainer, system);
-        userProcessContainer.removeAll();
         
-        userProcessContainer.add("workArea", manageEnterprises);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        setStyleEnterprise();
         
-        layout.next(userProcessContainer);
+        sysAdminWorkAreaContainer.removeAll();
+        
+        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(sysAdminWorkAreaContainer, system);                
+        sysAdminWorkAreaContainer.add("enterprises", manageEnterprises);
     }//GEN-LAST:event_lblEnterprisesMousePressed
 
     private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
         // TODO add your handling code here:
-        ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(userProcessContainer, system);
-        userProcessContainer.removeAll();
         
-        userProcessContainer.add("workArea", manageOrganizations);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        setStyleOrganization();
         
-        layout.next(userProcessContainer);
+        sysAdminWorkAreaContainer.removeAll();
+        
+        ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(sysAdminWorkAreaContainer, system);       
+        sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 
     private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
         // TODO add your handling code here:
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(userProcessContainer, system);
-        userProcessContainer.removeAll();
         
-        userProcessContainer.add("workArea", manageEmployees);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        setStyleEmployee();
         
-        layout.next(userProcessContainer);
+        sysAdminWorkAreaContainer.removeAll();
+        
+        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
+        sysAdminWorkAreaContainer.add("employees", manageEmployees);
     }//GEN-LAST:event_lblEmployeesMousePressed
 
+    private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
+        // TODO add your handling code here:
+        setStyleNetwork();
+        
+        sysAdminWorkAreaContainer.removeAll();
+        
+        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);                        
+        sysAdminWorkAreaContainer.add("network", manageNetwork);
+    }//GEN-LAST:event_lblNetworkMousePressed
+
+    public void setStyleNetwork() {
+        // Set Enterprise to RED
+        lblNetwork.setForeground(new Color(204,0,51));
+        lblNetwork.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        
+        // Roll back others to white
+        lblEnterprises.setForeground(Color.white);
+        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
+        
+        lblOrganizations.setForeground(Color.white);
+        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblEmployees.setForeground(Color.white);
+        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+    }
+    
+    public void setStyleEnterprise() {
+        // Set Enterprise to RED
+        lblEnterprises.setForeground(new Color(204,0,51));
+        lblEnterprises.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        
+        // Roll back others to white
+        lblNetwork.setForeground(Color.white);
+        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblOrganizations.setForeground(Color.white);
+        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblEmployees.setForeground(Color.white);
+        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+    }
+    
+    public void setStyleOrganization() {
+        // Set Enterprise to RED
+        lblOrganizations.setForeground(new Color(204,0,51));
+        lblOrganizations.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        
+        // Roll back others to white
+        lblNetwork.setForeground(Color.white);
+        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
+        
+        lblEnterprises.setForeground(Color.white);
+        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblEmployees.setForeground(Color.white);
+        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+    }
+    
+    public void setStyleEmployee() {
+        // Set Enterprise to RED
+        lblEmployees.setForeground(new Color(204,0,51));
+        lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        
+        // Roll back others to white
+        lblNetwork.setForeground(Color.white);
+        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblEnterprises.setForeground(Color.white);
+        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblOrganizations.setForeground(Color.white);
+        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -266,5 +331,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblEnterprises;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;
+    private javax.swing.JPanel sysAdminMenuPanel;
+    private javax.swing.JPanel sysAdminWorkAreaContainer;
     // End of variables declaration//GEN-END:variables
 }
