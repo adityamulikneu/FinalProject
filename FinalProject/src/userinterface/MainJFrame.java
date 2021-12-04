@@ -26,6 +26,7 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private EcoSystem system;
+    private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private boolean flag = true;
     
@@ -36,7 +37,13 @@ public class MainJFrame extends javax.swing.JFrame {
         system = dB4OUtil.retrieveSystem();
         login = new Login(container);
         container.add("workArea", login);
-    }
+        
+        if (user != null) {
+            if (user.getEmployee().getName() == "sysadmin") {
+                this.setWelcomeMessage("Welcome " + user.getEmployee().getName());
+            }
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +87,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblWelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcomeMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
         lblWelcomeMessage.setText("  Welcome!");
-        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 380, 60));
+        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 170, 60));
 
         getContentPane().add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
 

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author adityamulik
  */
-public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class ManageEmployeesJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -28,14 +28,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public ManageEmployeesJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-    }
-    
-    public SystemAdminWorkAreaJPanel() {
-        
     }
 
     /**
@@ -47,38 +43,35 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblNetwork = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lblEnterprises = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblEmployees = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        lblOrganizations = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
-
-        jLabel2.setText("Sys Admin Panel");
-
-        jTree1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane1.setViewportView(jTree1);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblNetwork.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblNetwork.setForeground(new java.awt.Color(255, 255, 255));
-        lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNetwork.setText("Manage Network");
-        lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Manage Network");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNetworkMouseClicked(evt);
+                jLabel3MouseClicked(evt);
             }
         });
 
@@ -88,24 +81,27 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(lblNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 290, 50));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblEnterprises.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEnterprises.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnterprises.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnterprises.setText("Manage Enterprises");
-        lblEnterprises.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Manage Enterprises");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblEnterprisesMousePressed(evt);
+                jLabel4MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
             }
         });
 
@@ -115,24 +111,27 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(lblEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 290, 50));
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblEmployees.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmployees.setText("Manage Employees");
-        lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Manage Organizations");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblEmployeesMousePressed(evt);
+                jLabel1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
 
@@ -142,26 +141,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(lblEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 290, 50));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 290, 50));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblOrganizations.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblOrganizations.setText("Manage Organizations");
-        lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblOrganizationsMousePressed(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Manage Employees");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -169,14 +163,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(lblOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblOrganizations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 290, 50));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 290, 50));
+
+        jLabel2.setText("Manage Employees");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,15 +180,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(608, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(335, 335, 335))))
+                .addGap(321, 321, 321)
+                .addComponent(jLabel2)
+                .addContainerGap(500, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,15 +190,24 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(216, 216, 216)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNetworkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMouseClicked
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+//        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(userProcessContainer, system);
+//        userProcessContainer.removeAll();
+//        
+//        userProcessContainer.add("workArea", manageNetwork);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        
+//        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         // TODO add your handling code here:
         ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(userProcessContainer, system);
         userProcessContainer.removeAll();
@@ -217,9 +216,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_lblNetworkMouseClicked
+        
+    }//GEN-LAST:event_jLabel3MousePressed
 
-    private void lblEnterprisesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEnterprisesMousePressed
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         // TODO add your handling code here:
         ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(userProcessContainer, system);
         userProcessContainer.removeAll();
@@ -228,9 +233,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_lblEnterprisesMousePressed
+    }//GEN-LAST:event_jLabel4MousePressed
 
-    private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
         ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(userProcessContainer, system);
         userProcessContainer.removeAll();
@@ -239,32 +249,19 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_lblOrganizationsMousePressed
-
-    private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
-        // TODO add your handling code here:
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(userProcessContainer, system);
-        userProcessContainer.removeAll();
-        
-        userProcessContainer.add("workArea", manageEmployees);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_lblEmployeesMousePressed
+    }//GEN-LAST:event_jLabel1MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblEmployees;
-    private javax.swing.JLabel lblEnterprises;
-    private javax.swing.JLabel lblNetwork;
-    private javax.swing.JLabel lblOrganizations;
     // End of variables declaration//GEN-END:variables
 }

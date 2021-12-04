@@ -90,7 +90,8 @@ public class Login extends javax.swing.JPanel {
                  if(user.getRole().toString() == "Business.Role.SystemAdminRole") {
                     System.out.println("This is sys admin!");
                     Employee e = user.getEmployee();   
-//                    System.out.println(e);   
+                    
+                    SystemAdminWorkAreaJPanel sysAdmin = new SystemAdminWorkAreaJPanel(container, system);
                     
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
@@ -109,9 +110,11 @@ public class Login extends javax.swing.JPanel {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        UserRegistration newUser = new UserRegistration(container);
-//        this.setVisible(false);
-//        container.add("workArea", newUser);
+//        container.removeAll();        
+        CardLayout layout = (CardLayout) container.getLayout();
+        UserRegistration newUser = new UserRegistration(container);    
+        container.add("workArea", newUser);
+        layout.next(container);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
 
