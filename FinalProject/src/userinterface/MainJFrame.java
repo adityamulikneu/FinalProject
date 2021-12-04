@@ -100,12 +100,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         logout();          
+        container.add("workArea", login);
     }//GEN-LAST:event_jLabel3MousePressed
 
     public void logout() {
         dB4OUtil.storeSystem(system);
         container.removeAll();
-        container.setVisible(false);
+//        container.setVisible(false);
     }
     /**
      * @param args the command line arguments
