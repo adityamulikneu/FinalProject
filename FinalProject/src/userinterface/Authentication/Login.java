@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.MainJFrame;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -44,26 +45,38 @@ public class Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         txtUserName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
+        btnRegister = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.MatteBorder(null));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 320, 50));
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 320, 50));
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 140, 40));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 360, 50));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 360, 50));
+
+        btnRegister.setText("Register");
+        btnRegister.setBorder(new javax.swing.border.MatteBorder(null));
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 140, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
+        MainJFrame mainFrame = new MainJFrame();
         CardLayout layout = (CardLayout) container.getLayout();
         
         if (txtUserName.getText().equals("") || txtPassword.getPassword().equals("")) {
@@ -81,19 +94,30 @@ public class Login extends javax.swing.JPanel {
                     
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 } else if (user.getRole().toString() == "Business.Role.PatientRole") {
                     System.out.println("This is patient role");
+                    Employee e = user.getEmployee();  
                     
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
             }
         }          
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        UserRegistration newUser = new UserRegistration(container);
+//        this.setVisible(false);
+//        container.add("workArea", newUser);
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables

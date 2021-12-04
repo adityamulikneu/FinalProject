@@ -57,17 +57,18 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Aditya Mulik's view");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 24, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
         jLabel2.setText("Need a Vaccination?");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 313, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
 
         jLabel3.setText("Schedule a visit or book an appointment");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 68, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         jButton1.setText("In-Person");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,15 +84,19 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 281, 171));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 285, 1130, 10));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 281, 171));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 285, 860, 10));
 
         jLabel4.setText("Refull Prescriptions");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 138, -1));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 1130, 10));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 138, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 680, 10));
 
         jLabel5.setText("Buy Meds");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 138, -1));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 663));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -110,6 +115,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
