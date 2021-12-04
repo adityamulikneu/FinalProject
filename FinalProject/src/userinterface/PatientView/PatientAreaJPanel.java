@@ -57,12 +57,18 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Aditya Mulik's view");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
         jLabel2.setText("Need a Vaccination?");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
 
         jLabel3.setText("Schedule a visit or book an appointment");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         jButton1.setText("In-Person");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +76,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 281, 171));
 
         jButton2.setText("E-Visit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -77,64 +84,19 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 281, 171));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 285, 860, 10));
 
         jLabel4.setText("Refull Prescriptions");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 138, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 680, 10));
 
         jLabel5.setText("Buy Meds");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 138, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel5)
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 663));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -153,6 +115,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

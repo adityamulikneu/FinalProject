@@ -10,6 +10,8 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.Authentication.Login;
@@ -27,10 +29,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private boolean flag = true;
     
+    Login login;
 
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        login = new Login(container);
+        container.add("workArea", login);
     }
 
     /**
@@ -42,21 +47,16 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane = new javax.swing.JSplitPane();
         menubar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblWelcomeMessage = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1230, 723));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSplitPane.setDividerLocation(60);
-        jSplitPane.setDividerSize(1);
-        jSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        jSplitPane.setPreferredSize(new java.awt.Dimension(1230, 823));
 
         menubar.setBackground(new java.awt.Color(204, 0, 51));
         menubar.setPreferredSize(new java.awt.Dimension(1230, 60));
@@ -76,17 +76,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         menubar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
-        jLabel2.setText("Hello,");
-        menubar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, 60));
+        lblWelcomeMessage.setFont(new java.awt.Font("Geneva", 0, 20)); // NOI18N
+        lblWelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
+        lblWelcomeMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
+        lblWelcomeMessage.setText("  Welcome!");
+        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 380, 60));
 
-        jSplitPane.setTopComponent(menubar);
+        getContentPane().add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
 
-        container.setPreferredSize(new java.awt.Dimension(1230, 763));
+        container.setPreferredSize(new java.awt.Dimension(1230, 663));
+        container.setRequestFocusEnabled(false);
         container.setLayout(new java.awt.CardLayout());
-        jSplitPane.setRightComponent(container);
-
-        getContentPane().add(jSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 823));
+        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 1230, 660));
 
         pack();
         setLocationRelativeTo(null);
@@ -98,11 +99,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
-        
-        Login newLogin = new Login(container);       
-        container.add(newLogin);    
+        logout();          
     }//GEN-LAST:event_jLabel3MousePressed
 
+    public void logout() {
+        dB4OUtil.storeSystem(system);
+        container.removeAll();
+        container.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -137,12 +141,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setWelcomeMessage(String message) {
+        lblWelcomeMessage.setText(message);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JSplitPane jSplitPane;
+    private javax.swing.JLabel lblWelcomeMessage;
     private javax.swing.JPanel menubar;
     // End of variables declaration//GEN-END:variables
 }
