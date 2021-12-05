@@ -50,6 +50,7 @@ public class Login extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1230, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,7 +62,11 @@ public class Login extends javax.swing.JPanel {
             }
         });
         add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 140, 40));
+
+        txtUserName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 360, 50));
+
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 360, 50));
 
         btnRegister.setText("Register");
@@ -104,6 +109,9 @@ public class Login extends javax.swing.JPanel {
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
+                 
+                 txtUserName.setText("");
+                 txtPassword.setText("");
             }
         }          
     }//GEN-LAST:event_btnLoginActionPerformed

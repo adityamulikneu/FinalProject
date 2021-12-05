@@ -113,7 +113,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private void lblLogoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMousePressed
         logout();          
         container.add("workArea", login);
-        System.out.println("Logout clicked!");
     }//GEN-LAST:event_lblLogoutMousePressed
 
     private void lblLogoutMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseReleased
