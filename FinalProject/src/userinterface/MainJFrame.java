@@ -26,6 +26,7 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private EcoSystem system;
+    private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private boolean flag = true;
     
@@ -33,10 +34,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        system = dB4OUtil.retrieveSystem();
+        system = dB4OUtil.retrieveSystem();     
         login = new Login(container);
         container.add("workArea", login);
-    }
+        
+        if (user != null) {
+            if (user.getEmployee().getName() == "sysadmin") {
+                this.setWelcomeMessage("Welcome " + user.getEmployee().getName());
+            }
+        }
+        
+//        lblLogout.setVisible(false);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         menubar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
         lblWelcomeMessage = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
 
@@ -65,22 +74,25 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_menu_48px_1.png"))); // NOI18N
         menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 60));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login-png.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login-png.png"))); // NOI18N
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel3MousePressed(evt);
+                lblLogoutMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseReleased(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lblLogoutMouseClicked(evt);
             }
         });
-        menubar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
+        menubar.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
 
         lblWelcomeMessage.setFont(new java.awt.Font("Geneva", 0, 20)); // NOI18N
         lblWelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcomeMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
         lblWelcomeMessage.setText("  Welcome!");
-        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 380, 60));
+        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 170, 60));
 
         getContentPane().add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
 
@@ -93,19 +105,24 @@ public class MainJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
 //        Login newLogin = new Login(container);       
 //        container.add(newLogin);
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lblLogoutMouseClicked
 
-    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+    private void lblLogoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMousePressed
         logout();          
-    }//GEN-LAST:event_jLabel3MousePressed
+        container.add("workArea", login);
+    }//GEN-LAST:event_lblLogoutMousePressed
+
+    private void lblLogoutMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblLogoutMouseReleased
 
     public void logout() {
         dB4OUtil.storeSystem(system);
         container.removeAll();
-        container.setVisible(false);
+//        container.setVisible(false);
     }
     /**
      * @param args the command line arguments
@@ -148,7 +165,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblWelcomeMessage;
     private javax.swing.JPanel menubar;
     // End of variables declaration//GEN-END:variables
