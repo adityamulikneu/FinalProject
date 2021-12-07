@@ -166,9 +166,8 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 370, 40));
 
-        btnLogin.setBackground(new java.awt.Color(204, 0, 51));
         btnLogin.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setForeground(new java.awt.Color(204, 0, 51));
         btnLogin.setLabel("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +187,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 lblExitMousePressed(evt);
             }
         });
-        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 50, 50));
+        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 50, 40));
         jPanel2.add(loginProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 250, 10));
 
         loginJPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));

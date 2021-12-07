@@ -45,6 +45,9 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         rSTableMetro1 = new rojeru_san.complementos.RSTableMetro();
+        btnDeleteEmployee = new java.awt.Button();
+        btnAddEmployee = new java.awt.Button();
+        btnLogin2 = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -83,11 +86,58 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         rSTableMetro1.setRowHeight(32);
         jScrollPane1.setViewportView(rSTableMetro1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 680, 220));
+
+        btnDeleteEmployee.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
+        btnDeleteEmployee.setForeground(new java.awt.Color(204, 0, 51));
+        btnDeleteEmployee.setLabel("Delete Employee");
+        btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEmployeeActionPerformed(evt);
+            }
+        });
+        add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, 250, 50));
+
+        btnAddEmployee.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
+        btnAddEmployee.setForeground(new java.awt.Color(204, 0, 51));
+        btnAddEmployee.setLabel("Add Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmployeeActionPerformed(evt);
+            }
+        });
+        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 250, 50));
+        btnAddEmployee.getAccessibleContext().setAccessibleName("Add Employee");
+
+        btnLogin2.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
+        btnLogin2.setForeground(new java.awt.Color(204, 0, 51));
+        btnLogin2.setLabel("Update Employee");
+        btnLogin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin2ActionPerformed(evt);
+            }
+        });
+        add(btnLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 250, 50));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
+
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
+
+    private void btnLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btnAddEmployee;
+    private java.awt.Button btnDeleteEmployee;
+    private java.awt.Button btnLogin2;
     private javax.swing.JScrollPane jScrollPane1;
     private rojeru_san.complementos.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
