@@ -53,13 +53,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         sysAdminMenuPanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panelSelectionBg1 = new javax.swing.JPanel();
         lblNetwork = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        lblEnterprises = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        panelSelectionBg2 = new javax.swing.JPanel();
+        panel = new javax.swing.JLabel();
+        panelSelectionBg4 = new javax.swing.JPanel();
         lblEmployees = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        panelSelectionBg3 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -70,7 +70,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         sysAdminMenuPanel.setBackground(new java.awt.Color(51, 51, 51));
         sysAdminMenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        panelSelectionBg1.setBackground(new java.awt.Color(0, 0, 0));
 
         lblNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
         lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
@@ -86,50 +86,50 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addComponent(lblNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelSelectionBg1Layout = new javax.swing.GroupLayout(panelSelectionBg1);
+        panelSelectionBg1.setLayout(panelSelectionBg1Layout);
+        panelSelectionBg1Layout.setHorizontalGroup(
+            panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg1Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(lblNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSelectionBg1Layout.setVerticalGroup(
+            panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
+        sysAdminMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        panelSelectionBg2.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblEnterprises.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEnterprises.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnterprises.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnterprises.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enterprise.png"))); // NOI18N
-        lblEnterprises.setText(" Manage Enterprises");
-        lblEnterprises.addMouseListener(new java.awt.event.MouseAdapter() {
+        panel.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        panel.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enterprise.png"))); // NOI18N
+        panel.setText(" Manage Enterprises");
+        panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblEnterprisesMousePressed(evt);
+                panelMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addComponent(lblEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelSelectionBg2Layout = new javax.swing.GroupLayout(panelSelectionBg2);
+        panelSelectionBg2.setLayout(panelSelectionBg2Layout);
+        panelSelectionBg2Layout.setHorizontalGroup(
+            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg2Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        panelSelectionBg2Layout.setVerticalGroup(
+            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
+        sysAdminMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
 
         lblEmployees.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,48 +142,48 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addComponent(lblEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelSelectionBg4Layout = new javax.swing.GroupLayout(panelSelectionBg4);
+        panelSelectionBg4.setLayout(panelSelectionBg4Layout);
+        panelSelectionBg4Layout.setHorizontalGroup(
+            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg4Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(lblEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSelectionBg4Layout.setVerticalGroup(
+            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
+        sysAdminMenuPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
 
-        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
 
         lblOrganizations.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
         lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblOrganizations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/organization.png"))); // NOI18N
-        lblOrganizations.setText(" Manage Organizations");
+        lblOrganizations.setText(" Manage Organization");
         lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblOrganizationsMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addComponent(lblOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
+        panelSelectionBg3.setLayout(panelSelectionBg3Layout);
+        panelSelectionBg3Layout.setHorizontalGroup(
+            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg3Layout.createSequentialGroup()
+                .addGap(0, 14, Short.MAX_VALUE)
+                .addComponent(lblOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSelectionBg3Layout.setVerticalGroup(
+            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblOrganizations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
+        sysAdminMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
 
         jTree1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(jTree1);
@@ -217,7 +217,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:                
     }//GEN-LAST:event_lblNetworkMouseClicked
 
-    private void lblEnterprisesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEnterprisesMousePressed
+    private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
         // TODO add your handling code here:
         
         setStyleEnterprise();
@@ -226,7 +226,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(sysAdminWorkAreaContainer, system);                
         sysAdminWorkAreaContainer.add("enterprises", manageEnterprises);
-    }//GEN-LAST:event_lblEnterprisesMousePressed
+    }//GEN-LAST:event_panelMousePressed
 
     private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
         // TODO add your handling code here:
@@ -266,20 +266,25 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
-        lblEnterprises.setForeground(Color.white);
-        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
+        panel.setForeground(Color.white);
+        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
         
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        panelSelectionBg1.setBackground(Color.black);
+        panelSelectionBg2.setBackground(new Color(51, 51, 51));
+        panelSelectionBg3.setBackground(new Color(51, 51, 51));
+        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleEnterprise() {
         // Set Enterprise to RED
-        lblEnterprises.setForeground(new Color(204,0,51));
-        lblEnterprises.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        panel.setForeground(new Color(204,0,51));
+        panel.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         lblNetwork.setForeground(Color.white);
@@ -290,6 +295,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        panelSelectionBg2.setBackground(Color.black);
+        panelSelectionBg3.setBackground(new Color(51, 51, 51));
+        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleOrganization() {
@@ -301,11 +311,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setForeground(Color.white);
         lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
         
-        lblEnterprises.setForeground(Color.white);
-        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        panel.setForeground(Color.white);
+        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        panelSelectionBg2.setBackground(new Color(51, 51, 51));
+        panelSelectionBg3.setBackground(Color.black);
+        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleEmployee() {
@@ -317,24 +332,29 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setForeground(Color.white);
         lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        lblEnterprises.setForeground(Color.white);
-        lblEnterprises.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        panel.setForeground(Color.white);
+        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        panelSelectionBg2.setBackground(new Color(51, 51, 51));
+        panelSelectionBg3.setBackground(new Color(51, 51, 51));
+        panelSelectionBg4.setBackground(Color.black);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblEmployees;
-    private javax.swing.JLabel lblEnterprises;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;
+    private javax.swing.JLabel panel;
+    private javax.swing.JPanel panelSelectionBg1;
+    private javax.swing.JPanel panelSelectionBg2;
+    private javax.swing.JPanel panelSelectionBg3;
+    private javax.swing.JPanel panelSelectionBg4;
     private javax.swing.JPanel sysAdminMenuPanel;
     private javax.swing.JPanel sysAdminWorkAreaContainer;
     // End of variables declaration//GEN-END:variables
