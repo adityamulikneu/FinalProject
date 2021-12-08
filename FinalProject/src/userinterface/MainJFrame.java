@@ -33,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     
 
     public MainJFrame() {
+        this.setUndecorated(true);
         initComponents();       
         system = dB4OUtil.retrieveSystem();  
         
@@ -43,15 +44,16 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         }
         this.loginJPanel.setVisible(true);
         this.container.setVisible(false);
-        this.menubar.setVisible(false);                
+        this.menubar.setVisible(false);                   
      }      
     
     @Override
-    public void run() {                    
+    public void run() {               
+        
 //        this.progressBarjPanel.setVisible(false);
         for(int i=1; i<=100; i++) {
             try {
-                Thread.sleep(20);
+                Thread.sleep(10);
                 loginProgressBar.setValue(i);
             } catch (Exception e) {
                 System.out.println("Check thread!");
@@ -76,11 +78,6 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menubar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblLogout = new javax.swing.JLabel();
-        lblWelcomeMessage = new javax.swing.JLabel();
-        container = new javax.swing.JPanel();
         loginJPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -93,55 +90,26 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         btnLogin = new java.awt.Button();
         lblExit = new javax.swing.JLabel();
         loginProgressBar = new javax.swing.JProgressBar();
+        menubar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
+        lblWelcomeMessage = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1230, 723));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menubar.setBackground(new java.awt.Color(204, 0, 51));
-        menubar.setPreferredSize(new java.awt.Dimension(1230, 60));
-        menubar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_menu_48px_1.png"))); // NOI18N
-        menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 60));
-
-        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login-png.png"))); // NOI18N
-        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblLogoutMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblLogoutMouseReleased(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLogoutMouseClicked(evt);
-            }
-        });
-        menubar.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
-
-        lblWelcomeMessage.setFont(new java.awt.Font("Geneva", 0, 20)); // NOI18N
-        lblWelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
-        lblWelcomeMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
-        lblWelcomeMessage.setText("  Welcome!");
-        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 170, 60));
-
-        getContentPane().add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
-
-        container.setPreferredSize(new java.awt.Dimension(1230, 663));
-        container.setRequestFocusEnabled(false);
-        container.setLayout(new java.awt.CardLayout());
-        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 1230, 660));
-
         loginJPanel.setPreferredSize(new java.awt.Dimension(1230, 723));
         loginJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 153));
-        jPanel1.setPreferredSize(new java.awt.Dimension(680, 723));
-        loginJPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.setPreferredSize(new java.awt.Dimension(680, 713));
+        loginJPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
-        jPanel2.setPreferredSize(new java.awt.Dimension(550, 723));
+        jPanel2.setPreferredSize(new java.awt.Dimension(550, 713));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setForeground(new java.awt.Color(57, 113, 177));
@@ -187,12 +155,48 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 lblExitMousePressed(evt);
             }
         });
-        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 50, 40));
-        jPanel2.add(loginProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 250, 10));
+        jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 80, 50));
 
-        loginJPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
+        loginJPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
+
+        loginProgressBar.setPreferredSize(new java.awt.Dimension(1230, 10));
+        loginJPanel.add(loginProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 10));
 
         getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        menubar.setBackground(new java.awt.Color(204, 0, 51));
+        menubar.setPreferredSize(new java.awt.Dimension(1230, 60));
+        menubar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_menu_48px_1.png"))); // NOI18N
+        menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 60));
+
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login-png.png"))); // NOI18N
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblLogoutMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
+        menubar.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 30, 60));
+
+        lblWelcomeMessage.setFont(new java.awt.Font("Geneva", 0, 20)); // NOI18N
+        lblWelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
+        lblWelcomeMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/male_user_50px.png"))); // NOI18N
+        lblWelcomeMessage.setText("  Welcome!");
+        menubar.add(lblWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 170, 60));
+
+        getContentPane().add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
+
+        container.setPreferredSize(new java.awt.Dimension(1230, 663));
+        container.setRequestFocusEnabled(false);
+        container.setLayout(new java.awt.CardLayout());
+        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 1230, 660));
 
         pack();
         setLocationRelativeTo(null);
@@ -212,7 +216,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_lblLogoutMouseReleased
 
     private void lblExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMousePressed
-        
+        System.exit(0);
     }//GEN-LAST:event_lblExitMousePressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -248,14 +252,6 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                  
                 Thread t = new Thread(this);
                 t.start();
-
-                 
-                 
-                 
-                // Display appropriate layout
-//                this.loginJPanel.setVisible(false);
-//                this.container.setVisible(true);
-//                this.menubar.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
