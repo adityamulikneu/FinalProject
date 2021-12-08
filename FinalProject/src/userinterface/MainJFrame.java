@@ -155,7 +155,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         btnLogin.getAccessibleContext().setAccessibleName("btnLogin");
 
         lblExit.setFont(new java.awt.Font("Lucida Grande", 1, 22)); // NOI18N
-        lblExit.setForeground(new java.awt.Color(204, 0, 51));
+        lblExit.setForeground(new java.awt.Color(0, 102, 153));
         lblExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExit.setText("X");
         lblExit.setToolTipText("Click to close.");
