@@ -80,6 +80,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 
         loginJPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
@@ -106,13 +107,20 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(680, 713));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wellness.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(680, 723));
+        jPanel1.add(jLabel5);
+
         loginJPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
         jPanel2.setPreferredSize(new java.awt.Dimension(550, 713));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setForeground(new java.awt.Color(57, 113, 177));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 204, 0));
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, -1));
 
@@ -124,7 +132,8 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 370, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 370, -1));
 
-        jLabel3.setForeground(new java.awt.Color(57, 113, 177));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 204, 0));
         jLabel3.setText("Username:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, 20));
 
@@ -135,7 +144,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 370, 40));
 
         btnLogin.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(204, 0, 51));
+        btnLogin.setForeground(new java.awt.Color(0, 102, 153));
         btnLogin.setLabel("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,6 +316,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
