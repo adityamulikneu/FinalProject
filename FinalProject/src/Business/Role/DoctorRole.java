@@ -9,16 +9,17 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
+import userinterface.DoctorRole.DoctorAreaJPanel;
 
 /**
  *
  * @author harold
  */
-public class DeliverManRole extends Role {
+public class DoctorRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+        return new DoctorAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.NurseRole;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Patient.Employee;
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author adityamulik
  */
-public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class NurseAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -31,15 +32,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public NurseAreaJPanel(JPanel userProcessContainer, UserAccount user,EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.user = user;
         this.system = system;
         manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
         sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
     }
     
-    public SystemAdminWorkAreaJPanel() {
+    public NurseAreaJPanel() {
         
     }
 
@@ -62,6 +64,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         panelSelectionBg3 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
         sysAdminWorkAreaContainer = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
 
@@ -185,6 +188,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         sysAdminWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
         sysAdminWorkAreaContainer.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("NUrse");
+        sysAdminWorkAreaContainer.add(jLabel1, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -338,6 +344,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;

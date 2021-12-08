@@ -15,6 +15,10 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DoctorRole.DoctorAreaJPanel;
+import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
+import userinterface.NurseRole.NurseAreaJPanel;
+import userinterface.PatientView.PatientAreaJPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -240,7 +244,9 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             if(user == null) {
                 JOptionPane.showMessageDialog(null, "Please enter correct Username and Password!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            } else {
+            } 
+//Admin login            
+            else {
                  if(user.getRole().toString() == "Business.Role.SystemAdminRole") {
                     System.out.println("This is sys admin!");
                     Employee e = user.getEmployee();   
@@ -250,14 +256,44 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
-                } else if (user.getRole().toString() == "Business.Role.PatientRole") {
-                    System.out.println("This is patient role");
+                } 
+//Patient login                 
+                 else if (user.getRole().toString() == "Business.Role.PatientRole") {
+                    System.out.println("This is patient role!");
                     Employee e = user.getEmployee();  
-                    
+                    PatientAreaJPanel patientPanel = new PatientAreaJPanel(container, user, system);
+                    container.add("workArea", user.getRole().createWorkArea(container, user, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");   
+                } 
+//Doctor login                  
+                 else if (user.getRole().toString() == "Business.Role.DoctorRole") {
+                    System.out.println("This is doctor role!");
+                    Employee e = user.getEmployee();  
+                    DoctorAreaJPanel doctorPanel = new DoctorAreaJPanel(container,user,system);
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
-                }                                     
+                }
+//Nurse login                 
+                 else if (user.getRole().toString() == "Business.Role.NurseRole") {
+                    System.out.println("This is nurse role!");
+                    Employee e = user.getEmployee();  
+                    NurseAreaJPanel nursePanel = new NurseAreaJPanel(container,user,system);
+                    container.add("workArea", user.getRole().createWorkArea(container, user, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
+                 
+//HospAdmin login                 
+                 else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
+                    System.out.println("This is HospAdmin role!");
+                    Employee e = user.getEmployee();  
+                    HospAdminWorkAreaJPanel HAdminPanel = new HospAdminWorkAreaJPanel(container,user,system);
+                    container.add("workArea", user.getRole().createWorkArea(container, user, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
                  
                 Thread t = new Thread(this);
                 t.start();

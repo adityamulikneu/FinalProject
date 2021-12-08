@@ -19,7 +19,9 @@ public abstract class Role {
     public enum RoleType{
         SysAdmin("Sysadmin"),
         HospitalAdmin("HospitalAdmin"),
-        Patient("Patient");
+        Patient("Patient"),
+        Nurse("Nurse"),
+        Doctor("Doctor");
         
         private String value;
         private RoleType(String value){

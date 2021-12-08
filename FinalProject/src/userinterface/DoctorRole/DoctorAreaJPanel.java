@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.DoctorRole;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Patient.Employee;
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author adityamulik
  */
-public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class DoctorAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -31,7 +32,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public DoctorAreaJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
@@ -39,7 +40,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
     }
     
-    public SystemAdminWorkAreaJPanel() {
+    public DoctorAreaJPanel() {
         
     }
 

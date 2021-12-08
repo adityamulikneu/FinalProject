@@ -5,8 +5,6 @@
 package Business.Role;
 
 import Business.EcoSystem;
-
-import Business.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.PatientView.PatientAreaJPanel;
 import javax.swing.JPanel;
@@ -19,7 +17,7 @@ public class PatientRole extends Role{
 
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new PatientAreaJPanel(userProcessContainer, account);
+        return new PatientAreaJPanel(userProcessContainer, account, business);
     }
     
     

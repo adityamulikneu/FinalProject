@@ -18,18 +18,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PatientAreaJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-
-    private UserAccount userAccount;
+    private JPanel userProcessContainer;    
+    private EcoSystem system;
+    private UserAccount account;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount account) {
+    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         
-        this.userProcessContainer = userProcessContainer;
-      
-        this.userAccount = account;
+        this.userProcessContainer = userProcessContainer;      
+        this.account = account;
+        this.system = system;
         //valueLabel.setText(enterprise.getName());
         populateRequestTable();
     }

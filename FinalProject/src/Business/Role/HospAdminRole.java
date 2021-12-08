@@ -10,16 +10,17 @@ import Business.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
+import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
 
 /**
  *
  * @author raunak
  */
-public class AdminRole extends Role{
+public class HospAdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new AdminWorkAreaJPanel(userProcessContainer);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+        return new HospAdminWorkAreaJPanel(userProcessContainer,account,system);
     }
 
     
