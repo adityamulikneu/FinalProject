@@ -5,6 +5,9 @@
 package Business.Role;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
@@ -12,13 +15,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author raunak
+ * @author adityamulik
+ * @author shivanichavan
+ * @author divyeshdarji
+ * 
  */
 public class SystemAdminRole extends Role{
 
   
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
+        return new SystemAdminWorkAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
     }
     
 }

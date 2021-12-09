@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+package Business.Organization;
 
 import Business.Patient.EmployeeDirectory;
 import Business.Role.Role;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author adityamulik
  */
 public abstract class Organization {
 
@@ -22,19 +22,23 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private static int counter=0;
+    public ArrayList<Role> roles;
+    private Type type;
     
     public enum Type{
-        RestaurantAdmin("HospAdmin"),
-        Patient("Patient"),
-        SysAdmin("Sysadmin"),
-        Doctor("Doctor"),
-        Nurse("Nurse");
+        Hospital("Hospital Organization"),
+        Patient("Patient");
         
         private String value;
         private Type(String value) {
             this.value = value;
         }
         public String getValue() {
+            return value;
+        }
+        
+        @Override
+        public String toString(){
             return value;
         }
     }
@@ -47,9 +51,15 @@ public abstract class Organization {
         organizationID = counter;
         ++counter;
     }
-    public Organization(){
-        
+    
+    public Type getType() {
+        return type;
     }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public abstract ArrayList<Role> getSupportedRole();
     
     public UserAccountDirectory getUserAccountDirectory() {
@@ -84,6 +94,5 @@ public abstract class Organization {
     public String toString() {
         return name;
     }
-    
     
 }

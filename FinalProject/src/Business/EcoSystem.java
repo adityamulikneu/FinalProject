@@ -6,29 +6,44 @@
 package Business;
 
 
-import Business.Customer.CustomerDirectory;
-import Business.DeliveryMan.DeliveryManDirectory;
-import Business.Restaurant.RestaurantDirectory;
+import Business.Organization.Organization;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
  *
- * @author MyPC1
+ * @author adityamulik
  */
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
-    private RestaurantDirectory restaurantDirectory;
-    private CustomerDirectory customerDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
+    private ArrayList<Network> networkList;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem() {
+        super(null);
+        networkList=new ArrayList<Network>();
+    }
+    
+    public Network createAndAddNetwork(){
+        Network network=new Network();
+        networkList.add(network);
+        return network;
+    }
+    
+    public ArrayList<Network> getNetworkList() {
+        return networkList;
+    }
 
-        this.restaurantDirectory = restaurantDirectory;
-        this.customerDirectory = customerDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
+    public void setNetworkList(ArrayList<Network> networkList) {
+        this.networkList = networkList;
+    }
+    
+    public static void setInstance(EcoSystem system) {
+        business = system;
     }
     
     public static EcoSystem getInstance(){
@@ -44,14 +59,28 @@ public class EcoSystem extends Organization{
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
-        super(null);
-       // networkList=new ArrayList<Network>();
-    }
-
     
-    public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
-    }
+    public boolean checkIfUserIsUnique(String userName, EcoSystem ecoSys){
+        if(ecoSys==null){
+            System.out.println("BUSINESS IS NULL");
+        }
+        for (Network network : ecoSys.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    if (ua.getUsername().equalsIgnoreCase(userName)) {
+                        return false;
+                    }
+                }
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (ua.getUsername().equalsIgnoreCase(userName)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;        
+    }        
 }

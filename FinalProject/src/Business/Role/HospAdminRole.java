@@ -5,24 +5,31 @@
 package Business.Role;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 
-import Business.Organization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
 import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
 
 /**
  *
- * @author raunak
+ * @author adityamulik
+ * @author shivanichavan
+ * @author divyeshdarji
+ * 
  */
 public class HospAdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
-        return new HospAdminWorkAreaJPanel(userProcessContainer,account,system);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
+        return new HospAdminWorkAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
     }
 
-    
+    @Override
+    public String toString() {
+        return RoleType.Doctor.getValue();
+    }
     
 }

@@ -8,6 +8,9 @@ package userinterface.NurseRole;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -19,6 +22,9 @@ import javax.swing.JPanel;
 /**
  *
  * @author adityamulik
+ * @author shivanichavan
+ * @author divyeshdarji
+ * 
  */
 public class NurseAreaJPanel extends javax.swing.JPanel {
 
@@ -27,15 +33,21 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
      */
     
     ManageNetworkJPanel manageNetworkPanel;
-    JPanel userProcessContainer;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Network network;
+    private Organization organization;
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public NurseAreaJPanel(JPanel userProcessContainer, UserAccount user,EcoSystem system) {
+    public NurseAreaJPanel(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
         this.system = system;
         manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
         sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
