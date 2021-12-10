@@ -12,11 +12,15 @@ import Business.Enterprise.EnterpriseDirectory;
  * @author MyPC1
  */
 public class Network {
+    private static int id = 1;
+    private int count;
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
     
     public Network(){
         enterpriseDirectory=new EnterpriseDirectory();
+        count = id;
+        ++id;
     }
     public String getName() {
         return name;
@@ -29,6 +33,10 @@ public class Network {
     public EnterpriseDirectory getEnterpriseDirectory() {
         return enterpriseDirectory;
     }
+
+    public int getCount() {
+        return count;
+    }      
     
     @Override
     public String toString(){

@@ -246,7 +246,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         
         sysAdminWorkAreaContainer.removeAll();
         
-        ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(sysAdminWorkAreaContainer, system);       
+        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(sysAdminWorkAreaContainer, system);       
         sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 

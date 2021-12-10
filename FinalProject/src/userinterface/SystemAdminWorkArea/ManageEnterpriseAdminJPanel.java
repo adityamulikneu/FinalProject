@@ -7,35 +7,31 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
-import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author adityamulik
  */
-public class ManageNetworkJPanel extends javax.swing.JPanel {
+public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
      */
     
-    JPanel container;
+    JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public ManageNetworkJPanel(JPanel container, EcoSystem system) {
+    public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-        this.container = container;
+        this.userProcessContainer = userProcessContainer;
         this.system = system;
-        
-        populateNetworkTable();
     }
 
     /**
@@ -50,28 +46,44 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNetwork = new rojeru_san.complementos.RSTableMetro();
-        kButton1 = new com.k33ptoo.components.KButton();
-        txtCity = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        cmbBoxRoles = new javax.swing.JComboBox<>();
+        kButton1 = new com.k33ptoo.components.KButton();
+        cmbBoxRoles1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Manage Network");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        jLabel2.setText("Manage Enterprise Admin Panel");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
 
         tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "No", "City"
+                "Enterprise", "Network", "Admin"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblNetwork.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
         tblNetwork.setColorBordeFilas(new java.awt.Color(204, 0, 51));
         tblNetwork.setColorBordeHead(new java.awt.Color(204, 0, 51));
@@ -86,54 +98,43 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         tblNetwork.setRowHeight(32);
         jScrollPane1.setViewportView(tblNetwork);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 680, 150));
 
-        kButton1.setText("Add City");
+        jLabel3.setText("Username:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, -1));
+
+        jLabel1.setText("Enterprise Name:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, 20));
+
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 320, 40));
+
+        kButton1.setText("Add Employee");
         kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButton1ActionPerformed(evt);
             }
         });
-        add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
+        add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, -1, -1));
 
-        txtCity.setBorder(null);
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 370, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 370, -1));
-
-        jLabel1.setText("City Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
+        cmbBoxRoles1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbBoxRoles1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 320, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        // TODO add your handling code here:
-        String city = txtCity.getText();
-        
-        Network network = system.createAndAddNetwork();
-        network.setName(city);
-        
-        populateNetworkTable();
+        //        system.getEmployeeDirectory().createEmployee();
+
     }//GEN-LAST:event_kButton1ActionPerformed
 
-    public void populateNetworkTable() {
-        DefaultTableModel model = (DefaultTableModel)tblNetwork.getModel();                       
-        model.setRowCount(0);
-        
-        for (Network n: system.getNetworkList()) {
-            Object[] row = new Object[2];
-            row[0] = n.getCount();
-            row[1] = n.getName();
-            
-            model.addRow(row);
-        }                        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbBoxRoles;
+    private javax.swing.JComboBox<String> cmbBoxRoles1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private com.k33ptoo.components.KButton kButton1;
     private rojeru_san.complementos.RSTableMetro tblNetwork;
-    private javax.swing.JTextField txtCity;
     // End of variables declaration//GEN-END:variables
 }

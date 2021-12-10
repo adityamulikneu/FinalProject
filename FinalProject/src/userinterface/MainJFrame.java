@@ -46,7 +46,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         this.setUndecorated(true);
         initComponents();       
         system = dB4OUtil.retrieveSystem();  
-        
+        EcoSystem.setInstance(system);
         if (user != null) {
             if (user.getEmployee().getName() == "sysadmin") {
                 this.setWelcomeMessage("Welcome " + user.getEmployee().getName());
@@ -78,6 +78,13 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtUserName.setText("");
         txtPassword.setText("");
     }
+    
+//    private void changePanel1() {
+//        if (user != null && user.getRole() != null) {
+//            String greetings = "Weclcome";
+//        
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

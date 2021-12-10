@@ -238,7 +238,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/organization.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Manage Organization"/>
+                <Property name="text" type="java.lang.String" value="Manage Enterprise Admin"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblOrganizationsMousePressed"/>
