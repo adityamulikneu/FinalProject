@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import userinterface.DoctorRole.DoctorAreaJPanel;
 import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
 import userinterface.NurseRole.NurseAreaJPanel;
-import userinterface.PatientView.PatientAreaJPanel;
+import userinterface.PatientView.PatientAreaJPanel1;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -94,6 +94,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new java.awt.Button();
         lblExit = new javax.swing.JLabel();
+        btnNewPatient = new java.awt.Button();
         loginProgressBar = new javax.swing.JProgressBar();
         menubar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -147,6 +148,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 370, 40));
 
+        btnLogin.setActionCommand("Sign Up");
         btnLogin.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(0, 102, 153));
         btnLogin.setLabel("Login");
@@ -155,7 +157,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 btnLoginActionPerformed(evt);
             }
         });
-        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 250, 50));
+        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 250, 50));
         btnLogin.getAccessibleContext().setAccessibleName("btnLogin");
 
         lblExit.setFont(new java.awt.Font("Lucida Grande", 1, 22)); // NOI18N
@@ -169,6 +171,16 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             }
         });
         jPanel2.add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 80, 50));
+
+        btnNewPatient.setFont(new java.awt.Font("Lucida Console", 0, 16)); // NOI18N
+        btnNewPatient.setForeground(new java.awt.Color(0, 102, 153));
+        btnNewPatient.setLabel("New Patient?");
+        btnNewPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewPatientActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNewPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 250, 50));
 
         loginJPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
 
@@ -261,7 +273,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                  else if (user.getRole().toString() == "Business.Role.PatientRole") {
                     System.out.println("This is patient role!");
                     Employee e = user.getEmployee();  
-                    PatientAreaJPanel patientPanel = new PatientAreaJPanel(container, user, system);
+                    PatientAreaJPanel1 patientPanel = new PatientAreaJPanel1(container, user, system);
                     container.add("workArea", user.getRole().createWorkArea(container, user, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");   
@@ -300,6 +312,15 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPatientActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Sign Up Clicked!");
+        this.dispose();
+        SignUpJPanel signUp = new SignUpJPanel(system);
+        signUp.setVisible(true);        
+
+    }//GEN-LAST:event_btnNewPatientActionPerformed
 
     public void logout() {
         dB4OUtil.storeSystem(system);
@@ -348,6 +369,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnLogin;
+    private java.awt.Button btnNewPatient;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
