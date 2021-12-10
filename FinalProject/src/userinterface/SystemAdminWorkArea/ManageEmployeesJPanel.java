@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Patient.Employee;
+import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -32,8 +33,13 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        
+        populateComboBox();
     }
 
+    public void populateComboBox() {
+        // Populate role types
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,9 +51,12 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         rSTableMetro1 = new rojeru_san.complementos.RSTableMetro();
-        btnDeleteEmployee = new java.awt.Button();
-        btnAddEmployee = new java.awt.Button();
-        btnUpdateEmployee = new java.awt.Button();
+        kButton1 = new com.k33ptoo.components.KButton();
+        txtCity = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cmbBoxRoles = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -88,59 +97,42 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 680, 220));
 
-        btnDeleteEmployee.setBackground(new java.awt.Color(51, 51, 51));
-        btnDeleteEmployee.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
-        btnDeleteEmployee.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteEmployee.setLabel("Delete Employee");
-        btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
+        kButton1.setText("Add Employee");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteEmployeeActionPerformed(evt);
+                kButton1ActionPerformed(evt);
             }
         });
-        add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 170, 40));
+        add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, -1, -1));
 
-        btnAddEmployee.setBackground(new java.awt.Color(51, 51, 51));
-        btnAddEmployee.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
-        btnAddEmployee.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddEmployee.setLabel("Add Employee");
-        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEmployeeActionPerformed(evt);
-            }
-        });
-        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 170, 40));
+        txtCity.setBorder(null);
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 370, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 370, -1));
 
-        btnUpdateEmployee.setBackground(new java.awt.Color(51, 51, 51));
-        btnUpdateEmployee.setFont(new java.awt.Font("Lucida Bright", 0, 16)); // NOI18N
-        btnUpdateEmployee.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdateEmployee.setLabel("Update Employee");
-        btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateEmployeeActionPerformed(evt);
-            }
-        });
-        add(btnUpdateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 170, 40));
+        jLabel1.setText("Role:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, -1, -1));
+
+        jLabel2.setText("Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
+
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 320, 40));
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
-        // TODO add your handling code here:
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+//        system.getEmployeeDirectory().createEmployee();
         
-    }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
-
-    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddEmployeeActionPerformed
-
-    private void btnUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateEmployeeActionPerformed
-
+    }//GEN-LAST:event_kButton1ActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnAddEmployee;
-    private java.awt.Button btnDeleteEmployee;
-    private java.awt.Button btnUpdateEmployee;
+    private javax.swing.JComboBox<String> cmbBoxRoles;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private com.k33ptoo.components.KButton kButton1;
     private rojeru_san.complementos.RSTableMetro rSTableMetro1;
+    private javax.swing.JTextField txtCity;
     // End of variables declaration//GEN-END:variables
 }

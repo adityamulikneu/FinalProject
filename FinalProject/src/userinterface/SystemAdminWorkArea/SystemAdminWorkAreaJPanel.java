@@ -7,6 +7,9 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -26,14 +29,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     
     ManageNetworkJPanel manageNetworkPanel;
-    JPanel userProcessContainer;
+    private JPanel userProcessContainer; 
+    private Enterprise enterprise;
+    private Network network;
+    private Organization organization;
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, Organization organization, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.user = user;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
         this.system = system;
         manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
         sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
@@ -161,7 +171,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
         lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblOrganizations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/organization.png"))); // NOI18N
-        lblOrganizations.setText(" Manage Organization");
+        lblOrganizations.setText("Manage Enterprise Admin");
         lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblOrganizationsMousePressed(evt);
@@ -228,7 +238,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         sysAdminWorkAreaContainer.removeAll();
         
-        ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(sysAdminWorkAreaContainer, system);       
+        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(sysAdminWorkAreaContainer, system);       
         sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.PatientView;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Patient.Employee;
@@ -17,20 +18,20 @@ import javax.swing.JPanel;
  *
  * @author adityamulik
  */
-public class ManageOrganizationsJPanel extends javax.swing.JPanel {
+public class RefillPrescriptionsPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
      */
     
-    JPanel userProcessContainer;
+    JPanel container;
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public ManageOrganizationsJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public RefillPrescriptionsPanel(JPanel container, EcoSystem system) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
+        this.container = container;
         this.system = system;
     }
 
@@ -49,8 +50,8 @@ public class ManageOrganizationsJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Manage Organizations");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 216, -1, -1));
+        jLabel2.setText("Refill Prescriptions");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DoctorRole;
+package userinterface.DoctorWorkArea;
 
 import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -27,14 +30,21 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
      */
     
     ManageNetworkJPanel manageNetworkPanel;
-    JPanel userProcessContainer;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Network network;
+    private Organization organization;
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public DoctorAreaJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
+    public DoctorAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.user = user;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
         this.system = system;
         manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
         sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
@@ -229,7 +239,7 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
         
         sysAdminWorkAreaContainer.removeAll();
         
-        ManageOrganizationsJPanel manageOrganizations = new ManageOrganizationsJPanel(sysAdminWorkAreaContainer, system);       
+        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(sysAdminWorkAreaContainer, system);       
         sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 

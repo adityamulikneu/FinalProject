@@ -7,11 +7,14 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,6 +35,42 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        
+        populateComboBox();
+        populateTable();
+    }
+    
+    private void populateComboBox() {
+        networkCmbBox.removeAllItems();
+        enterpriseCmbBox.removeAllItems();
+
+        networkCmbBox.addItem("Select Network");
+        enterpriseCmbBox.addItem("Select Enterprise Type");
+        
+        for (Network network : system.getNetworkList()) {
+            networkCmbBox.addItem(network.toString());
+        }
+
+        for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
+            enterpriseCmbBox.addItem(type.toString());
+        }
+    }
+    
+    public void populateTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
+
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Object[] row = new Object[3];
+                row[0] = enterprise.getName();
+                row[1] = network.getName();
+                row[2] = enterprise.getEnterpriseType().getValue();
+
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -43,18 +82,134 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblNetwork = new rojeru_san.complementos.RSTableMetro();
+        jLabel3 = new javax.swing.JLabel();
+        txtEnterprise = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnSave = new com.k33ptoo.components.KButton();
+        networkCmbBox = new javax.swing.JComboBox<>();
+        enterpriseCmbBox = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Manage Enterprises");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Manage Enterprise");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 320, 40));
+
+        tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Enterprise", "Network", "Type"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblNetwork.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
+        tblNetwork.setColorBordeFilas(new java.awt.Color(204, 0, 51));
+        tblNetwork.setColorBordeHead(new java.awt.Color(204, 0, 51));
+        tblNetwork.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblNetwork.setColorFilasForeground1(new java.awt.Color(204, 0, 51));
+        tblNetwork.setColorFilasForeground2(new java.awt.Color(204, 0, 51));
+        tblNetwork.setColorSelBackgound(new java.awt.Color(204, 0, 51));
+        tblNetwork.setFuenteFilas(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblNetwork.setFuenteFilasSelect(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblNetwork.setFuenteHead(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        tblNetwork.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tblNetwork.setRowHeight(32);
+        jScrollPane1.setViewportView(tblNetwork);
+        if (tblNetwork.getColumnModel().getColumnCount() > 0) {
+            tblNetwork.getColumnModel().getColumn(0).setResizable(false);
+            tblNetwork.getColumnModel().getColumn(1).setResizable(false);
+            tblNetwork.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 680, 150));
+
+        jLabel3.setText("Name:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+
+        txtEnterprise.setBorder(null);
+        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 370, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 370, -1));
+
+        jLabel4.setText("Network:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
+
+        jLabel5.setText("Enterprise Type:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, -1, -1));
+
+        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 350, -1));
+
+        enterpriseCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(enterpriseCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        System.out.println(system.getNetworkList().contains(networkCmbBox.getSelectedItem()));
+//        Network network = (Network) networkCmbBox.getSelectedItem();
+//        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseCmbBox.getSelectedItem();
+//
+//        if (network == null || type == null) {
+//            JOptionPane.showMessageDialog(null, "Invalid Input!");
+//            return;
+//        }
+//
+//        String name = txtEnterprise.getText();
+//        if(!name.isEmpty()){
+//            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+//            JOptionPane.showMessageDialog(null, "Enterprise created sucessfully!");
+//            txtEnterprise.setText("");
+//            populateTable();
+//        } else{
+//           JOptionPane.showMessageDialog(null, "Enter enterprise name"); 
+//        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private com.k33ptoo.components.KButton btnSave;
+    private javax.swing.JComboBox<String> enterpriseCmbBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JComboBox<String> networkCmbBox;
+    private rojeru_san.complementos.RSTableMetro tblNetwork;
+    private javax.swing.JTextField txtEnterprise;
     // End of variables declaration//GEN-END:variables
 }
