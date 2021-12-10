@@ -6,6 +6,9 @@
 package userinterface.PatientView;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -22,14 +25,20 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form Login
      */
-    JPanel userProcessContainer;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Network network;
+    private Organization organization;
     private EcoSystem system;
     private UserAccount user;
     
-    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
+    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.network = network;
         this.system = system;
     }
 
