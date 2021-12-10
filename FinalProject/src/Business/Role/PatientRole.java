@@ -9,7 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.PatientView.PatientAreaJPanel;
+import userinterface.PatientView.PatientAreaJPanel_DELETE;
 import javax.swing.JPanel;
 
 /**
@@ -23,7 +23,7 @@ public class PatientRole extends Role{
 
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PatientAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
+        return new PatientAreaJPanel_DELETE(userProcessContainer, account, network, organization, enterprise, business);
     }
     
     

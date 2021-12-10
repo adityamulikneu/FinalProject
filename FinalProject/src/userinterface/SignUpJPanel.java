@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author adityamulik
  */
-public class ManageNetworkJPanel extends javax.swing.JPanel {
+public class SignUpJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -28,9 +28,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public ManageNetworkJPanel(JPanel container, EcoSystem system) {
+    public SignUpJPanel(EcoSystem system) {
         initComponents();
-        this.container = container;
+//        this.container = container;
         this.system = system;
     }
 

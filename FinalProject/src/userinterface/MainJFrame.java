@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import userinterface.DoctorWorkArea.DoctorAreaJPanel;
 import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
 import userinterface.NurseRole.NurseAreaJPanel;
-import userinterface.PatientView.PatientAreaJPanel1;
+import userinterface.PatientView.PatientAreaJPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -284,8 +284,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                  else if (user.getRole().toString() == "Business.Role.PatientRole") {
                     System.out.println("This is patient role!");
                     Employee e = user.getEmployee();  
-                    PatientAreaJPanel1 patientPanel = new PatientAreaJPanel1(container, user, system);
-                    container.add("workArea", user.getRole().createWorkArea(container, user, system));
+                    container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!"); 
                 } 
