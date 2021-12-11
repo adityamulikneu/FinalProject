@@ -111,16 +111,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="com.k33ptoo.components.KButton" name="kButton1">
+    <Component class="com.k33ptoo.components.KButton" name="kButton1AddCity">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add City"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1AddCityActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="400" width="-1" height="-1"/>
+          <AbsoluteConstraints x="390" y="410" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -150,6 +150,19 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="300" y="310" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="com.k33ptoo.components.KButton" name="kButton2UpdateCity">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit City"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton2UpdateCityActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="390" y="480" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

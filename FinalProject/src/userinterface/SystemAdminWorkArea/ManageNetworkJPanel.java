@@ -50,10 +50,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNetwork = new rojeru_san.complementos.RSTableMetro();
-        kButton1 = new com.k33ptoo.components.KButton();
+        kButton1AddCity = new com.k33ptoo.components.KButton();
         txtCity = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        kButton2UpdateCity = new com.k33ptoo.components.KButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -88,13 +89,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 680, 150));
 
-        kButton1.setText("Add City");
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        kButton1AddCity.setText("Add City");
+        kButton1AddCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                kButton1AddCityActionPerformed(evt);
             }
         });
-        add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
+        add(kButton1AddCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, -1, -1));
 
         txtCity.setBorder(null);
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 370, 30));
@@ -102,9 +103,17 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("City Name:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
+
+        kButton2UpdateCity.setText("Edit City");
+        kButton2UpdateCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2UpdateCityActionPerformed(evt);
+            }
+        });
+        add(kButton2UpdateCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+    private void kButton1AddCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1AddCityActionPerformed
         // TODO add your handling code here:
         String city = txtCity.getText();
         
@@ -112,7 +121,20 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         network.setName(city);
         
         populateNetworkTable();
-    }//GEN-LAST:event_kButton1ActionPerformed
+    }//GEN-LAST:event_kButton1AddCityActionPerformed
+
+    private void kButton2UpdateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2UpdateCityActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblNetwork.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+//            Network selectedNetwork = (Network) tblNetwork.getValueAt(selectedRow, 1);
+//            SystemAdminUpdateCustomer fs = new SystemAdminUpdateCustomer(userProcessContainerSAMC, selectedCustomer, ecosystem);
+//            userProcessContainerSAMC.add("SysAdminUpdateEmployees", fs);
+//            CardLayout layout = (CardLayout) userProcessContainerSAMC.getLayout();
+//            layout.next(userProcessContainerSAMC);
+        }
+    }//GEN-LAST:event_kButton2UpdateCityActionPerformed
 
     public void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel)tblNetwork.getModel();                       
@@ -132,7 +154,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton kButton1AddCity;
+    private com.k33ptoo.components.KButton kButton2UpdateCity;
     private rojeru_san.complementos.RSTableMetro tblNetwork;
     private javax.swing.JTextField txtCity;
     // End of variables declaration//GEN-END:variables

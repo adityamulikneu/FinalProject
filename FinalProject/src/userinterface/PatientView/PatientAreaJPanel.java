@@ -5,6 +5,7 @@
  */
 package userinterface.PatientView;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -26,14 +27,14 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
-    BookAnAppointmentPanel patientPanel;
-    
+    BookAnAppointmentPanel patientPanel;    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Network network;
     private Organization organization;
     private EcoSystem system;
     private UserAccount user;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     public PatientAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();

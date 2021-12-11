@@ -32,7 +32,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
-    ManageNetworkJPanel manageNetworkPanel;
+    ManageAppointmentsJPanel managePatients;
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Network network;
@@ -49,12 +49,13 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.system = business;
+        
+        managePatients = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system);
+        NurseWorkAreaContainer.add(managePatients);
+        
+        
 //        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
 //        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
-    }
-    
-    public NurseAreaJPanel() {
-        
     }
 
     /**
@@ -68,15 +69,14 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
 
         sysAdminMenuPanel = new javax.swing.JPanel();
         panelSelectionBg1 = new javax.swing.JPanel();
-        lblNetwork = new javax.swing.JLabel();
+        lblManagePatients = new javax.swing.JLabel();
         panelSelectionBg2 = new javax.swing.JPanel();
         panel = new javax.swing.JLabel();
         panelSelectionBg4 = new javax.swing.JPanel();
         lblEmployees = new javax.swing.JLabel();
         panelSelectionBg3 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
-        sysAdminWorkAreaContainer = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        NurseWorkAreaContainer = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
 
@@ -85,17 +85,17 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
 
         panelSelectionBg1.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
-        lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
-        lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
-        lblNetwork.setText("Manage Patients");
-        lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblNetworkMousePressed(evt);
-            }
+        lblManagePatients.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        lblManagePatients.setForeground(new java.awt.Color(204, 0, 51));
+        lblManagePatients.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblManagePatients.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
+        lblManagePatients.setText("Manage Appointments");
+        lblManagePatients.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNetworkMouseClicked(evt);
+                lblManagePatientsMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblManagePatientsMousePressed(evt);
             }
         });
 
@@ -105,11 +105,11 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
             panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg1Layout.createSequentialGroup()
                 .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(lblNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblManagePatients, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelSelectionBg1Layout.setVerticalGroup(
             panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(lblManagePatients, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         sysAdminMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
@@ -195,11 +195,8 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
 
         sysAdminMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
 
-        sysAdminWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
-        sysAdminWorkAreaContainer.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setText("NUrse");
-        sysAdminWorkAreaContainer.add(jLabel1, "card2");
+        NurseWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
+        NurseWorkAreaContainer.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -208,7 +205,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NurseWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -216,24 +213,30 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NurseWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNetworkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMouseClicked
-        // TODO add your handling code here:                
-    }//GEN-LAST:event_lblNetworkMouseClicked
+    private void lblManagePatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManagePatientsMouseClicked
+        // TODO add your handling code here: 
+        setStyleAssignPatients();
+        
+        NurseWorkAreaContainer.removeAll();
+        ManageAppointmentsJPanel manPat = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system);
+        NurseWorkAreaContainer.add("NurseWorkArea",manPat);
+        
+    }//GEN-LAST:event_lblManagePatientsMouseClicked
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
         // TODO add your handling code here:
         
         setStyleEnterprise();
         
-        sysAdminWorkAreaContainer.removeAll();
+        NurseWorkAreaContainer.removeAll();
         
-        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(sysAdminWorkAreaContainer, system);                
-        sysAdminWorkAreaContainer.add("enterprises", manageEnterprises);
+        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(NurseWorkAreaContainer, system);                
+        NurseWorkAreaContainer.add("enterprises", manageEnterprises);
     }//GEN-LAST:event_panelMousePressed
 
     private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
@@ -241,10 +244,10 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         
         setStyleOrganization();
         
-        sysAdminWorkAreaContainer.removeAll();
+        NurseWorkAreaContainer.removeAll();
         
-        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(sysAdminWorkAreaContainer, system);       
-        sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
+        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(NurseWorkAreaContainer, system);       
+        NurseWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 
     private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
@@ -252,26 +255,26 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         
         setStyleEmployee();
         
-        sysAdminWorkAreaContainer.removeAll();
+        NurseWorkAreaContainer.removeAll();
         
 //        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
 //        sysAdminWorkAreaContainer.add("employees", manageEmployees);
     }//GEN-LAST:event_lblEmployeesMousePressed
 
-    private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
+    private void lblManagePatientsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManagePatientsMousePressed
         // TODO add your handling code here:
         setStyleNetwork();
         
-        sysAdminWorkAreaContainer.removeAll();
+        NurseWorkAreaContainer.removeAll();
         
-        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);                        
-        sysAdminWorkAreaContainer.add("network", manageNetwork);
-    }//GEN-LAST:event_lblNetworkMousePressed
+        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(NurseWorkAreaContainer, system);                        
+        NurseWorkAreaContainer.add("network", manageNetwork);
+    }//GEN-LAST:event_lblManagePatientsMousePressed
 
     public void setStyleNetwork() {
         // Set Enterprise to RED
-        lblNetwork.setForeground(new Color(204,0,51));
-        lblNetwork.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        lblManagePatients.setForeground(new Color(204,0,51));
+        lblManagePatients.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         panel.setForeground(Color.white);
@@ -295,8 +298,8 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         panel.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
-        lblNetwork.setForeground(Color.white);
-        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        lblManagePatients.setForeground(Color.white);
+        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -316,8 +319,8 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
-        lblNetwork.setForeground(Color.white);
-        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
+        lblManagePatients.setForeground(Color.white);
+        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
         
         panel.setForeground(Color.white);
         panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -337,8 +340,8 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
-        lblNetwork.setForeground(Color.white);
-        lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        lblManagePatients.setForeground(Color.white);
+        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panel.setForeground(Color.white);
         panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -353,9 +356,9 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel NurseWorkAreaContainer;
     private javax.swing.JLabel lblEmployees;
-    private javax.swing.JLabel lblNetwork;
+    private javax.swing.JLabel lblManagePatients;
     private javax.swing.JLabel lblOrganizations;
     private javax.swing.JLabel panel;
     private javax.swing.JPanel panelSelectionBg1;
@@ -363,6 +366,11 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelSelectionBg3;
     private javax.swing.JPanel panelSelectionBg4;
     private javax.swing.JPanel sysAdminMenuPanel;
-    private javax.swing.JPanel sysAdminWorkAreaContainer;
     // End of variables declaration//GEN-END:variables
+
+    private void setStyleAssignPatients() {
+        lblManagePatients.setForeground(new Color(204,0,51));
+        lblManagePatients.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+    }
+
 }

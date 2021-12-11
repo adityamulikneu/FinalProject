@@ -15,6 +15,7 @@ import Business.Role.DoctorRole;
 import Business.Role.HospAdminRole;
 import Business.Role.NurseRole;
 import Business.Role.PatientRole;
+import Business.Role.PharmacyAdminRole;
 
 /**
  *
@@ -60,13 +61,16 @@ public class StaticData {
         network3.setName("Los Angeles");
         
         // Create Enterprise
-        Enterprise e = network.getEnterpriseDirectory().createAndAddEnterprise("Apollo Clinics", EnterpriseType.MedicalSupplies);
+        Enterprise e = network.getEnterpriseDirectory().createAndAddEnterprise("Apollo Clinics", EnterpriseType.MedicalServices);
+        Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
         
         // Create Employee
         Employee employee = e.getEmployeeDirectory().createEmployee("Apollo Admin");
+        Employee cvsEmp = e.getEmployeeDirectory().createEmployee("Cvs");
         
         // Create Enterprise Admin
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("apollo", "apollo", employee, new HospAdminRole(), e);
+        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
     
         // Populate Doctor
         Employee employee1 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 1");
