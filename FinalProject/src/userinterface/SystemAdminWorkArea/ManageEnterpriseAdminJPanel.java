@@ -8,7 +8,10 @@ package userinterface.SystemAdminWorkArea;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.Network.Network;
 import Business.Patient.Employee;
+import Business.Role.HospAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -32,7 +35,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system = system;   
+        this.system = system; 
+        
+        populateNetwork();
     }
 
     /**
@@ -50,15 +55,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
-        cmbBoxRoles1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
+        adminTxtUserName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        txtPassword = new javax.swing.JPasswordField();
+        adminTxtPassword = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        adminTxtName = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
+        cmbBoxEnterpriseList = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        networkCmbBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -106,7 +113,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         tblNetwork.setRowHeight(32);
         jScrollPane1.setViewportView(tblNetwork);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 680, 150));
 
         jLabel3.setText("Password:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, -1, -1));
@@ -122,58 +129,113 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, -1, -1));
 
-        cmbBoxRoles1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbBoxRoles1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 320, 40));
-
         jLabel4.setText("Name:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
-        txtUsername.setBorder(null);
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 370, 30));
+        adminTxtUserName.setBorder(null);
+        add(adminTxtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 370, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 370, -1));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 370, -1));
 
-        txtPassword.setBorder(null);
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 370, 30));
+        adminTxtPassword.setBorder(null);
+        add(adminTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 370, 30));
 
         jLabel5.setText("Username:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
 
-        txtName.setBorder(null);
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 370, 30));
+        adminTxtName.setBorder(null);
+        add(adminTxtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 370, 30));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 370, -1));
+
+        cmbBoxEnterpriseList.setBackground(new java.awt.Color(255, 255, 255));
+        cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
+        cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbBoxEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 370, -1));
+
+        jLabel6.setText("Network:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, 20));
+
+        networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
+        networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
+        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        networkCmbBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                networkCmbBoxActionPerformed(evt);
+            }
+        });
+        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 370, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void populateEnterprises() {
-//        enterpriseJComboBox.removeAllItems();
-//        
-//        for (Enterprise enterprise : system.getNetworkList()){
-//            enterpriseJComboBox.addItem(enterprise);
-//        }
+    public void populateNetwork() {
+        
+        networkCmbBox.removeAllItems();
+        cmbBoxEnterpriseList.removeAllItems();
+        
+        for (Network network : system.getNetworkList()) {
+            networkCmbBox.addItem(network);
+        }
     }
-
+    
+    private void populateEnterpriseComboBox(Network network){
+        cmbBoxEnterpriseList.removeAllItems();
+        
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+            cmbBoxEnterpriseList.addItem(enterprise);
+        }        
+    }
     
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         //        system.getEmployeeDirectory().createEmployee();
 
     }//GEN-LAST:event_kButton1ActionPerformed
 
+    private void networkCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkCmbBoxActionPerformed
+        // TODO add your handling code here:
+        
+        Network n = (Network) networkCmbBox.getSelectedItem();
+        
+        if (n != null) {
+            populateEnterpriseComboBox(n);
+        }        
+        
+        String name = adminTxtName.getText();
+        String userName = adminTxtUserName.getText();
+        String password = String.valueOf(adminTxtPassword.getPassword());
+        
+        Employee employee = system.getEmployeeDirectory().createEmployee(name);
+        
+        Enterprise e = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
+        
+        System.out.println("CHECKKKKK ENTERPRISE TYPE" + e);
+        
+//        if (cmbBoxEnterpriseList.getSelectedItem().) {
+            System.out.println("Hospital Admin");
+//            system.getUserAccountDirectory().createUserAccount(userName, password, employee, new HospAdminRole());
+//        }
+        
+        
+    }//GEN-LAST:event_networkCmbBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbBoxRoles1;
+    private javax.swing.JTextField adminTxtName;
+    private javax.swing.JPasswordField adminTxtPassword;
+    private javax.swing.JTextField adminTxtUserName;
+    private javax.swing.JComboBox cmbBoxEnterpriseList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private com.k33ptoo.components.KButton kButton1;
+    private javax.swing.JComboBox networkCmbBox;
     private rojeru_san.complementos.RSTableMetro tblNetwork;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
