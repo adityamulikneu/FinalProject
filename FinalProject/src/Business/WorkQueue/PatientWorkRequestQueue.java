@@ -16,7 +16,7 @@ public class PatientWorkRequestQueue extends WorkRequest {
     
     ArrayList<WorkQueue> workRequest = new ArrayList<>();
     
-//    public ArrayList<WorkQueue> addPatientAppointments() {
-//        
-//    }
+    public ArrayList<WorkQueue> addPatientAppointments() {
+        return null;
+    }
 }
