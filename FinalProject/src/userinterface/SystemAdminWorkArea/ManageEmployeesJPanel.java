@@ -8,6 +8,10 @@ package userinterface.SystemAdminWorkArea;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Patient.Employee;
+import Business.Role.DoctorRole;
+import Business.Role.HospAdminRole;
+import Business.Role.NurseRole;
+import Business.Role.PatientRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -52,11 +56,17 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         rSTableMetro1 = new rojeru_san.complementos.RSTableMetro();
         kButton1 = new com.k33ptoo.components.KButton();
-        txtCity = new javax.swing.JTextField();
+        txtEmployeeName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cmbBoxRoles = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        txtPassword = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -105,23 +115,55 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         });
         add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, -1, -1));
 
-        txtCity.setBorder(null);
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 370, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 370, -1));
+        txtEmployeeName.setBorder(null);
+        add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 370, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 370, -1));
 
         jLabel1.setText("Role:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, -1, -1));
 
         jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
-        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Doctor", "Nurse", "Hospital Admin" }));
         add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 320, 40));
+
+        jLabel3.setText("User Name:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
+
+        txtUsername.setBorder(null);
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 370, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 370, -1));
+
+        jLabel4.setText("Password:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, -1, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 370, -1));
+
+        txtPassword.setBorder(null);
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 370, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
 //        system.getEmployeeDirectory().createEmployee();
+        String role = cmbBoxRoles.getSelectedItem().toString();
+        String employeeName = txtEmployeeName.getText().toString();
         
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        
+        Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
+        
+        if (role == "Doctor") {
+            system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Doctor!");
+        } else if (role == "Nurse") {
+            system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Nurse!");
+        } else if (role == "Hospital Admin") {
+            system.getUserAccountDirectory().createUserAccount(username, password, employee, new HospAdminRole());
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Hospital Admin!");
+        }                
+                
     }//GEN-LAST:event_kButton1ActionPerformed
     
 
@@ -129,10 +171,16 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbBoxRoles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private com.k33ptoo.components.KButton kButton1;
     private rojeru_san.complementos.RSTableMetro rSTableMetro1;
-    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

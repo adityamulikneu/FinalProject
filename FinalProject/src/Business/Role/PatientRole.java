@@ -20,11 +20,9 @@ import javax.swing.JPanel;
  * 
  */
 public class PatientRole extends Role{
-
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         return new PatientAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
     }
-    
-    
+        
 }

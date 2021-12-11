@@ -48,9 +48,9 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
-        this.system = system;
-        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
-        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
+        this.system = business;
+//        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
+//        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
     }
     
     public NurseAreaJPanel() {
@@ -89,7 +89,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
-        lblNetwork.setText(" Manage Network");
+        lblNetwork.setText("Manage Patients");
         lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblNetworkMousePressed(evt);
@@ -120,7 +120,6 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enterprise.png"))); // NOI18N
-        panel.setText(" Manage Enterprises");
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelMousePressed(evt);
@@ -148,7 +147,6 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/employees.png"))); // NOI18N
-        lblEmployees.setText(" Manage Employees");
         lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblEmployeesMousePressed(evt);
@@ -176,7 +174,6 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
         lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblOrganizations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/organization.png"))); // NOI18N
-        lblOrganizations.setText(" Manage Organization");
         lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblOrganizationsMousePressed(evt);

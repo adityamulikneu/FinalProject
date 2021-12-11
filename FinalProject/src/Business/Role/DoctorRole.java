@@ -24,9 +24,4 @@ public class DoctorRole extends Role {
         return new DoctorAreaJPanel(userProcessContainer, account, network, organization, enterprise, business); 
     }
     
-    @Override
-    public String toString() {
-        return RoleType.Doctor.getValue();
-    }
-    
 }

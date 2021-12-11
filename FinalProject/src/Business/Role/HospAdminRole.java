@@ -26,10 +26,4 @@ public class HospAdminRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         return new HospAdminWorkAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
     }
-
-    @Override
-    public String toString() {
-        return RoleType.Doctor.getValue();
-    }
-    
 }

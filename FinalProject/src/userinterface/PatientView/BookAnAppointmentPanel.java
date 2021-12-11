@@ -94,7 +94,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
     private void btnPersonVisitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonVisitActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_btnPersonVisitActionPerformed
 
     private void btnVideoVisitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVideoVisitActionPerformed

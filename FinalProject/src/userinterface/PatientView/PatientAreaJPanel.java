@@ -25,6 +25,9 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form Login
      */
+    
+    BookAnAppointmentPanel patientPanel;
+    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Network network;
@@ -39,7 +42,10 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
-        this.system = system;
+        this.system = business;
+        
+//        patientPanel = new BookAnAppointmentPanel(PatientWorkAreaContainer, business);
+//        PatientWorkAreaContainer.add(patientPanel);
     }
 
     /**

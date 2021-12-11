@@ -20,7 +20,7 @@ public abstract class Role {
     
     public enum RoleType{
         SysAdmin("Sysadmin"),
-        HospitalAdmin("HospitalAdmin"),
+        HospitalAdminRole("HospitalAdminRole"),
         LabAdmin("LabAdmin"),
         Accountant("Accountant"),
         Patient("Patient"),

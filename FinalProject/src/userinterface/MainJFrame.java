@@ -272,6 +272,9 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             } 
 //Admin login            
             else {
+                
+                System.out.println("Checkkkkkkk role" + user.getRole().toString());
+                
                  if(user.getRole().toString() == "Business.Role.SystemAdminRole") {
                     System.out.println("This is sys admin!");
                     Employee e = user.getEmployee(); 

@@ -24,7 +24,7 @@
           <Group type="102" attributes="0">
               <Component id="sysAdminMenuPanel" min="-2" pref="290" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="sysAdminWorkAreaContainer" min="-2" max="-2" attributes="0"/>
+              <Component id="hospitalAdminWorkArea" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -34,7 +34,7 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="sysAdminMenuPanel" min="-2" pref="663" max="-2" attributes="0"/>
-                  <Component id="sysAdminWorkAreaContainer" min="-2" max="-2" attributes="0"/>
+                  <Component id="hospitalAdminWorkArea" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -93,7 +93,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/network.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Manage Network"/>
+                <Property name="text" type="java.lang.String" value="Manage Hospital Employees"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblNetworkMousePressed"/>
@@ -142,7 +142,6 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/enterprise.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Manage Enterprises"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelMousePressed"/>
@@ -190,7 +189,6 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/employees.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Manage Employees"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblEmployeesMousePressed"/>
@@ -238,7 +236,6 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/organization.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Manage Organization"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblOrganizationsMousePressed"/>
@@ -248,7 +245,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="sysAdminWorkAreaContainer">
+    <Container class="javax.swing.JPanel" name="hospitalAdminWorkArea">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[940, 663]"/>

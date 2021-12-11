@@ -29,7 +29,8 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
-    ManageNetworkJPanel manageNetworkPanel;
+    ManageHospitalEmployees manageHospitalEmployees;
+    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Network network;
@@ -45,9 +46,9 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
-        this.system = system;
-        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
-        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
+        this.system = business;
+        manageHospitalEmployees = new ManageHospitalEmployees(hospitalAdminWorkArea, system);
+        hospitalAdminWorkArea.add("network", manageHospitalEmployees);
     }
     
     public HospAdminWorkAreaJPanel() {
@@ -72,7 +73,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees = new javax.swing.JLabel();
         panelSelectionBg3 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
-        sysAdminWorkAreaContainer = new javax.swing.JPanel();
+        hospitalAdminWorkArea = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
 
@@ -85,7 +86,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
-        lblNetwork.setText(" Manage Network");
+        lblNetwork.setText("Manage Hospital Employees");
         lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblNetworkMousePressed(evt);
@@ -116,7 +117,6 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enterprise.png"))); // NOI18N
-        panel.setText(" Manage Enterprises");
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelMousePressed(evt);
@@ -144,7 +144,6 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/employees.png"))); // NOI18N
-        lblEmployees.setText(" Manage Employees");
         lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblEmployeesMousePressed(evt);
@@ -172,7 +171,6 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
         lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblOrganizations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/organization.png"))); // NOI18N
-        lblOrganizations.setText(" Manage Organization");
         lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblOrganizationsMousePressed(evt);
@@ -194,8 +192,8 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         sysAdminMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
 
-        sysAdminWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
-        sysAdminWorkAreaContainer.setLayout(new java.awt.CardLayout());
+        hospitalAdminWorkArea.setPreferredSize(new java.awt.Dimension(940, 663));
+        hospitalAdminWorkArea.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -204,7 +202,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hospitalAdminWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -212,7 +210,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sysAdminWorkAreaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hospitalAdminWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -226,10 +224,10 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         setStyleEnterprise();
         
-        sysAdminWorkAreaContainer.removeAll();
+        hospitalAdminWorkArea.removeAll();
         
-        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(sysAdminWorkAreaContainer, system);                
-        sysAdminWorkAreaContainer.add("enterprises", manageEnterprises);
+        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(hospitalAdminWorkArea, system);                
+        hospitalAdminWorkArea.add("enterprises", manageEnterprises);
     }//GEN-LAST:event_panelMousePressed
 
     private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
@@ -237,10 +235,10 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         setStyleOrganization();
         
-        sysAdminWorkAreaContainer.removeAll();
+        hospitalAdminWorkArea.removeAll();
         
-        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(sysAdminWorkAreaContainer, system);       
-        sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
+        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(hospitalAdminWorkArea, system);       
+        hospitalAdminWorkArea.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 
     private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
@@ -248,20 +246,20 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         setStyleEmployee();
         
-        sysAdminWorkAreaContainer.removeAll();
+        hospitalAdminWorkArea.removeAll();
         
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
-        sysAdminWorkAreaContainer.add("employees", manageEmployees);
+        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(hospitalAdminWorkArea, system);                
+        hospitalAdminWorkArea.add("employees", manageEmployees);
     }//GEN-LAST:event_lblEmployeesMousePressed
 
     private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
         // TODO add your handling code here:
         setStyleNetwork();
         
-        sysAdminWorkAreaContainer.removeAll();
+        hospitalAdminWorkArea.removeAll();
         
-        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);                        
-        sysAdminWorkAreaContainer.add("network", manageNetwork);
+        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(hospitalAdminWorkArea, system);                        
+        hospitalAdminWorkArea.add("network", manageNetwork);
     }//GEN-LAST:event_lblNetworkMousePressed
 
     public void setStyleNetwork() {
@@ -349,6 +347,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel hospitalAdminWorkArea;
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;
@@ -358,6 +357,5 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelSelectionBg3;
     private javax.swing.JPanel panelSelectionBg4;
     private javax.swing.JPanel sysAdminMenuPanel;
-    private javax.swing.JPanel sysAdminWorkAreaContainer;
     // End of variables declaration//GEN-END:variables
 }
