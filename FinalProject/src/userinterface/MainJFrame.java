@@ -11,6 +11,7 @@ import Business.Network.Network;
 
 import Business.Organization.Organization;
 import Business.Patient.Employee;
+import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -54,7 +55,8 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         }
         this.loginJPanel.setVisible(true);
         this.container.setVisible(false);
-        this.menubar.setVisible(false);                   
+        this.menubar.setVisible(false);     
+        this.signUpJPanel.setVisible(false);
      }      
     
     @Override
@@ -78,13 +80,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtUserName.setText("");
         txtPassword.setText("");
     }
-    
-//    private void changePanel1() {
-//        if (user != null && user.getRole() != null) {
-//            String greetings = "Weclcome";
-//        
-//        }
-//    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,6 +110,22 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         lblLogout = new javax.swing.JLabel();
         lblWelcomeMessage = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
+        signUpJPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        lblMobNo = new javax.swing.JLabel();
+        txtMobile = new javax.swing.JTextField();
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        lblUserName = new javax.swing.JLabel();
+        txtUserName1 = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword1 = new javax.swing.JPasswordField();
+        lblConfirmPwd = new javax.swing.JLabel();
+        txtConfirmPwd = new javax.swing.JPasswordField();
+        btnCreateAccount = new javax.swing.JButton();
+        btnBackToLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1230, 723));
@@ -188,6 +200,11 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         btnNewPatient.setFont(new java.awt.Font("Lucida Console", 0, 16)); // NOI18N
         btnNewPatient.setForeground(new java.awt.Color(0, 102, 153));
         btnNewPatient.setLabel("New Patient?");
+        btnNewPatient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnNewPatientMousePressed(evt);
+            }
+        });
         btnNewPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPatientActionPerformed(evt);
@@ -236,6 +253,69 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         container.setLayout(new java.awt.CardLayout());
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 1230, 660));
 
+        signUpJPanel.setPreferredSize(new java.awt.Dimension(1230, 723));
+        signUpJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("New Patient Registration");
+        signUpJPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, -1, -1));
+
+        lblName.setText("Name:");
+        signUpJPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        signUpJPanel.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 280, -1));
+
+        lblMobNo.setText("Mob. NO:");
+        signUpJPanel.add(lblMobNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+        signUpJPanel.add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 280, -1));
+
+        lblAddress.setText("Address:");
+        signUpJPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
+        signUpJPanel.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 280, 50));
+
+        lblUserName.setText("UserName:");
+        signUpJPanel.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
+        signUpJPanel.add(txtUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 280, -1));
+
+        lblPassword.setText("Password");
+        signUpJPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, -1, -1));
+
+        txtPassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassword1ActionPerformed(evt);
+            }
+        });
+        signUpJPanel.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 280, -1));
+
+        lblConfirmPwd.setText("Confirm Password:");
+        signUpJPanel.add(lblConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
+
+        txtConfirmPwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmPwdActionPerformed(evt);
+            }
+        });
+        signUpJPanel.add(txtConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 280, -1));
+
+        btnCreateAccount.setText("Create Account");
+        btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateAccountActionPerformed(evt);
+            }
+        });
+        signUpJPanel.add(btnCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+
+        btnBackToLogin.setText("Go Back");
+        btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToLoginActionPerformed(evt);
+            }
+        });
+        signUpJPanel.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 10, -1, -1));
+
+        getContentPane().add(signUpJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -262,62 +342,62 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
         MainJFrame mainFrame = new MainJFrame();
         CardLayout layout = (CardLayout) container.getLayout();
-        
+
         if (txtUserName.getText().equals("") || txtPassword.getPassword().equals("")) {
-           JOptionPane.showMessageDialog(null, "Please enter the required fields!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter the required fields!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            user = system.getUserAccountDirectory().authenticateUser(txtUserName.getText(), String.valueOf(txtPassword.getPassword()));                
+            user = system.getUserAccountDirectory().authenticateUser(txtUserName.getText(), String.valueOf(txtPassword.getPassword()));
             if(user == null) {
                 JOptionPane.showMessageDialog(null, "Please enter correct Username and Password!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            } 
-//Admin login            
+            }
+            //Admin login
             else {
                 
                 System.out.println("Checkkkkkkk role" + user.getRole().toString());
                 
                  if(user.getRole().toString() == "Business.Role.SystemAdminRole") {
                     System.out.println("This is sys admin!");
-                    Employee e = user.getEmployee(); 
+                    Employee e = user.getEmployee();
                     System.out.println(e);
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
-                } 
-//Patient login                 
-                 else if (user.getRole().toString() == "Business.Role.PatientRole") {
+                }
+                //Patient login
+                else if (user.getRole().toString() == "Business.Role.PatientRole") {
                     System.out.println("This is patient role!");
-                    Employee e = user.getEmployee();  
+                    Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
-                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!"); 
-                } 
-//Doctor login                  
-                 else if (user.getRole().toString() == "Business.Role.DoctorRole") {
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
+                //Doctor login
+                else if (user.getRole().toString() == "Business.Role.DoctorRole") {
                     System.out.println("This is doctor role!");
-                    Employee e = user.getEmployee();  
+                    Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-//Nurse login                 
-                 else if (user.getRole().toString() == "Business.Role.NurseRole") {
+                //Nurse login
+                else if (user.getRole().toString() == "Business.Role.NurseRole") {
                     System.out.println("This is nurse role!");
-                    Employee e = user.getEmployee();  
+                    Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-                 
-//HospAdmin login                 
-                 else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
+
+                //HospAdmin login
+                else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
                     System.out.println("This is HospAdmin role!");
-                    Employee e = user.getEmployee();  
+                    Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-                 
+
                 Thread t = new Thread(this);
                 t.start();
             }
@@ -325,13 +405,49 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPatientActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Sign Up Clicked!");
-        this.dispose();
-        SignUpJPanel signUp = new SignUpJPanel(system);
-        signUp.setVisible(true);        
 
     }//GEN-LAST:event_btnNewPatientActionPerformed
+
+    private void btnNewPatientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewPatientMousePressed
+        this.loginJPanel.setVisible(false);
+        this.signUpJPanel.setVisible(true);
+    }//GEN-LAST:event_btnNewPatientMousePressed
+
+    private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
+        // TODO add your handling code here:
+        String username = txtUserName1.getText();
+        String password = String.valueOf(txtPassword1.getPassword());
+        String employeeName = txtName.getText();
+
+        if (validatePatient()) {
+            Employee emp = system.getEmployeeDirectory().createEmployee(employeeName);
+            UserAccount u = system.getUserAccountDirectory().createUserAccount(username, password, emp, new PatientRole());
+            
+            if(u != null){
+                System.out.println("CHECKKKKKK USER FROM CREATE USER " + u.getUsername());
+//                Employee e = system.getEmployeeDirectory().createEmployee(employeeName);
+                JOptionPane.showMessageDialog(this, "Account created successfully, please login through the desktop app!");
+//                dB4OUtil.storeSystem(system);
+            }
+//            JOptionPane.showMessageDialog(this, emp.getName() + " Successfully registered as a Patient!");
+        }
+    }//GEN-LAST:event_btnCreateAccountActionPerformed
+
+    private void txtPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassword1ActionPerformed
+
+    private void txtConfirmPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPwdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmPwdActionPerformed
+
+    private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
+        // TODO add your handling code here:
+//        this.dispose();
+        signUpJPanel.setVisible(false);
+        loginJPanel.setVisible(true);
+        dB4OUtil.storeSystem(system);       
+    }//GEN-LAST:event_btnBackToLoginActionPerformed
 
     public void logout() {
         dB4OUtil.storeSystem(system);
@@ -379,24 +495,64 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         lblWelcomeMessage.setText(message);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackToLogin;
+    private javax.swing.JButton btnCreateAccount;
     private java.awt.Button btnLogin;
     private java.awt.Button btnNewPatient;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblConfirmPwd;
     private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblLogout;
+    private javax.swing.JLabel lblMobNo;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblWelcomeMessage;
     private javax.swing.JPanel loginJPanel;
     private javax.swing.JProgressBar loginProgressBar;
     private javax.swing.JPanel menubar;
+    private javax.swing.JPanel signUpJPanel;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JPasswordField txtConfirmPwd;
+    private javax.swing.JTextField txtMobile;
+    private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserName1;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validatePatient() {
+        String regex = "\\d{10}";
+        if(("".equals(txtName.getText())) || ("".equals(txtPassword1.getPassword()) || ("".equals(txtConfirmPwd.getPassword())) 
+                || ("".equals(txtName.getText())) || ("".equals(txtMobile.getText())) || ("".equals(txtAddress.getText()))))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(!(txtPassword1.getText().equals(txtConfirmPwd.getText())))
+        {
+            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(!(txtMobile.getText().matches(regex)))
+        {
+            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+}
 }

@@ -4,6 +4,7 @@
  */
 package Business.Patient;
 
+import Business.Role.Role;
 import java.util.ArrayList;
 
 /**
