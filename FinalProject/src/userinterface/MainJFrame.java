@@ -63,7 +63,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 //        this.progressBarjPanel.setVisible(false);
         for(int i=1; i<=100; i++) {
             try {
-                Thread.sleep(10);
+                Thread.sleep(1);
                 loginProgressBar.setValue(i);
             } catch (Exception e) {
                 System.out.println("Check thread!");
@@ -255,6 +255,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 
     private void lblExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMousePressed
         System.exit(0);
+        dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_lblExitMousePressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

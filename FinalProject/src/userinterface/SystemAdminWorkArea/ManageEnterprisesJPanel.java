@@ -43,16 +43,19 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
     private void populateComboBox() {
         networkCmbBox.removeAllItems();
         enterpriseCmbBox.removeAllItems();
-
+        
         networkCmbBox.addItem("Select Network");
         enterpriseCmbBox.addItem("Select Enterprise Type");
+
+//        networkCmbBox.addItem("Select Network");
+//        enterpriseCmbBox.addItem("Select Enterprise Type");
         
         for (Network network : system.getNetworkList()) {
-            networkCmbBox.addItem(network.toString());
+            networkCmbBox.addItem(network);
         }
 
         for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
-            enterpriseCmbBox.addItem(type.toString());
+            enterpriseCmbBox.addItem(type);
         }
     }
     
@@ -91,8 +94,8 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnSave = new com.k33ptoo.components.KButton();
-        networkCmbBox = new javax.swing.JComboBox<>();
-        enterpriseCmbBox = new javax.swing.JComboBox<>();
+        networkCmbBox = new javax.swing.JComboBox();
+        enterpriseCmbBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -112,16 +115,9 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 "Enterprise", "Network", "Type"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -146,7 +142,7 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
             tblNetwork.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 680, 150));
 
         jLabel3.setText("Name:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
@@ -169,46 +165,61 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         });
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, -1, -1));
 
-        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 350, -1));
+        networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
+        networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
+        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        networkCmbBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                networkCmbBoxActionPerformed(evt);
+            }
+        });
+        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 210, -1));
 
-        enterpriseCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 350, -1));
+        enterpriseCmbBox.setBackground(new java.awt.Color(255, 255, 255));
+        enterpriseCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        enterpriseCmbBox.setForeground(new java.awt.Color(25, 56, 82));
+        enterpriseCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(enterpriseCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 210, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        System.out.println(system.getNetworkList().contains(networkCmbBox.getSelectedItem()));
-//        Network network = (Network) networkCmbBox.getSelectedItem();
-//        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseCmbBox.getSelectedItem();
-//
-//        if (network == null || type == null) {
-//            JOptionPane.showMessageDialog(null, "Invalid Input!");
-//            return;
-//        }
-//
-//        String name = txtEnterprise.getText();
-//        if(!name.isEmpty()){
-//            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
-//            JOptionPane.showMessageDialog(null, "Enterprise created sucessfully!");
-//            txtEnterprise.setText("");
-//            populateTable();
-//        } else{
-//           JOptionPane.showMessageDialog(null, "Enter enterprise name"); 
-//        }
+//        System.out.println(system.getNetworkList().contains(networkCmbBox.getSelectedItem()));
+        Network network = (Network) networkCmbBox.getSelectedItem();
+        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseCmbBox.getSelectedItem();
+
+        if (network == null || type == null) {
+            JOptionPane.showMessageDialog(null, "Invalid Input!");
+            return;
+        }
+
+        String name = txtEnterprise.getText();
+        if(!name.isEmpty()){
+            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+            JOptionPane.showMessageDialog(null, "Enterprise created sucessfully!");
+            txtEnterprise.setText("");
+            populateTable();
+        } else{
+           JOptionPane.showMessageDialog(null, "Enter enterprise name"); 
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void networkCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkCmbBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_networkCmbBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnSave;
-    private javax.swing.JComboBox<String> enterpriseCmbBox;
+    private javax.swing.JComboBox enterpriseCmbBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JComboBox<String> networkCmbBox;
+    private javax.swing.JComboBox networkCmbBox;
     private rojeru_san.complementos.RSTableMetro tblNetwork;
     private javax.swing.JTextField txtEnterprise;
     // End of variables declaration//GEN-END:variables

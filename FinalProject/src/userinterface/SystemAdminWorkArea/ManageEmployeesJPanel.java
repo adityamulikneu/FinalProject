@@ -125,7 +125,7 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
-        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Doctor", "Nurse", "Hospital Admin" }));
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Doctor", "Nurse" }));
         add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 320, 40));
 
         jLabel3.setText("User Name:");
@@ -159,10 +159,7 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
         } else if (role == "Nurse") {
             system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
             JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Nurse!");
-        } else if (role == "Hospital Admin") {
-            system.getUserAccountDirectory().createUserAccount(username, password, employee, new HospAdminRole());
-            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Hospital Admin!");
-        }                
+        }               
                 
     }//GEN-LAST:event_kButton1ActionPerformed
     

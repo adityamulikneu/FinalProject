@@ -44,8 +44,8 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.system = business;
         
-//        patientPanel = new BookAnAppointmentPanel(PatientWorkAreaContainer, business);
-//        PatientWorkAreaContainer.add(patientPanel);
+        patientPanel = new BookAnAppointmentPanel(PatientWorkAreaContainer, system);
+        PatientWorkAreaContainer.add(patientPanel);
     }
 
     /**
