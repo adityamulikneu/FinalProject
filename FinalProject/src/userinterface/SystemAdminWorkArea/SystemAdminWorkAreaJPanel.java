@@ -67,8 +67,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork = new javax.swing.JLabel();
         panelSelectionBg2 = new javax.swing.JPanel();
         panel = new javax.swing.JLabel();
-        panelSelectionBg4 = new javax.swing.JPanel();
-        lblEmployees = new javax.swing.JLabel();
         panelSelectionBg3 = new javax.swing.JPanel();
         lblOrganizations = new javax.swing.JLabel();
         sysAdminWorkAreaContainer = new javax.swing.JPanel();
@@ -136,34 +134,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
 
         sysAdminMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
-
-        panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblEmployees.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/employees.png"))); // NOI18N
-        lblEmployees.setText(" Manage Employees");
-        lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblEmployeesMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg4Layout = new javax.swing.GroupLayout(panelSelectionBg4);
-        panelSelectionBg4.setLayout(panelSelectionBg4Layout);
-        panelSelectionBg4Layout.setHorizontalGroup(
-            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg4Layout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(lblEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg4Layout.setVerticalGroup(
-            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        sysAdminMenuPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
 
         panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -242,17 +212,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         sysAdminWorkAreaContainer.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 
-    private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
-        // TODO add your handling code here:
-        
-        setStyleEmployee();
-        
-        sysAdminWorkAreaContainer.removeAll();
-        
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
-        sysAdminWorkAreaContainer.add("employees", manageEmployees);
-    }//GEN-LAST:event_lblEmployeesMousePressed
-
     private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
         // TODO add your handling code here:
         setStyleNetwork();
@@ -275,13 +234,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+//        lblEmployees.setForeground(Color.white);
+//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panelSelectionBg1.setBackground(Color.black);
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
+//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleEnterprise() {
@@ -296,13 +255,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+//        lblEmployees.setForeground(Color.white);
+//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panelSelectionBg1.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(Color.black);
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
+//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleOrganization() {
@@ -317,19 +276,19 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         panel.setForeground(Color.white);
         panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+//        lblEmployees.setForeground(Color.white);
+//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panelSelectionBg1.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(Color.black);
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
+//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleEmployee() {
         // Set Enterprise to RED
-        lblEmployees.setForeground(new Color(204,0,51));
-        lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+//        lblEmployees.setForeground(new Color(204,0,51));
+//        lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         lblNetwork.setForeground(Color.white);
@@ -344,18 +303,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         panelSelectionBg1.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(Color.black);
+//        panelSelectionBg4.setBackground(Color.black);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;
     private javax.swing.JLabel panel;
     private javax.swing.JPanel panelSelectionBg1;
     private javax.swing.JPanel panelSelectionBg2;
     private javax.swing.JPanel panelSelectionBg3;
-    private javax.swing.JPanel panelSelectionBg4;
     private javax.swing.JPanel sysAdminMenuPanel;
     private javax.swing.JPanel sysAdminWorkAreaContainer;
     // End of variables declaration//GEN-END:variables

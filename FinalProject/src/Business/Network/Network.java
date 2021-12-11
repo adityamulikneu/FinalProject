@@ -9,7 +9,7 @@ import Business.Enterprise.EnterpriseDirectory;
 
 /**
  *
- * @author MyPC1
+ * @author adityamulik
  */
 public class Network {
     private static int id = 1;

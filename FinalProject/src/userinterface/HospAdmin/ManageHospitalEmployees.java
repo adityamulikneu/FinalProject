@@ -10,11 +10,15 @@ import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Patient.Employee;
+import Business.Role.DoctorRole;
+import Business.Role.NurseRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,6 +43,24 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         this.enterprise = enterprise;
         
         txtWelcomeMessage.setText("Welcome to " + this.enterprise);
+        
+        populateTable();
+    }
+    
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblHospitalEmployees.getModel();
+
+        model.setRowCount(0);
+        
+        System.out.println(enterprise);
+        
+        for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+            System.out.println(userAccount);
+            Object[] row = new Object[2];
+            row[0] = userAccount.getEmployee().getName();
+            row[1] = userAccount.getRole().toString();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -52,14 +74,21 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
 
         txtWelcomeMessage = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojeru_san.complementos.RSTableMetro();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        kButton1 = new com.k33ptoo.components.KButton();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        kButton2 = new com.k33ptoo.components.KButton();
+        tblHospitalEmployees = new rojeru_san.complementos.RSTableMetro();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtEmployeeName = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        cmbBoxRoles = new javax.swing.JComboBox<>();
+        btnAddEmployee = new com.k33ptoo.components.KButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -69,7 +98,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         txtWelcomeMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(txtWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 280, 30));
 
-        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHospitalEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -88,57 +117,102 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        rSTableMetro1.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setColorBordeFilas(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setColorBordeHead(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        rSTableMetro1.setColorFilasForeground1(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setColorFilasForeground2(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setColorSelBackgound(new java.awt.Color(204, 0, 51));
-        rSTableMetro1.setFuenteFilas(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        rSTableMetro1.setFuenteFilasSelect(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        rSTableMetro1.setFuenteHead(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        rSTableMetro1.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        rSTableMetro1.setRowHeight(32);
-        jScrollPane1.setViewportView(rSTableMetro1);
+        tblHospitalEmployees.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setColorBordeFilas(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setColorBordeHead(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblHospitalEmployees.setColorFilasForeground1(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setColorFilasForeground2(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setColorSelBackgound(new java.awt.Color(204, 0, 51));
+        tblHospitalEmployees.setFuenteFilas(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblHospitalEmployees.setFuenteFilasSelect(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblHospitalEmployees.setFuenteHead(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        tblHospitalEmployees.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tblHospitalEmployees.setRowHeight(32);
+        jScrollPane1.setViewportView(tblHospitalEmployees);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 680, 220));
-
-        jLabel4.setText("Add Doctor:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 290, -1));
-
-        kButton1.setText("Save");
-        add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
-
-        jLabel5.setText("Add Nurse:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, -1, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 290, -1));
-
-        kButton2.setText("Save");
-        add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Manage Hospital Employees");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+
+        jLabel2.setText("Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
+
+        txtEmployeeName.setBorder(null);
+        add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 370, 30));
+
+        jLabel6.setText("User Name:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
+
+        txtUsername.setBorder(null);
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 370, 30));
+
+        jLabel4.setText("Password:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, -1, -1));
+
+        txtPassword.setBorder(null);
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 370, 40));
+
+        jLabel1.setText("Role:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
+
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Doctor", "Nurse" }));
+        add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 320, 40));
+
+        btnAddEmployee.setText("Add Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmployeeActionPerformed(evt);
+            }
+        });
+        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 600, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 370, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 370, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 370, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 370, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
+        //        system.getEmployeeDirectory().createEmployee();
+        String role = cmbBoxRoles.getSelectedItem().toString();
+        String employeeName = txtEmployeeName.getText().toString();
+
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+
+        Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
+
+        if (role == "Doctor") {
+            system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new DoctorRole(), enterprise);
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Doctor!");
+        } else if (role == "Nurse") {
+            system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new NurseRole(), enterprise);
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Nurse!");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private com.k33ptoo.components.KButton btnAddEmployee;
+    private javax.swing.JComboBox<String> cmbBoxRoles;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
-    private rojeru_san.complementos.RSTableMetro rSTableMetro1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private rojeru_san.complementos.RSTableMetro tblHospitalEmployees;
+    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     private javax.swing.JLabel txtWelcomeMessage;
     // End of variables declaration//GEN-END:variables
 }

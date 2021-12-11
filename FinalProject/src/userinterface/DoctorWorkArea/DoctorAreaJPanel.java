@@ -247,8 +247,8 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
         
         sysAdminWorkAreaContainer.removeAll();
         
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
-        sysAdminWorkAreaContainer.add("employees", manageEmployees);
+//        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(sysAdminWorkAreaContainer, system);                
+//        sysAdminWorkAreaContainer.add("employees", manageEmployees);
     }//GEN-LAST:event_lblEmployeesMousePressed
 
     private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
