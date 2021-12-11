@@ -29,15 +29,13 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jSeparator2" pref="354" max="32767" attributes="0"/>
                   <Component id="txtIssue" alignment="0" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="networkCmbBox" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblCity2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblName" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="lblCity" alignment="0" pref="343" max="32767" attributes="0"/>
-                      <Component id="lblHospital" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmbBoxEnterpriseList" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="networkCmbBox" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblCity2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblName" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="lblCity" alignment="0" pref="343" max="32767" attributes="0"/>
+                  <Component id="lblHospital" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmbBoxEnterpriseList" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -49,7 +47,7 @@
                       <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="kButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBookAppointment" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -87,7 +85,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="kButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnBookAppointment" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="187" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -140,19 +138,16 @@
         <Property name="text" type="java.lang.String" value="Issue faced:"/>
       </Properties>
     </Component>
-    <Component class="com.k33ptoo.components.KButton" name="kButton1">
+    <Component class="com.k33ptoo.components.KButton" name="btnBookAppointment">
       <Properties>
         <Property name="text" type="java.lang.String" value="Book Appointment"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBookAppointmentActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="networkCmbBox">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="12" style="1"/>
         </Property>
@@ -171,9 +166,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbBoxEnterpriseList">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="13" style="1"/>
         </Property>

@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.Appointment.AppointmentDirectory;
 import Business.Patient.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -24,7 +25,16 @@ public abstract class Organization {
     private static int counter=0;
     public ArrayList<Role> roles;
     private Type type;
-    
+    private AppointmentDirectory appointmentDirectory;
+
+    public AppointmentDirectory getAppointmentDirectory() {
+        if (appointmentDirectory == null){
+            appointmentDirectory = new AppointmentDirectory();
+        }
+        
+        return appointmentDirectory;
+    }
+
     public enum Type{
         Hospital("Hospital Organization"),
         Patient("Patient");
@@ -48,6 +58,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        appointmentDirectory = new AppointmentDirectory();
         organizationID = counter;
         ++counter;
     }

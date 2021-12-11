@@ -20,6 +20,8 @@ import userinterface.NurseRole.NurseAreaJPanel;
  * 
  */
 public class NurseRole extends Role {
+    
+    // Store role
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
