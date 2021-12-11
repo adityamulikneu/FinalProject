@@ -13,6 +13,7 @@ import Business.Organization.Organization;
 import Business.Patient.Employee;
 import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
+import DemoData.StaticData;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -104,6 +105,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         btnLogin = new java.awt.Button();
         lblExit = new javax.swing.JLabel();
         btnNewPatient = new java.awt.Button();
+        kButton1 = new com.k33ptoo.components.KButton();
         loginProgressBar = new javax.swing.JProgressBar();
         menubar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -211,6 +213,14 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             }
         });
         jPanel2.add(btnNewPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 250, 50));
+
+        kButton1.setText("kButton1");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         loginJPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
 
@@ -449,6 +459,12 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         dB4OUtil.storeSystem(system);       
     }//GEN-LAST:event_btnBackToLoginActionPerformed
 
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+        StaticData data = new StaticData();
+        data.populateData();
+    }//GEN-LAST:event_kButton1ActionPerformed
+
     public void logout() {
         dB4OUtil.storeSystem(system);
 //        container.removeAll();
@@ -509,6 +525,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblConfirmPwd;
     private javax.swing.JLabel lblExit;

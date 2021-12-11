@@ -35,7 +35,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount user;
     
-    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public PatientAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
@@ -44,7 +44,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.system = business;
         
-        patientPanel = new BookAnAppointmentPanel(PatientWorkAreaContainer, system);
+        patientPanel = new BookAnAppointmentPanel(PatientWorkAreaContainer, system, this.user);
         PatientWorkAreaContainer.add(patientPanel);
     }
 
@@ -64,6 +64,8 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         lblVaccination = new javax.swing.JLabel();
         panelSelectionBg3 = new javax.swing.JPanel();
         lblPrescriptions = new javax.swing.JLabel();
+        panelSelectionBg4 = new javax.swing.JPanel();
+        lblBookApt1 = new javax.swing.JLabel();
         PatientWorkAreaContainer = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
@@ -100,7 +102,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblBookApt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        PatientMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
+        PatientMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 290, 50));
 
         panelSelectionBg2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -128,7 +130,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblVaccination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        PatientMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
+        PatientMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 290, 50));
 
         panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -156,7 +158,38 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblPrescriptions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        PatientMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
+        PatientMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 290, 50));
+
+        panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
+
+        lblBookApt1.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        lblBookApt1.setForeground(new java.awt.Color(255, 255, 255));
+        lblBookApt1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBookApt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/BookAnAppt.png"))); // NOI18N
+        lblBookApt1.setText("Older Appointments");
+        lblBookApt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblBookApt1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBookApt1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSelectionBg4Layout = new javax.swing.GroupLayout(panelSelectionBg4);
+        panelSelectionBg4.setLayout(panelSelectionBg4Layout);
+        panelSelectionBg4Layout.setHorizontalGroup(
+            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg4Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(lblBookApt1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelSelectionBg4Layout.setVerticalGroup(
+            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBookApt1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        PatientMenuPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 290, 50));
 
         PatientWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
         PatientWorkAreaContainer.setLayout(new java.awt.CardLayout());
@@ -213,19 +246,29 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         
         PatientWorkAreaContainer.removeAll();
         
-        BookAnAppointmentPanel bookApt = new BookAnAppointmentPanel(PatientWorkAreaContainer, system);                        
+        BookAnAppointmentPanel bookApt = new BookAnAppointmentPanel(PatientWorkAreaContainer, system, user);                        
         PatientWorkAreaContainer.add("Book Appointment", bookApt);
     }//GEN-LAST:event_lblBookAptMousePressed
+
+    private void lblBookApt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookApt1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblBookApt1MouseClicked
+
+    private void lblBookApt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookApt1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblBookApt1MousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PatientMenuPanel;
     private javax.swing.JPanel PatientWorkAreaContainer;
     private javax.swing.JLabel lblBookApt;
+    private javax.swing.JLabel lblBookApt1;
     private javax.swing.JLabel lblPrescriptions;
     private javax.swing.JLabel lblVaccination;
     private javax.swing.JPanel panelSelectionBg1;
     private javax.swing.JPanel panelSelectionBg2;
     private javax.swing.JPanel panelSelectionBg3;
+    private javax.swing.JPanel panelSelectionBg4;
     // End of variables declaration//GEN-END:variables
 
     private void setStyleBookAppointment() {

@@ -52,14 +52,13 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
 
         model.setRowCount(0);
         
-        System.out.println(enterprise);
-        
-        for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
-            System.out.println(userAccount);
-            Object[] row = new Object[2];
-            row[0] = userAccount.getEmployee().getName();
-            row[1] = userAccount.getRole().toString();
-            model.addRow(row);
+        for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+            if (userAccount.getAssociatedEnterprise() == enterprise) {
+                Object[] row = new Object[2];
+                row[0] = userAccount.getEmployee().getName();
+                row[1] = userAccount.getRole().toString();
+                model.addRow(row);
+            }                        
         }
     }
 
