@@ -5,7 +5,9 @@
  */
 package Business.Enterprise;
 
+import Business.Role.HospAdminRole;
 import Business.Role.Role;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +23,12 @@ public class MedicalServices extends Enterprise {
     @Override    
     public ArrayList<Role> getSupportedRole() {
         roles = new ArrayList<Role>();
-//        roles.add(new FireSafetyHead());
+        roles.add(new HospAdminRole());
 //        roles.add(new PoliceHead());
         return roles;
+    }
+    
+    public static void retrieveUserEnterprise(UserAccount user) {
+        
     }
 }

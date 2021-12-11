@@ -9,6 +9,7 @@ import userinterface.PatientView.*;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -28,12 +29,16 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
     JPanel container;
     private EcoSystem system;
     private UserAccount user;
+    private Enterprise enterprise;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public ManageHospitalEmployees(JPanel container, EcoSystem system) {
+    public ManageHospitalEmployees(JPanel container, EcoSystem system, Enterprise enterprise) {
         initComponents();
         this.container = container;
-        this.system = system;
+        this.system = system;   
+        this.enterprise = enterprise;
+        
+        txtWelcomeMessage.setText("Welcome to " + this.enterprise);
     }
 
     /**
@@ -45,7 +50,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        txtWelcomeMessage = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         rSTableMetro1 = new rojeru_san.complementos.RSTableMetro();
         jLabel4 = new javax.swing.JLabel();
@@ -54,15 +59,15 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         kButton2 = new com.k33ptoo.components.KButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Manage Hospital Employees");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        txtWelcomeMessage.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        txtWelcomeMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(txtWelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 280, 30));
 
         rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,18 +121,24 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
 
         kButton2.setText("Save");
         add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Manage Hospital Employees");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton2;
     private rojeru_san.complementos.RSTableMetro rSTableMetro1;
+    private javax.swing.JLabel txtWelcomeMessage;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,7 +22,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="sysAdminMenuPanel" min="-2" pref="290" max="-2" attributes="0"/>
+              <Component id="manageEmployeesHospitalAdminPanel" min="-2" pref="290" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="hospitalAdminWorkArea" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -33,7 +33,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sysAdminMenuPanel" min="-2" pref="663" max="-2" attributes="0"/>
+                  <Component id="manageEmployeesHospitalAdminPanel" min="-2" pref="663" max="-2" attributes="0"/>
                   <Component id="hospitalAdminWorkArea" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -42,7 +42,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="sysAdminMenuPanel">
+    <Container class="javax.swing.JPanel" name="manageEmployeesHospitalAdminPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
@@ -53,7 +53,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelSelectionBg1">
+        <Container class="javax.swing.JPanel" name="manageEmployeesHospAdmin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -93,7 +93,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/network.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Manage Hospital Employees"/>
+                <Property name="text" type="java.lang.String" value="Manage Employees"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblNetworkMousePressed"/>

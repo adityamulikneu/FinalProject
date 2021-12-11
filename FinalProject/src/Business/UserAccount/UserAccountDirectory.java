@@ -4,6 +4,7 @@
  */
 package Business.UserAccount;
 
+import Business.Enterprise.Enterprise;
 import Business.Patient.Employee;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -38,6 +39,17 @@ public class UserAccountDirectory {
         userAccount.setPassword(password);
         userAccount.setEmployee(employee);
         userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
+    public UserAccount createUserAccountEnterpriseAdmin(String username, String password,Employee employee, Role role, Enterprise enterprise){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setEmployee(employee);
+        userAccount.setRole(role);
+        userAccount.setAssociatedEnterprise(enterprise);
         userAccountList.add(userAccount);
         return userAccount;
     }

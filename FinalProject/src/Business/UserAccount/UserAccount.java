@@ -4,6 +4,7 @@
  */
 package Business.UserAccount;
 
+import Business.Enterprise.Enterprise;
 import Business.Patient.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -17,14 +18,21 @@ public class UserAccount {
     private String username;
     private String password;
     private Employee employee;
+    private Enterprise associatedEnterprise = null;
     private Role role;
     private WorkQueue workQueue;
 
     public UserAccount() {
         workQueue = new WorkQueue();
     }
-    
-    
+
+    public Enterprise getAssociatedEnterprise() {
+        return associatedEnterprise;
+    }
+
+    public void setAssociatedEnterprise(Enterprise associatedEnterprise) {
+        this.associatedEnterprise = associatedEnterprise;
+    }        
     
     public String getUsername() {
         return username;

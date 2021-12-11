@@ -44,15 +44,24 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.user = user;
         this.organization = organization;
-        this.enterprise = enterprise;
         this.network = network;
         this.system = business;
-        manageHospitalEmployees = new ManageHospitalEmployees(hospitalAdminWorkArea, system);
-        hospitalAdminWorkArea.add("network", manageHospitalEmployees);
+        this.enterprise = user.getAssociatedEnterprise();
+        manageHospitalEmployees = new ManageHospitalEmployees(hospitalAdminWorkArea, system, this.enterprise);
+        hospitalAdminWorkArea.add("network", manageHospitalEmployees);                        
     }
     
     public HospAdminWorkAreaJPanel() {
         
+    }
+    
+    public void getEnterprise() {                
+        
+        for(UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {
+            if (u.getUsername().equals(user.getUsername())) {
+                
+            }
+        }
     }
 
     /**
@@ -64,8 +73,8 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sysAdminMenuPanel = new javax.swing.JPanel();
-        panelSelectionBg1 = new javax.swing.JPanel();
+        manageEmployeesHospitalAdminPanel = new javax.swing.JPanel();
+        manageEmployeesHospAdmin = new javax.swing.JPanel();
         lblNetwork = new javax.swing.JLabel();
         panelSelectionBg2 = new javax.swing.JPanel();
         panel = new javax.swing.JLabel();
@@ -77,16 +86,16 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
 
-        sysAdminMenuPanel.setBackground(new java.awt.Color(51, 51, 51));
-        sysAdminMenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        manageEmployeesHospitalAdminPanel.setBackground(new java.awt.Color(51, 51, 51));
+        manageEmployeesHospitalAdminPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelSelectionBg1.setBackground(new java.awt.Color(0, 0, 0));
+        manageEmployeesHospAdmin.setBackground(new java.awt.Color(0, 0, 0));
 
         lblNetwork.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
         lblNetwork.setForeground(new java.awt.Color(204, 0, 51));
         lblNetwork.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
-        lblNetwork.setText("Manage Hospital Employees");
+        lblNetwork.setText("Manage Employees");
         lblNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblNetworkMousePressed(evt);
@@ -96,20 +105,20 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelSelectionBg1Layout = new javax.swing.GroupLayout(panelSelectionBg1);
-        panelSelectionBg1.setLayout(panelSelectionBg1Layout);
-        panelSelectionBg1Layout.setHorizontalGroup(
-            panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg1Layout.createSequentialGroup()
+        javax.swing.GroupLayout manageEmployeesHospAdminLayout = new javax.swing.GroupLayout(manageEmployeesHospAdmin);
+        manageEmployeesHospAdmin.setLayout(manageEmployeesHospAdminLayout);
+        manageEmployeesHospAdminLayout.setHorizontalGroup(
+            manageEmployeesHospAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageEmployeesHospAdminLayout.createSequentialGroup()
                 .addGap(0, 15, Short.MAX_VALUE)
                 .addComponent(lblNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        panelSelectionBg1Layout.setVerticalGroup(
-            panelSelectionBg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        manageEmployeesHospAdminLayout.setVerticalGroup(
+            manageEmployeesHospAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
+        manageEmployeesHospitalAdminPanel.add(manageEmployeesHospAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
 
         panelSelectionBg2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -136,7 +145,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
+        manageEmployeesHospitalAdminPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
 
         panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -163,7 +172,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
+        manageEmployeesHospitalAdminPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
 
         panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -190,7 +199,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblOrganizations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        sysAdminMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
+        manageEmployeesHospitalAdminPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
 
         hospitalAdminWorkArea.setPreferredSize(new java.awt.Dimension(940, 663));
         hospitalAdminWorkArea.setLayout(new java.awt.CardLayout());
@@ -200,7 +209,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manageEmployeesHospitalAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hospitalAdminWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -209,7 +218,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sysAdminMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageEmployeesHospitalAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hospitalAdminWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -222,34 +231,34 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
         // TODO add your handling code here:
         
-        setStyleEnterprise();
-        
-        hospitalAdminWorkArea.removeAll();
-        
-        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(hospitalAdminWorkArea, system);                
-        hospitalAdminWorkArea.add("enterprises", manageEnterprises);
+//        setStyleEnterprise();
+//        
+//        hospitalAdminWorkArea.removeAll();
+//        
+//        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(hospitalAdminWorkArea, system);                
+//        hospitalAdminWorkArea.add("enterprises", manageEnterprises);
     }//GEN-LAST:event_panelMousePressed
 
     private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
         // TODO add your handling code here:
         
-        setStyleOrganization();
-        
-        hospitalAdminWorkArea.removeAll();
-        
-        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(hospitalAdminWorkArea, system);       
-        hospitalAdminWorkArea.add("organizations", manageOrganizations);
+//        setStyleOrganization();
+//        
+//        hospitalAdminWorkArea.removeAll();
+//        
+//        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(hospitalAdminWorkArea, system);       
+//        hospitalAdminWorkArea.add("organizations", manageOrganizations);
     }//GEN-LAST:event_lblOrganizationsMousePressed
 
     private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
         // TODO add your handling code here:
         
-        setStyleEmployee();
-        
-        hospitalAdminWorkArea.removeAll();
-        
-        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(hospitalAdminWorkArea, system);                
-        hospitalAdminWorkArea.add("employees", manageEmployees);
+//        setStyleEmployee();
+//        
+//        hospitalAdminWorkArea.removeAll();
+//        
+//        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(hospitalAdminWorkArea, system);                
+//        hospitalAdminWorkArea.add("employees", manageEmployees);
     }//GEN-LAST:event_lblEmployeesMousePressed
 
     private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
@@ -258,8 +267,8 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         
         hospitalAdminWorkArea.removeAll();
         
-        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(hospitalAdminWorkArea, system);                        
-        hospitalAdminWorkArea.add("network", manageNetwork);
+        ManageHospitalEmployees manageEmployeeHospAdmin = new ManageHospitalEmployees(hospitalAdminWorkArea, system, enterprise);                        
+        hospitalAdminWorkArea.add("manageEmps", manageEmployeeHospAdmin);
     }//GEN-LAST:event_lblNetworkMousePressed
 
     public void setStyleNetwork() {
@@ -277,7 +286,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        panelSelectionBg1.setBackground(Color.black);
+        manageEmployeesHospAdmin.setBackground(Color.black);
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
         panelSelectionBg4.setBackground(new Color(51, 51, 51));
@@ -298,7 +307,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(Color.black);
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
         panelSelectionBg4.setBackground(new Color(51, 51, 51));
@@ -319,7 +328,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblEmployees.setForeground(Color.white);
         lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(Color.black);
         panelSelectionBg4.setBackground(new Color(51, 51, 51));
@@ -340,7 +349,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblOrganizations.setForeground(Color.white);
         lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
-        panelSelectionBg1.setBackground(new Color(51, 51, 51));
+        manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(new Color(51, 51, 51));
         panelSelectionBg4.setBackground(Color.black);
@@ -351,11 +360,11 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblNetwork;
     private javax.swing.JLabel lblOrganizations;
+    private javax.swing.JPanel manageEmployeesHospAdmin;
+    private javax.swing.JPanel manageEmployeesHospitalAdminPanel;
     private javax.swing.JLabel panel;
-    private javax.swing.JPanel panelSelectionBg1;
     private javax.swing.JPanel panelSelectionBg2;
     private javax.swing.JPanel panelSelectionBg3;
     private javax.swing.JPanel panelSelectionBg4;
-    private javax.swing.JPanel sysAdminMenuPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -188,6 +188,8 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
 //        System.out.println(system.getNetworkList().contains(networkCmbBox.getSelectedItem()));
         Network network = (Network) networkCmbBox.getSelectedItem();
         Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseCmbBox.getSelectedItem();
+        
+        System.out.println("Typeeeeee enterprise  " + type);
 
         if (network == null || type == null) {
             JOptionPane.showMessageDialog(null, "Invalid Input!");

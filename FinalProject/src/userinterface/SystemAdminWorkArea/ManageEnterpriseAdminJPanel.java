@@ -16,6 +16,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,6 +39,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         this.system = system; 
         
         populateNetwork();
+        populateTable();
     }
 
     /**
@@ -51,7 +53,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblNetwork = new rojeru_san.complementos.RSTableMetro();
+        enterpriseAdminTable = new rojeru_san.complementos.RSTableMetro();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
@@ -74,7 +76,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel2.setText("Manage Enterprise Admin Panel");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
 
-        tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
+        enterpriseAdminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -99,19 +101,19 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblNetwork.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
-        tblNetwork.setColorBordeFilas(new java.awt.Color(204, 0, 51));
-        tblNetwork.setColorBordeHead(new java.awt.Color(204, 0, 51));
-        tblNetwork.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        tblNetwork.setColorFilasForeground1(new java.awt.Color(204, 0, 51));
-        tblNetwork.setColorFilasForeground2(new java.awt.Color(204, 0, 51));
-        tblNetwork.setColorSelBackgound(new java.awt.Color(204, 0, 51));
-        tblNetwork.setFuenteFilas(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        tblNetwork.setFuenteFilasSelect(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        tblNetwork.setFuenteHead(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        tblNetwork.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tblNetwork.setRowHeight(32);
-        jScrollPane1.setViewportView(tblNetwork);
+        enterpriseAdminTable.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setColorBordeFilas(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setColorBordeHead(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        enterpriseAdminTable.setColorFilasForeground1(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setColorFilasForeground2(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setColorSelBackgound(new java.awt.Color(204, 0, 51));
+        enterpriseAdminTable.setFuenteFilas(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        enterpriseAdminTable.setFuenteFilasSelect(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        enterpriseAdminTable.setFuenteHead(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        enterpriseAdminTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        enterpriseAdminTable.setRowHeight(32);
+        jScrollPane1.setViewportView(enterpriseAdminTable);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 680, 150));
 
@@ -150,7 +152,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         cmbBoxEnterpriseList.setBackground(new java.awt.Color(255, 255, 255));
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
-        cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Enterprise" }));
         add(cmbBoxEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 370, -1));
 
         jLabel6.setText("Network:");
@@ -159,7 +161,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
-        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Network" }));
         networkCmbBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkCmbBoxActionPerformed(evt);
@@ -170,11 +172,29 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     public void populateNetwork() {
         
-        networkCmbBox.removeAllItems();
-        cmbBoxEnterpriseList.removeAllItems();
+//        networkCmbBox.removeAllItems();
+//        cmbBoxEnterpriseList.removeAllItems();
         
         for (Network network : system.getNetworkList()) {
             networkCmbBox.addItem(network);
+        }
+    }
+    
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) enterpriseAdminTable.getModel();
+
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    Object[] row = new Object[3];
+                    row[0] = enterprise.getName();
+                    row[1] = network.getName();
+                    row[2] = userAccount.getUsername();
+
+                    model.addRow(row);
+                }
+            }
         }
     }
     
@@ -188,42 +208,86 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         //        system.getEmployeeDirectory().createEmployee();
+        try {
+            
+            Enterprise enterprise = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
+            
+            System.out.println("Enterpriseeeeee" + enterprise + "\nEnt typeeeee: " + enterprise.getEnterpriseType());
+            
+            String name = adminTxtName.getText();
+            String userName = adminTxtUserName.getText();
+            String password = String.valueOf(adminTxtPassword.getPassword());
 
+            if(userName.isEmpty() || password.isEmpty() || name.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else{                
+                UserAccount account = null;
+                Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+                System.out.println(enterprise.getEnterpriseType());
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
+//                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
+                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);
+                    JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalSupplies) {
+//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency) {
+//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+                }
+                adminTxtName.setText("");
+                adminTxtUserName.setText("");
+                adminTxtPassword.setText("");
+                populateTable();
+            }
+        } catch (ClassCastException c) {
+            System.out.println("Don't select, select network");
+        }
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void networkCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkCmbBoxActionPerformed
-        // TODO add your handling code here:
-        
-        Network n = (Network) networkCmbBox.getSelectedItem();
-        
-        if (n != null) {
-            populateEnterpriseComboBox(n);
-        }        
-        
-        String name = adminTxtName.getText();
-        String userName = adminTxtUserName.getText();
-        String password = String.valueOf(adminTxtPassword.getPassword());
-        
-        Employee employee = system.getEmployeeDirectory().createEmployee(name);
-        
-        Enterprise e = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
-        
-        System.out.println("CHECKKKKK ENTERPRISE TYPE" + e);
-        
-//        if (cmbBoxEnterpriseList.getSelectedItem().) {
-            System.out.println("Hospital Admin");
-//            system.getUserAccountDirectory().createUserAccount(userName, password, employee, new HospAdminRole());
-//        }
-        
-        
-    }//GEN-LAST:event_networkCmbBoxActionPerformed
 
+        try {
+            Network n = (Network) networkCmbBox.getSelectedItem();
+            populateEnterpriseComboBox(n);
+            
+//            Enterprise enterprise = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
+//            
+//            String name = adminTxtName.getText();
+//            String userName = adminTxtUserName.getText();
+//            String password = String.valueOf(adminTxtPassword.getPassword());
+//
+//            if(userName.isEmpty() || password.isEmpty() || name.isEmpty()){
+//                JOptionPane.showMessageDialog(null, "Please enter all fields", "Warning", JOptionPane.WARNING_MESSAGE);
+//            } else{                
+//                UserAccount account = null;
+//                Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+//                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
+////                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
+//                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
+//                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new HospAdminRole());
+//                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalSupplies) {
+////                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+//                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency) {
+////                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+//                }
+//                adminTxtName.setText("");
+//                adminTxtUserName.setText("");
+//                adminTxtPassword.setText("");
+//                JOptionPane.showMessageDialog(null, "Account created sucessfully");
+//                populateTable();
+//            }
+        } catch (ClassCastException c) {
+            System.out.println("Don't select, select network");
+        }                                                 
+    }//GEN-LAST:event_networkCmbBoxActionPerformed
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField adminTxtName;
     private javax.swing.JPasswordField adminTxtPassword;
     private javax.swing.JTextField adminTxtUserName;
     private javax.swing.JComboBox cmbBoxEnterpriseList;
+    private rojeru_san.complementos.RSTableMetro enterpriseAdminTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,6 +300,5 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JComboBox networkCmbBox;
-    private rojeru_san.complementos.RSTableMetro tblNetwork;
     // End of variables declaration//GEN-END:variables
 }
