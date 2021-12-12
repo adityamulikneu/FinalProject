@@ -40,11 +40,12 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
     
-    public ManagePatientAppointmentJPanel(JPanel container, EcoSystem system, Enterprise enterprise) {
+    public ManagePatientAppointmentJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
         this.container = container;
         this.system = system;
         this.enterprise = enterprise;
+        this.user = user;
         
         populateWorkQueueTable();
         populateDoctorComboList();
@@ -62,7 +63,7 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         
         for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
             System.out.println(w);
-            if (w.getStatus().equalsIgnoreCase("Pending") && user.equals(w.getReceiver())) {
+            if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
                 System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();

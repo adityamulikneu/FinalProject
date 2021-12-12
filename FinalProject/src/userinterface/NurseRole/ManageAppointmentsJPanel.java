@@ -14,10 +14,12 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Patient.Employee;
+import Business.Role.DoctorRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +40,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
+    private List<PatientAppointment> appointments;
     
     public ManageAppointmentsJPanel(JPanel container, EcoSystem system, Enterprise enterprise) {
         initComponents();
@@ -59,8 +62,9 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         
-        for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
-            System.out.println(w);
+        appointments = apptDir.getAppointmentAccountList();
+        
+        for (PatientAppointment w: appointments) {
             if (w.getStatus().equalsIgnoreCase("Pending")) {
                 // System.out.println(w);
                 Object[] row = new Object[5];
@@ -77,13 +81,11 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     
     public void populateDoctorComboList() {
         
-        for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
-            if (u.getAssociatedEnterprise() == enterprise) {
-                System.out.println(u.getRole());
-                if (u.getRole().toString().equals("Business.Role.DoctorRole")) {
+        for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {  
+            //System.out.println(u.getRole());
+            if (u.getRole() instanceof DoctorRole) {
 //                    System.out.println(u);
-                    bmcDoctorList.addItem(u.getUsername());
-                }
+                bmcDoctorList.addItem(u);
             }
         }  
     }
@@ -100,7 +102,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkQueue = new rojeru_san.complementos.RSTableMetro();
-        bmcDoctorList = new javax.swing.JComboBox<>();
+        bmcDoctorList = new javax.swing.JComboBox();
         lblSender = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -157,7 +159,12 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
 
-        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Doctor" }));
+        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Doctor" }));
+        bmcDoctorList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bmcDoctorListActionPerformed(evt);
+            }
+        });
         add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
         add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
 
@@ -200,15 +207,24 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
         
-        if (!bmcDoctorList.getSelectedItem().equals("Select Doctor")) {
-            
-        }
+        String selectedUser = bmcDoctorList.getSelectedItem().toString();
+        UserAccount doctor = system.getUserAccountDirectory().getUserAccountList()
+                .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
         
+        PatientAppointment appointment = appointments.get(currentSelectedRow);
+        if (doctor != null && appointment != null) {
+            System.out.println("idhar bhai");
+            appointment.setReceiver(doctor);
+        }
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
+
+    private void bmcDoctorListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmcDoctorListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bmcDoctorListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> bmcDoctorList;
+    private javax.swing.JComboBox bmcDoctorList;
     private javax.swing.JButton btnAssignWorkQueue;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

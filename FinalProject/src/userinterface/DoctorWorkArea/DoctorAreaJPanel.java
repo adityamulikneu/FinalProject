@@ -46,7 +46,7 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.network = network;
         this.system = business;
-        managepatientPanel = new ManagePatientAppointmentJPanel(sysAdminWorkAreaContainer, system, enterprise);
+        managepatientPanel = new ManagePatientAppointmentJPanel(sysAdminWorkAreaContainer, system, enterprise, user);
         sysAdminWorkAreaContainer.add(managepatientPanel);
     }
     
