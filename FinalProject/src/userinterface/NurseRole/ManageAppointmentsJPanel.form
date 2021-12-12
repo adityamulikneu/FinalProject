@@ -54,11 +54,10 @@
         <Component class="rojeru_san.complementos.RSTableMetro" name="tblWorkQueue">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="4">
+              <Table columnCount="5" rowCount="4">
                 <Column editable="true" title="Sender" type="java.lang.Object"/>
                 <Column editable="true" title="Issue" type="java.lang.String"/>
                 <Column editable="true" title="Request Date" type="java.lang.String"/>
-                <Column editable="true" title="Type" type="java.lang.Object"/>
                 <Column editable="true" title="Reciever" type="java.lang.Object"/>
                 <Column editable="true" title="Message" type="java.lang.String"/>
               </Table>
@@ -86,11 +85,6 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -149,6 +143,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bmcDoctorListActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

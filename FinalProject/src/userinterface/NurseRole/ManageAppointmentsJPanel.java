@@ -63,13 +63,13 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
             System.out.println(w);
             if (w.getStatus().equalsIgnoreCase("Pending")) {
                 // System.out.println(w);
-                Object[] row = new Object[6];
+                Object[] row = new Object[5];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
                 row[2] = w.getRequestDate().toString();
-                row[3] = null;
-                row[4] = w.getReceiver();
-                row[5] = w.getMessage();
+//                row[3] = null;
+                row[3] = w.getReceiver();
+                row[4] = w.getMessage();
                 model.addRow(row);
             }
         }
@@ -80,7 +80,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
             if (u.getAssociatedEnterprise() == enterprise) {
                 System.out.println(u.getRole());
-                if (u.getRole().toString() == "Business.Role.DoctorRole") {
+                if (u.getRole().toString().equals("Business.Role.DoctorRole")) {
 //                    System.out.println(u);
                     bmcDoctorList.addItem(u.getUsername());
                 }
@@ -119,17 +119,17 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Issue", "Request Date", "Type", "Reciever", "Message"
+                "Sender", "Issue", "Request Date", "Reciever", "Message"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -197,7 +197,12 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblWorkQueueMouseClicked
 
     private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
+        
+        if (!bmcDoctorList.getSelectedItem().equals("Select Doctor")) {
+            
+        }
         
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
