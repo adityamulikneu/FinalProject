@@ -215,7 +215,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
             String nameEmp = model.getValueAt(tblHospitalEmployees.getSelectedRow(),0).toString();
             System.out.println("nameEmp"+nameEmp);
             
-            Employee employee = system.getEmployeeDirectory().deleteEmployee(nameEmp);
+//            Employee employee = system.getEmployeeDirectory().deleteEmployee(nameEmp);
             JOptionPane.showMessageDialog(null,"Employee " + nameEmp + " deleted successfully");
             populateTable();
                     

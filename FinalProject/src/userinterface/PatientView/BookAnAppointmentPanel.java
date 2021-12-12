@@ -217,24 +217,32 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
     private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText();
-        Network city = (Network) networkCmbBox.getSelectedItem();
-      //  Enterprise hospital = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
-        String issue = txtIssue.getText();
-        
-        UserAccount nurse = null;
-        for(UserAccount account : system.getUserAccountDirectory().getUserAccountList()) {
-            if(account.getRole().equals(Role.RoleType.Nurse)) {
-                nurse = account;
-                break;
-            }
+        if(txtName.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter your name!");
+            return;
         }
         
-        AppointmentDirectory appointmentDirectory = system.getAppointmentDirectory();
+        if(networkCmbBox.getSelectedIndex() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select a city!");
+            return;
+        }
         
-        appointmentDirectory.createAppointment(user, null, "Pending", issue, new Date(), true, null);
+        if(cmbBoxEnterpriseList.getSelectedIndex() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select a hospital!");
+            return;
+        }
         
-        JOptionPane.showMessageDialog(this, "Appointment successfully created!");        
+        if(txtIssue.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter your issue!");
+            return;
+        }
+        
+        system.getAppointmentDirectory().createAppointment(user, null, "Pending", txtIssue.getText(), new Date(), true, null);
+        JOptionPane.showMessageDialog(this, "Appointment successfully created!");
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
     private void cmbBoxEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxEnterpriseListActionPerformed
