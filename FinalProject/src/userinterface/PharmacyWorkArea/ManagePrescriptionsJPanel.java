@@ -5,26 +5,16 @@
  */
 package userinterface.PharmacyWorkArea;
 
-import userinterface.DoctorWorkArea.*;
-import userinterface.NurseRole.*;
-import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
-import userinterface.PatientView.*;
-import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.Enterprise.EnterpriseType;
-import Business.Patient.Employee;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
 import Constants.StringConstants;
-import java.awt.CardLayout;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
@@ -56,19 +46,14 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-        appointments = apptDir.getAppointmentAccountList();
+        appointments = new ArrayList<>();
         model.setRowCount(0);
         
-        for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
             //System.out.println(w);
             if (w.getStatus().equals(StringConstants.Status.GetMedications.toString()) && w.getReceiver() != null && user.equals(w.getReceiver())) {
-              //  System.out.println("flter passed" + w);
+                appointments.add(w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();

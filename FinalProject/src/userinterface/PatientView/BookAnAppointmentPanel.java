@@ -6,14 +6,12 @@
 package userinterface.PatientView;
 
 import Business.Appointment.AppointmentDirectory;
-import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.UserAccount.UserAccountDirectory;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

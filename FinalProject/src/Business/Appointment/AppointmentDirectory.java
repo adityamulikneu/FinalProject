@@ -4,9 +4,6 @@
  */
 package Business.Appointment;
 
-import Business.Enterprise.Enterprise;
-import Business.Patient.Employee;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;

@@ -15,15 +15,7 @@ import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
 import DemoData.StaticData;
 import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import userinterface.DoctorWorkArea.DoctorAreaJPanel;
-import userinterface.HospAdmin.HospAdminWorkAreaJPanel;
-import userinterface.NurseRole.NurseAreaJPanel;
-import userinterface.PatientView.PatientAreaJPanel;
-import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -364,19 +356,19 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             //Admin login
             else {
                 
-                System.out.println("Checkkkkkkk role" + user.getRole().toString());
+               // System.out.println("Checkkkkkkk role" + user.getRole().toString());
                 
                  if(user.getRole().toString() == "Business.Role.SystemAdminRole") {
-                    System.out.println("This is sys admin!");
+                    //System.out.println("This is sys admin!");
                     Employee e = user.getEmployee();
-                    System.out.println(e);
+                   // System.out.println(e);
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
                 //Patient login
                 else if (user.getRole().toString() == "Business.Role.PatientRole") {
-                    System.out.println("This is patient role!");
+                   // System.out.println("This is patient role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -384,7 +376,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //HospAdmin login
                 else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
-                    System.out.println("This is HospAdmin role!");
+                   // System.out.println("This is HospAdmin role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -392,7 +384,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //Doctor login
                 else if (user.getRole().toString() == "Business.Role.DoctorRole") {
-                    System.out.println("This is doctor role!");
+                   // System.out.println("This is doctor role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -400,7 +392,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //Nurse login
                 else if (user.getRole().toString() == "Business.Role.NurseRole") {
-                    System.out.println("This is nurse role!");
+                  //  System.out.println("This is nurse role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -408,7 +400,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }                                
                 //Pharmacy login
                 else if (user.getRole().toString() == "Business.Role.PharmacyAdminRole") {
-                    System.out.println("This is PharmacyAdmin role!");
+                  //  System.out.println("This is PharmacyAdmin role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -416,7 +408,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //Pharmacist Role
                 else if (user.getRole().toString() == "Business.Role.PharmacistRole") {
-                    System.out.println("This is Pharmacist role!");
+                  //  System.out.println("This is Pharmacist role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -424,7 +416,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //LabAdmin login
                 else if (user.getRole().toString() == "Business.Role.LabAdminRole") {
-                    System.out.println("This is LabAdmin role!");
+                  //  System.out.println("This is LabAdmin role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -432,7 +424,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                 }
                 //Lab dealer login
                 else if (user.getRole().toString() == "Business.Role.LabDealerRole") {
-                    System.out.println("This is LabDealer role!");
+                  //  System.out.println("This is LabDealer role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
@@ -465,7 +457,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
             UserAccount u = system.getUserAccountDirectory().createUserAccount(username, password, emp, new PatientRole(), null);
             
             if(u != null){
-                System.out.println("CHECKKKKKK USER FROM CREATE USER " + u.getUsername());
+             //   System.out.println("CHECKKKKKK USER FROM CREATE USER " + u.getUsername());
 //                Employee e = system.getEmployeeDirectory().createEmployee(employeeName);
                 JOptionPane.showMessageDialog(this, "Account created successfully, please login through the desktop app!");
 //                dB4OUtil.storeSystem(system);

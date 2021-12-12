@@ -5,7 +5,6 @@
  */
 package userinterface.NurseRole;
 
-import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -16,6 +15,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
@@ -47,20 +47,16 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
 
         model.setRowCount(0);
         
-        appointments = apptDir.getAppointmentAccountList();
+        appointments = new ArrayList<>();
         
-        for (PatientAppointment w: appointments) {
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
             if (w.getStatus().equalsIgnoreCase("Pending")) {
                 // System.out.println(w);
+                appointments.add(w);
                 Object[] row = new Object[5];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -207,10 +203,10 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         PatientAppointment appointment = appointments.get(currentSelectedRow);
         if (doctor != null && appointment != null) {
-            //System.out.println("Idhar aya");
             appointment.setReceiver(doctor);
+            JOptionPane.showMessageDialog(null, appointment.toString());
         }
-        JOptionPane.showMessageDialog(null, "Doctor assigned!");
+        
         populateWorkQueueTable();
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
