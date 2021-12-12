@@ -53,12 +53,16 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         AppointmentDirectory apptDir = system.getAppointmentDirectory();
         
+//        System.out.println(apptDir.getAppointmentAccountList().size());
+        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
 
         model.setRowCount(0);
         
         for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
-            if (w.getStatus() == "Pending") {
+            System.out.println(w);
+            if (w.getStatus().equalsIgnoreCase("Pending")) {
+                // System.out.println(w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -75,6 +79,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
             if (u.getAssociatedEnterprise() == enterprise) {
+                System.out.println(u.getRole());
                 if (u.getRole().toString() == "Business.Role.DoctorRole") {
 //                    System.out.println(u);
                     bmcDoctorList.addItem(u.getUsername());
