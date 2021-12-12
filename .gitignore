@@ -48,3 +48,6 @@ hs_err_pid*
 
 /FinalProject/dist/
 /FinalProject/nbproject/private/
+
+# Ignore DB
+Databank.db4o

@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.NurseRole;
+package userinterface.DoctorWorkArea;
 
 import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Role.DoctorRole;
 import Business.UserAccount.UserAccount;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import Constants.StringConstants;
 
 /**
  *
  * @author adityamulik
  */
-public class ManageAppointmentsJPanel extends javax.swing.JPanel {
+public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -35,7 +34,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private int currentSelectedRow;
     private List<PatientAppointment> appointments;
     
-    public ManageAppointmentsJPanel(JPanel container, EcoSystem system, UserAccount user) {
+    public ManagePatientAppointmentJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
         this.container = container;
         this.system = system;
@@ -43,7 +42,6 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         this.enterprise = user.getAssociatedEnterprise();
         
         populateWorkQueueTable();
-        populateDoctorComboList();
     }       
     
     public void populateWorkQueueTable() {
@@ -53,35 +51,22 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 //        System.out.println(apptDir.getAppointmentAccountList().size());
         
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-
+        appointments = apptDir.getAppointmentAccountList();
         model.setRowCount(0);
         
-        appointments = apptDir.getAppointmentAccountList();
-        
         for (PatientAppointment w: appointments) {
-            if (w.getStatus().equalsIgnoreCase("Pending")) {
-                // System.out.println(w);
-                Object[] row = new Object[5];
+            if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
+               // System.out.println("flter passed" + w);
+                Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
                 row[2] = w.getRequestDate().toString();
-//                row[3] = null;
-                row[3] = w.getReceiver();
-                row[4] = w.getMessage();
+                row[3] = null;
+                row[4] = w.getReceiver();
+                row[5] = w.getMessage();
                 model.addRow(row);
             }
         }
-    }
-    
-    public void populateDoctorComboList() {
-        
-        for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {  
-            //System.out.println(u.getRole());
-            if (u.getRole() instanceof DoctorRole && enterprise.equals(u.getAssociatedEnterprise())) {
-//                    System.out.println(u);
-                bmcDoctorList.addItem(u);
-            }
-        }  
     }
 
     /**
@@ -96,7 +81,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkQueue = new rojeru_san.complementos.RSTableMetro();
-        bmcDoctorList = new javax.swing.JComboBox();
+        bmcDoctorList = new javax.swing.JComboBox<>();
         lblSender = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -115,17 +100,17 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Issue", "Request Date", "Reciever", "Message"
+                "Sender", "Issue", "Request Date", "Type", "Reciever", "Message"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -153,20 +138,15 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
 
-        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Doctor" }));
-        bmcDoctorList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bmcDoctorListActionPerformed(evt);
-            }
-        });
+        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Message", "Patient is Normal", "Patient needs medicines", "Patient needs to do blood reports" }));
         add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
         add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
 
         jLabel3.setText("Select Patient from Work Queue");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
-        jLabel4.setText("Select Doctor:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, -1, 20));
+        jLabel4.setText("Message:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, 20));
 
         jLabel5.setText("Issue:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 20));
@@ -198,29 +178,34 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblWorkQueueMouseClicked
 
     private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
+        // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
         
-        String selectedUser = bmcDoctorList.getSelectedItem().toString();
-        UserAccount doctor = system.getUserAccountDirectory().getUserAccountList()
-                .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+        String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
         
-        PatientAppointment appointment = appointments.get(currentSelectedRow);
-        if (doctor != null && appointment != null) {
-            //System.out.println("Idhar aya");
-            appointment.setReceiver(doctor);
+        for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
+//            System.out.println("Patient appt goes here!");
+            if (p.getIssue().equals(issue)) {
+                if (bmcDoctorList.getSelectedItem() != "Select Message") {
+                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    String selectedUser = lblSender.getText();
+                    UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
+                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (patient != null && appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setStatus(StringConstants.Status.GetMedications.toString());
+                    }
+                }                
+            }
         }
-        JOptionPane.showMessageDialog(null, "Doctor assigned!");
         populateWorkQueueTable();
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
-    private void bmcDoctorListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmcDoctorListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bmcDoctorListActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox bmcDoctorList;
+    private javax.swing.JComboBox<String> bmcDoctorList;
     private javax.swing.JButton btnAssignWorkQueue;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -233,3 +218,6 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private rojeru_san.complementos.RSTableMetro tblWorkQueue;
     // End of variables declaration//GEN-END:variables
 }
+
+
+

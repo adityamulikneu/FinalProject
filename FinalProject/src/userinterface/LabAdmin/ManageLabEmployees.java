@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.HospAdmin;
+package userinterface.LabAdmin;
 
+import userinterface.HospAdmin.*;
 import userinterface.PatientView.*;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
@@ -14,7 +15,6 @@ import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.Role.DoctorRole;
 import Business.Role.NurseRole;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author adityamulik
  */
-public class ManageHospitalEmployees extends javax.swing.JPanel {
+public class ManageLabEmployees extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -36,7 +36,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
     private UserAccount user;
     private Enterprise enterprise;
     
-    public ManageHospitalEmployees(JPanel container, EcoSystem system, Enterprise enterprise) {
+    public ManageLabEmployees(JPanel container, EcoSystem system, Enterprise enterprise) {
         initComponents();
         this.container = container;
         this.system = system;   
@@ -54,7 +54,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         
         for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
             if (userAccount.getAssociatedEnterprise() == enterprise) {
-               // System.out.println(userAccount);
+              //  System.out.println(userAccount);
                 Object[] row = new Object[2];
                 row[0] = userAccount.getEmployee().getName();
                 row[1] = userAccount.getRole().toString();
@@ -89,8 +89,6 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        btnDeleteEmployee = new com.k33ptoo.components.KButton();
-        btnUpdateEmployee = new com.k33ptoo.components.KButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
@@ -110,7 +108,15 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
             new String [] {
                 "Name", "Role"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblHospitalEmployees.setColorBackgoundHead(new java.awt.Color(204, 0, 51));
         tblHospitalEmployees.setColorBordeFilas(new java.awt.Color(204, 0, 51));
         tblHospitalEmployees.setColorBordeHead(new java.awt.Color(204, 0, 51));
@@ -129,7 +135,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Manage Hospital Employees");
+        jLabel3.setText("Manage Lab Employees");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
         jLabel2.setText("Name:");
@@ -153,7 +159,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         jLabel1.setText("Role:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
 
-        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Doctor", "Nurse" }));
+        cmbBoxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Lab Dealer" }));
         add(cmbBoxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 320, 40));
 
         btnAddEmployee.setText("Add Employee");
@@ -162,27 +168,11 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
                 btnAddEmployeeActionPerformed(evt);
             }
         });
-        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, -1, -1));
+        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 600, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 370, -1));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 370, -1));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 370, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 370, -1));
-
-        btnDeleteEmployee.setText("Delete Employee");
-        btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteEmployeeActionPerformed(evt);
-            }
-        });
-        add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 600, -1, -1));
-
-        btnUpdateEmployee.setText("Update Employee");
-        btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateEmployeeActionPerformed(evt);
-            }
-        });
-        add(btnUpdateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
@@ -193,7 +183,6 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = String.valueOf(txtPassword.getPassword());
 
-        System.out.println("Superman");
         Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
 
         if (role == "Doctor") {
@@ -206,109 +195,9 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
-    private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblHospitalEmployees.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblHospitalEmployees.getModel();        
-        if(selectedRow >= 0)
-        {
-            String nameEmp = model.getValueAt(tblHospitalEmployees.getSelectedRow(),0).toString();
-            System.out.println("nameEmp"+nameEmp);
-            
-            Employee employee = system.getEmployeeDirectory().deleteEmployee(nameEmp);
-            JOptionPane.showMessageDialog(null,"Employee " + nameEmp + " deleted successfully");
-            populateTable();
-                    
-//            for(UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList())
-//            {
-//                if(userAccount.getEmployee().getName().equals(nameEmp))                     
-//                {
-//                    
-//                }                                
-//            }          
-        }
-                
-    }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
-
-    private void btnUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblHospitalEmployees.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblHospitalEmployees.getModel();
-        if(selectedRow >= 0)
-        {            
-            String nameEmp = model.getValueAt(tblHospitalEmployees.getSelectedRow(),0).toString();
-            for(UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList())
-            {
-                if(userAccount.getEmployee().getName().equals(nameEmp)) 
-                {
-                    System.out.println(userAccount.getEmployee().getName());
-                    txtEmployeeName.setText(userAccount.getEmployee().getName());
-                    txtPassword.setText(userAccount.getPassword());
-                    txtUsername.setText(userAccount.getUsername());
-                    
-                }
-            }
-        }
-//                    Employee emp = userAccount.getEmployee();
-//                    UpdateEmployeeJPanel upEmp = new UpdateEmployeeJPanel(container,emp,system);
-//                    container.add("UpdateEmployees",upEmp);
-//                    CardLayout layout = (CardLayout) container.getLayout();
-//                    layout.next(container);
-//                }
-//                else
-//                {
-//                    JOptionPane.showMessageDialog(null, "Please select a row!","Warning",JOptionPane.WARNING_MESSAGE);
-//                    return;                   
-//                }
-        
-        
-//private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-//        // TODO add your handling code here:
-//        DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
-//        currentSelectedRow = tblWorkQueue.getSelectedRow();
-//        
-//        String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
-//        
-//        for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
-////            System.out.println("Patient appt goes here!");
-//            if (p.getIssue().equals(issue)) {
-//                if (bmcDoctorList.getSelectedItem() != "Select Message") {
-//                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
-//                    String selectedUser = lblSender.getText();
-//                    UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
-//                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
-//                    PatientAppointment appointment = appointments.get(currentSelectedRow);
-//                    if (patient != null && appointment != null) {
-//                        appointment.setReceiver(null);
-//                        appointment.setStatus(StringConstants.Status.GetMedications.toString());
-//                    }
-//                }                
-//            }
-//        }
-//        populateWorkQueueTable();
-//    }     
-    }//GEN-LAST:event_btnUpdateEmployeeActionPerformed
- 
-//for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-//            if (userAccount.getAssociatedEnterprise() == enterprise) {
-//                Object[] row = new Object[2];
-//                row[0] = userAccount.getEmployee().getName();
-//                row[1] = userAccount.getRole().toString();
-//                model.addRow(row);
-//            }                        
-//        }
-
-
-
-
-
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnAddEmployee;
-    private com.k33ptoo.components.KButton btnDeleteEmployee;
-    private com.k33ptoo.components.KButton btnUpdateEmployee;
     private javax.swing.JComboBox<String> cmbBoxRoles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

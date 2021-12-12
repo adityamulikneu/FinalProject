@@ -12,10 +12,10 @@ import java.util.ArrayList;
  *
  * @author adityamulik
  */
-public class Emergency extends Enterprise {
+public class Lab extends Enterprise{
     
-    public Emergency(String name) {
-        super(name, Enterprise.EnterpriseType.Emergency);
+    public Lab(String name) {
+        super(name, Enterprise.EnterpriseType.Lab);
     }
 
     @Override    
@@ -25,5 +25,4 @@ public class Emergency extends Enterprise {
 //        roles.add(new PoliceHead());
         return roles;
     }
-    
 }

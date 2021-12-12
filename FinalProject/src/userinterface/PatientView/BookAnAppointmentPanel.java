@@ -5,11 +5,17 @@
  */
 package userinterface.PatientView;
 
+import Business.Appointment.AppointmentDirectory;
+import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -33,7 +39,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         this.system = system;
         this.user = user;
         
-        txtIssue.setText(this.user.getEmployee().getName());
+        txtName.setText(this.user.getEmployee().getName());
         
         populateCities();
     }
@@ -46,7 +52,10 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
     
     public void populateHospitals(Network network) {
         for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList()) {
-            cmbBoxEnterpriseList.addItem(e);
+           // System.out.println(e.getEnterpriseType().toString());
+            if (e.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
+                cmbBoxEnterpriseList.addItem(e);
+            }            
         }
     }
 
@@ -65,7 +74,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         lblCity = new javax.swing.JLabel();
         lblHospital = new javax.swing.JLabel();
         lblCity2 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnBookAppointment = new com.k33ptoo.components.KButton();
         networkCmbBox = new javax.swing.JComboBox();
         cmbBoxEnterpriseList = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
@@ -94,14 +103,13 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
         lblCity2.setText("Issue faced:");
 
-        kButton1.setText("Book Appointment");
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBookAppointment.setText("Book Appointment");
+        btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                btnBookAppointmentActionPerformed(evt);
             }
         });
 
-        networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
         networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select City" }));
@@ -111,7 +119,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
             }
         });
 
-        cmbBoxEnterpriseList.setBackground(new java.awt.Color(255, 255, 255));
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
         cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Hospital" }));
@@ -137,14 +144,13 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                     .addComponent(txtIssue)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(networkCmbBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCity2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                        .addComponent(lblHospital, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbBoxEnterpriseList, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(networkCmbBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCity2)
+                    .addComponent(jSeparator1)
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(lblHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbBoxEnterpriseList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(393, Short.MAX_VALUE)
@@ -153,7 +159,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addGap(357, 357, 357))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(358, 358, 358))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -185,7 +191,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(187, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -202,17 +208,34 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
     private void networkCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkCmbBoxActionPerformed
         // TODO add your handling code here:
+        try {
+            populateHospitals((Network) networkCmbBox.getSelectedItem());
+        } catch (Exception c) {
+           // System.out.println("Error");
+        }
     }//GEN-LAST:event_networkCmbBoxActionPerformed
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+    private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
         Network city = (Network) networkCmbBox.getSelectedItem();
-        Enterprise hospital = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
+      //  Enterprise hospital = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
         String issue = txtIssue.getText();
         
+        UserAccount nurse = null;
+        for(UserAccount account : system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getRole().equals(Role.RoleType.Nurse)) {
+                nurse = account;
+                break;
+            }
+        }
         
-    }//GEN-LAST:event_kButton1ActionPerformed
+        AppointmentDirectory appointmentDirectory = system.getAppointmentDirectory();
+        
+        appointmentDirectory.createAppointment(user, null, "Pending", issue, new Date(), true, null);
+        
+        JOptionPane.showMessageDialog(this, "Appointment successfully created!");        
+    }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
     private void cmbBoxEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxEnterpriseListActionPerformed
         // TODO add your handling code here:
@@ -220,7 +243,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         try {
             populateHospitals((Network) networkCmbBox.getSelectedItem());
         } catch (Exception e) {
-            System.out.println("Choose correct option");
+           // System.out.println("Choose correct option");
         }
     }//GEN-LAST:event_cmbBoxEnterpriseListActionPerformed
 
@@ -230,11 +253,11 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.k33ptoo.components.KButton btnBookAppointment;
     private javax.swing.JComboBox cmbBoxEnterpriseList;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCity2;
     private javax.swing.JLabel lblHospital;

@@ -24,7 +24,7 @@ public abstract class Enterprise extends Organization{
 
 
     public enum EnterpriseType{
-        Emergency("Emergency Unit"), 
+        Lab("Lab Unit"), 
         MedicalServices("Medical Service Unit"), 
         MedicalSupplies("Medical Supplies Unit"), 
         AccountsManagement("Accounts Management Unit"); 

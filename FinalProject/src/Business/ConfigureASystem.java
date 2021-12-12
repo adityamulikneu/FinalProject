@@ -25,15 +25,8 @@ public class ConfigureASystem {
         //create user account
         
         
-        Employee employee = system.getEmployeeDirectory().createEmployee("sysadmin");
-        
-        Employee employee2 = system.getEmployeeDirectory().createEmployee("ADD");
-        
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("admin", "admin", employee, new SystemAdminRole());
-        UserAccount ub = system.getUserAccountDirectory().createUserAccount("patient", "patient", employee, new PatientRole());
-        UserAccount ud = system.getUserAccountDirectory().createUserAccount("doctor", "doctor", employee, new DoctorRole());
-        UserAccount un = system.getUserAccountDirectory().createUserAccount("nurse", "nurse", employee, new NurseRole());   
-        UserAccount ha = system.getUserAccountDirectory().createUserAccount("hospadmin", "hospadmin", employee, new HospAdminRole());         
+        Employee employee = system.getEmployeeDirectory().createEmployee("admin");        
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount("admin", "admin", employee, new SystemAdminRole(), null);       
         
         return system;
     }

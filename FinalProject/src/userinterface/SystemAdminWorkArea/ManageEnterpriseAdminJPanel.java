@@ -12,6 +12,8 @@ import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.Role.HospAdminRole;
+import Business.Role.LabAdminRole;
+import Business.Role.PharmacyAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -187,7 +189,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         for (Network network : system.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if (userAccount.getAssociatedEnterprise() == enterprise) {
+                    if (userAccount.getAssociatedEnterprise() == enterprise && 
+                        (userAccount.getRole().toString() == "Business.Role.HospAdminRole" ||
+//                        userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole" &&
+//                        userAccount.getRole().toString() == "Business.Role.HospAdminRole" &&
+                        userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole") 
+                        ) {
                         Object[] row = new Object[3];
                         row[0] = enterprise.getName();
                         row[1] = network.getName();
@@ -214,7 +221,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             
             Enterprise enterprise = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
             
-            System.out.println("Enterpriseeeeee" + enterprise + "\nEnt typeeeee: " + enterprise.getEnterpriseType());
+            //System.out.println("Enterpriseeeeee" + enterprise + "\nEnt typeeeee: " + enterprise.getEnterpriseType());
             
             String name = adminTxtName.getText();
             String userName = adminTxtUserName.getText();
@@ -225,24 +232,24 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             } else{                
                 UserAccount account = null;
                 Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-                System.out.println(enterprise.getEnterpriseType());
+               // System.out.println(enterprise.getEnterpriseType());
                 if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
 //                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
-                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);
-                    JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);                    
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalSupplies) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new PharmacyAdminRole(), enterprise);
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Lab) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new LabAdminRole(), enterprise);
                 }
+                JOptionPane.showMessageDialog(null, "Account created sucessfully");
                 adminTxtName.setText("");
                 adminTxtUserName.setText("");
                 adminTxtPassword.setText("");
                 populateTable();
             }
         } catch (ClassCastException c) {
-            System.out.println("Don't select, select network");
+            //System.out.println("Don't select, select network");
         }
     }//GEN-LAST:event_kButton1ActionPerformed
 

@@ -26,7 +26,8 @@ public abstract class Role {
         Patient("Patient"),
         Nurse("Nurse"),
         Doctor("Doctor"),
-        EmergencyUnit("EmergencyUnit");
+        EmergencyUnit("EmergencyUnit"),
+        Pharmacist("Pharmacist");
         
         private String value;
         private RoleType(String value){

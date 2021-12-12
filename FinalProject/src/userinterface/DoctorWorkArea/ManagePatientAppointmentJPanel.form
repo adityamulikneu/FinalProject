@@ -54,10 +54,11 @@
         <Component class="rojeru_san.complementos.RSTableMetro" name="tblWorkQueue">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
+              <Table columnCount="6" rowCount="4">
                 <Column editable="true" title="Sender" type="java.lang.Object"/>
                 <Column editable="true" title="Issue" type="java.lang.String"/>
                 <Column editable="true" title="Request Date" type="java.lang.String"/>
+                <Column editable="true" title="Type" type="java.lang.Object"/>
                 <Column editable="true" title="Reciever" type="java.lang.Object"/>
                 <Column editable="true" title="Message" type="java.lang.String"/>
               </Table>
@@ -85,6 +86,11 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -138,16 +144,16 @@
     <Component class="javax.swing.JComboBox" name="bmcDoctorList">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Select Doctor"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Select Message"/>
+            <StringItem index="1" value="Patient is Normal"/>
+            <StringItem index="2" value="Patient needs medicines"/>
+            <StringItem index="3" value="Patient needs to do blood reports"/>
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bmcDoctorListActionPerformed"/>
-      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -174,11 +180,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Select Doctor:"/>
+        <Property name="text" type="java.lang.String" value="Message:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="530" width="-1" height="20"/>
+          <AbsoluteConstraints x="220" y="530" width="-1" height="20"/>
         </Constraint>
       </Constraints>
     </Component>

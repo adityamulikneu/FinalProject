@@ -4,28 +4,24 @@
  * and open the template in the editor.
  */
 package Business.Role;
+
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.NurseRole.NurseAreaJPanel;
+import userinterface.LabAdmin.LabAdminAreaJPanel;
 
 /**
  *
  * @author adityamulik
- * @author shivanichavan
- * @author divyeshdarji
- * 
  */
-public class NurseRole extends Role {
-    
-    // Store role
+public class LabAdminRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new NurseAreaJPanel(userProcessContainer, account, network, organization, enterprise, business);
+        return new LabAdminAreaJPanel(userProcessContainer, account, network, organization, enterprise, business); 
     }
     
 }
