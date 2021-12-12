@@ -52,7 +52,10 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
     
     public void populateHospitals(Network network) {
         for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList()) {
-            cmbBoxEnterpriseList.addItem(e);
+            System.out.println(e.getEnterpriseType().toString());
+            if (e.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
+                cmbBoxEnterpriseList.addItem(e);
+            }            
         }
     }
 

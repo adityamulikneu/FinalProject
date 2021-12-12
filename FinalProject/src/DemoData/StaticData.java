@@ -38,10 +38,10 @@ public class StaticData {
     
     public void createPatient() {
         Employee employee1 = system.getEmployeeDirectory().createEmployee("Patient 1");
-        system.getUserAccountDirectory().createUserAccount("patient1", "patient1", employee1, new PatientRole());
+        system.getUserAccountDirectory().createUserAccount("patient1", "patient1", employee1, new PatientRole(), null);
         
         Employee employee2 = system.getEmployeeDirectory().createEmployee("Patient 2");
-        system.getUserAccountDirectory().createUserAccount("patient2", "patient2", employee2, new PatientRole());
+        system.getUserAccountDirectory().createUserAccount("patient2", "patient2", employee2, new PatientRole(), null);
     } 
     
     // Create network
@@ -62,27 +62,27 @@ public class StaticData {
         
         // Create Enterprise
         Enterprise e = network.getEnterpriseDirectory().createAndAddEnterprise("Apollo Clinics", EnterpriseType.MedicalServices);
-//        Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
+        Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
         
         // Create Employee
         Employee employee = e.getEmployeeDirectory().createEmployee("Apollo Admin");
-//        Employee cvsEmp = e2.getEmployeeDirectory().createEmployee("Cvs Admin");
+        Employee cvsEmp = e2.getEmployeeDirectory().createEmployee("Cvs Admin");
         
         // Create Enterprise Admin
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("apollo", "apollo", employee, new HospAdminRole(), e);
-//        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
+        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
     
         // Populate Doctor
         Employee employee1 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 1");
         Employee employee2 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 2");
-        system.getUserAccountDirectory().createUserAccount("doctor1", "doctor1", employee1, new DoctorRole());
-        system.getUserAccountDirectory().createUserAccount("doctor2", "doctor2", employee2, new DoctorRole());
+        system.getUserAccountDirectory().createUserAccount("doctor1", "doctor1", employee1, new DoctorRole(), e);
+        system.getUserAccountDirectory().createUserAccount("doctor2", "doctor2", employee2, new DoctorRole(), e);
         
         // Populate Nurse
         Employee employee3 = system.getEmployeeDirectory().createEmployee("Apollo Nurse 1");
         Employee employee4 = system.getEmployeeDirectory().createEmployee("Apollo Nurse 2");
-        system.getUserAccountDirectory().createUserAccount("nurse1", "nurse1", employee3, new NurseRole());
-        system.getUserAccountDirectory().createUserAccount("nurse2", "nurse2", employee4, new NurseRole());
+        system.getUserAccountDirectory().createUserAccount("nurse1", "nurse1", employee3, new NurseRole(), e);
+        system.getUserAccountDirectory().createUserAccount("nurse2", "nurse2", employee4, new NurseRole(), e);
     }        
     
 }

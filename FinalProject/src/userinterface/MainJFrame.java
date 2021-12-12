@@ -431,7 +431,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 
         if (validatePatient()) {
             Employee emp = system.getEmployeeDirectory().createEmployee(employeeName);
-            UserAccount u = system.getUserAccountDirectory().createUserAccount(username, password, emp, new PatientRole());
+            UserAccount u = system.getUserAccountDirectory().createUserAccount(username, password, emp, new PatientRole(), null);
             
             if(u != null){
                 System.out.println("CHECKKKKKK USER FROM CREATE USER " + u.getUsername());
