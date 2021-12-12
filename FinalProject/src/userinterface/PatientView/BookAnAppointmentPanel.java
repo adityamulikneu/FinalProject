@@ -47,7 +47,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
     }
     
     public void populateHospitals(Network network) {
-        cmbBoxEnterpriseList.removeAll();
+        cmbBoxEnterpriseList.removeAllItems();
         for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList()) {
            // System.out.println(e.getEnterpriseType().toString());
             if (e.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
@@ -109,7 +109,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
-        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select City" }));
         networkCmbBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkCmbBoxActionPerformed(evt);
@@ -118,7 +117,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
-        cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Hospital" }));
 
         txtName.setBorder(null);
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -215,13 +213,13 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(networkCmbBox.getSelectedIndex() == 0)
+        if(networkCmbBox.getSelectedItem().toString().trim().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please select a city!");
             return;
         }
         
-        if(cmbBoxEnterpriseList.getSelectedIndex() == 0)
+        if(cmbBoxEnterpriseList.getSelectedItem().toString().trim().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please select a hospital!");
             return;
