@@ -62,15 +62,15 @@ public class StaticData {
         
         // Create Enterprise
         Enterprise e = network.getEnterpriseDirectory().createAndAddEnterprise("Apollo Clinics", EnterpriseType.MedicalServices);
-//        Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
+        Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
         
         // Create Employee
         Employee employee = e.getEmployeeDirectory().createEmployee("Apollo Admin");
-//        Employee cvsEmp = e2.getEmployeeDirectory().createEmployee("Cvs Admin");
+       Employee cvsEmp = e2.getEmployeeDirectory().createEmployee("Cvs Admin");
         
         // Create Enterprise Admin
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("apollo", "apollo", employee, new HospAdminRole(), e);
-//        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
+        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
     
         // Populate Doctor
         Employee employee1 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 1");

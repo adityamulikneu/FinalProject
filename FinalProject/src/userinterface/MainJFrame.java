@@ -398,6 +398,14 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
+                //Pharmacist Role
+                else if (user.getRole().toString() == "Business.Role.PharmacistRole") {
+                    System.out.println("This is Pharmacist role!");
+                    Employee e = user.getEmployee();
+                    container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
 
                 //HospAdmin login
                 else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
@@ -407,7 +415,14 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-
+                   //Pharmacy login
+                else if (user.getRole().toString() == "Business.Role.PharmacyAdminRole") {
+                    System.out.println("This is PharmacyAdmin role!");
+                    Employee e = user.getEmployee();
+                    container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
                 Thread t = new Thread(this);
                 t.start();
             }
