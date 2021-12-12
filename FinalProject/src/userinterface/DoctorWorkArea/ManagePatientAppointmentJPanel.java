@@ -177,6 +177,11 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
 
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignWorkQueueActionPerformed(evt);
+            }
+        });
         add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,6 +197,24 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_tblWorkQueueMouseClicked
+
+    private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
+        
+        String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
+        
+        for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
+//            System.out.println("Patient appt goes here!");
+            if (p.getIssue().equals(issue)) {
+                if (bmcDoctorList.getSelectedItem() != "Select Message") {
+                    p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                }                
+            }
+        }
+        populateWorkQueueTable();
+    }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

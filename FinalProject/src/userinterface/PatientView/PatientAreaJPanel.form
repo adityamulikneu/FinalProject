@@ -96,8 +96,8 @@
                 <Property name="text" type="java.lang.String" value="Book an Appointment"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBookAptMouseClicked"/>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBookAptMousePressed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBookAptMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -215,18 +215,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
-                      <Component id="lblBookApt1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="lblOldAppt" min="-2" pref="275" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblBookApt1" alignment="0" pref="50" max="32767" attributes="0"/>
+                  <Component id="lblOldAppt" alignment="0" pref="50" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblBookApt1">
+            <Component class="javax.swing.JLabel" name="lblOldAppt">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="20" style="1"/>
@@ -241,8 +241,8 @@
                 <Property name="text" type="java.lang.String" value="Older Appointments"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBookApt1MousePressed"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBookApt1MouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblOldApptMousePressed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblOldApptMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

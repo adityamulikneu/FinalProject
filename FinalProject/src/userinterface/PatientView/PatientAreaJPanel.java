@@ -66,7 +66,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         panelSelectionBg3 = new javax.swing.JPanel();
         lblPrescriptions = new javax.swing.JLabel();
         panelSelectionBg4 = new javax.swing.JPanel();
-        lblBookApt1 = new javax.swing.JLabel();
+        lblOldAppt = new javax.swing.JLabel();
         PatientWorkAreaContainer = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
@@ -82,11 +82,11 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         lblBookApt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/BookAnAppt.png"))); // NOI18N
         lblBookApt.setText("Book an Appointment");
         lblBookApt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBookAptMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblBookAptMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBookAptMouseClicked(evt);
             }
         });
 
@@ -163,17 +163,17 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
 
         panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblBookApt1.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
-        lblBookApt1.setForeground(new java.awt.Color(255, 255, 255));
-        lblBookApt1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBookApt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/BookAnAppt.png"))); // NOI18N
-        lblBookApt1.setText("Older Appointments");
-        lblBookApt1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblOldAppt.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        lblOldAppt.setForeground(new java.awt.Color(255, 255, 255));
+        lblOldAppt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblOldAppt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/BookAnAppt.png"))); // NOI18N
+        lblOldAppt.setText("Older Appointments");
+        lblOldAppt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblBookApt1MousePressed(evt);
+                lblOldApptMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBookApt1MouseClicked(evt);
+                lblOldApptMouseClicked(evt);
             }
         });
 
@@ -183,11 +183,11 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg4Layout.createSequentialGroup()
                 .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(lblBookApt1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblOldAppt, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelSelectionBg4Layout.setVerticalGroup(
             panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBookApt1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(lblOldAppt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         PatientMenuPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 290, 50));
@@ -251,19 +251,24 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         PatientWorkAreaContainer.add("Book Appointment", bookApt);
     }//GEN-LAST:event_lblBookAptMousePressed
 
-    private void lblBookApt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookApt1MouseClicked
+    private void lblOldApptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOldApptMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblBookApt1MouseClicked
+        
+    }//GEN-LAST:event_lblOldApptMouseClicked
 
-    private void lblBookApt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookApt1MousePressed
+    private void lblOldApptMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOldApptMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblBookApt1MousePressed
+        setStyleOldAppointment();
+        PatientWorkAreaContainer.removeAll();
+        OldAppointmentHistory oldApt = new OldAppointmentHistory(PatientWorkAreaContainer, system, user);
+        PatientWorkAreaContainer.add("Old Appointment", oldApt);
+    }//GEN-LAST:event_lblOldApptMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PatientMenuPanel;
     private javax.swing.JPanel PatientWorkAreaContainer;
     private javax.swing.JLabel lblBookApt;
-    private javax.swing.JLabel lblBookApt1;
+    private javax.swing.JLabel lblOldAppt;
     private javax.swing.JLabel lblPrescriptions;
     private javax.swing.JLabel lblVaccination;
     private javax.swing.JPanel panelSelectionBg1;
@@ -285,6 +290,27 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         lblVaccination.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panelSelectionBg1.setBackground(Color.black);
+        panelSelectionBg2.setBackground(new Color(51, 51, 51));
+        panelSelectionBg3.setBackground(new Color(51, 51, 51));        
+    }
+    
+    private void setStyleOldAppointment() {
+        // Set Enterprise to RED
+        lblOldAppt.setForeground(new Color(204,0,51));
+        lblOldAppt.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+        
+        // Roll back others to white
+        lblPrescriptions.setForeground(Color.white);
+        lblPrescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblVaccination.setForeground(Color.white);
+        lblVaccination.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        lblBookApt.setForeground(Color.white);
+        lblBookApt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+        
+        panelSelectionBg4.setBackground(Color.black);
+        panelSelectionBg1.setBackground(new Color(51, 51, 51));
         panelSelectionBg2.setBackground(new Color(51, 51, 51));
         panelSelectionBg3.setBackground(new Color(51, 51, 51));        
     }
