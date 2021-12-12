@@ -101,9 +101,10 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Enterprise");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 320, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 920, 40));
 
         tblNetwork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,7 +166,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         });
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, -1, -1));
 
-        networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
         networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -176,7 +176,6 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
         });
         add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 210, -1));
 
-        enterpriseCmbBox.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         enterpriseCmbBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

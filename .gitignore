@@ -50,4 +50,4 @@ hs_err_pid*
 /FinalProject/nbproject/private/
 
 # Ignore DB
-Databank.db4o
+/FinalProject/Databank.db4o

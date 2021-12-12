@@ -120,6 +120,8 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         txtConfirmPwd = new javax.swing.JPasswordField();
         btnCreateAccount = new javax.swing.JButton();
         btnBackToLogin = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1230, 723));
@@ -258,63 +260,89 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         signUpJPanel.setPreferredSize(new java.awt.Dimension(1230, 723));
         signUpJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("New Patient Registration");
-        signUpJPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, -1, -1));
+        signUpJPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1200, -1));
 
+        lblName.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblName.setText("Name:");
-        signUpJPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
-        signUpJPanel.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 280, -1));
+        signUpJPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
 
-        lblMobNo.setText("Mob. NO:");
-        signUpJPanel.add(lblMobNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
-        signUpJPanel.add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 280, -1));
+        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        signUpJPanel.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 280, 20));
 
+        lblMobNo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblMobNo.setText("Mob. Number:");
+        signUpJPanel.add(lblMobNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
+
+        txtMobile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        signUpJPanel.add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 280, 20));
+
+        lblAddress.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblAddress.setText("Address:");
-        signUpJPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
-        signUpJPanel.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 280, 50));
+        signUpJPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
+        txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        signUpJPanel.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 280, 50));
+
+        lblUserName.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblUserName.setText("UserName:");
-        signUpJPanel.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
-        signUpJPanel.add(txtUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 280, -1));
+        signUpJPanel.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, -1, -1));
 
-        lblPassword.setText("Password");
-        signUpJPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, -1, -1));
+        txtUserName1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        signUpJPanel.add(txtUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 280, 20));
 
+        lblPassword.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblPassword.setText("Password:");
+        signUpJPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, -1));
+
+        txtPassword1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassword1ActionPerformed(evt);
             }
         });
-        signUpJPanel.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 280, -1));
+        signUpJPanel.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 280, 20));
 
+        lblConfirmPwd.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblConfirmPwd.setText("Confirm Password:");
-        signUpJPanel.add(lblConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
+        signUpJPanel.add(lblConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, -1, -1));
 
+        txtConfirmPwd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtConfirmPwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConfirmPwdActionPerformed(evt);
             }
         });
-        signUpJPanel.add(txtConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 280, -1));
+        signUpJPanel.add(txtConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 280, 20));
 
+        btnCreateAccount.setBackground(new java.awt.Color(0, 102, 102));
+        btnCreateAccount.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnCreateAccount.setText("Create Account");
+        btnCreateAccount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateAccountActionPerformed(evt);
             }
         });
-        signUpJPanel.add(btnCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+        signUpJPanel.add(btnCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 170, 50));
 
+        btnBackToLogin.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnBackToLogin.setText("Go Back");
+        btnBackToLogin.setBorder(new javax.swing.border.MatteBorder(null));
         btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToLoginActionPerformed(evt);
             }
         });
-        signUpJPanel.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 10, -1, -1));
+        signUpJPanel.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 20, 100, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientView/Registration.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        signUpJPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1300, 720));
+        signUpJPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 130));
 
         getContentPane().add(signUpJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -540,10 +568,12 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
     private java.awt.Button btnNewPatient;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

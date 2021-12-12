@@ -62,4 +62,16 @@ public class UserAccountDirectory {
         }
         return true;
     }
+    
+    public UserAccount findEmployee(Employee employee)
+    {
+        for(UserAccount ua : userAccountList)
+            if(ua.getEmployee() == employee)
+            {
+                return ua;
+            }
+        return null;
+    }
+    
+    
 }

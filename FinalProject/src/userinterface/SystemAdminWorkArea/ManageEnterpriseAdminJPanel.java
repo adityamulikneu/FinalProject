@@ -75,8 +75,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage Enterprise Admin Panel");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 30, 930, -1));
 
         enterpriseAdminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,7 +153,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(adminTxtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 370, 30));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 370, -1));
 
-        cmbBoxEnterpriseList.setBackground(new java.awt.Color(255, 255, 255));
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
         cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Enterprise" }));
@@ -160,7 +161,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6.setText("Network:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, 20));
 
-        networkCmbBox.setBackground(new java.awt.Color(255, 255, 255));
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
         networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Network" }));
