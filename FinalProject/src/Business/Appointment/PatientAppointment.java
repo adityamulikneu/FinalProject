@@ -42,4 +42,11 @@ public class PatientAppointment extends WorkRequest{
     public PatientAppointment() {
         // fetch nurse from UserAccountDirectory, look for Role enum in UserAccount
     }        
+
+    @Override
+    public String toString() {
+        return "Receiver = " + getReceiver(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

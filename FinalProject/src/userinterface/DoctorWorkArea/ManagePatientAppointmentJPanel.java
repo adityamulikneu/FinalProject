@@ -62,8 +62,8 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         
         for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
             System.out.println(w);
-            if (w.getStatus().equalsIgnoreCase("Pending")) {
-                // System.out.println(w);
+            if (w.getStatus().equalsIgnoreCase("Pending") && user.equals(w.getReceiver())) {
+                System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
