@@ -19,6 +19,7 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +40,7 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
+    private List<PatientAppointment> appointments;
     
     public ManagePatientAppointmentJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
@@ -48,7 +50,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         this.user = user;
         
         populateWorkQueueTable();
-        populateDoctorComboList();
     }       
     
     public void populateWorkQueueTable() {
@@ -58,10 +59,10 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 //        System.out.println(apptDir.getAppointmentAccountList().size());
         
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-
+        appointments = apptDir.getAppointmentAccountList();
         model.setRowCount(0);
         
-        for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
+        for (PatientAppointment w: appointments) {
             System.out.println(w);
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
                 System.out.println("flter passed" + w);
@@ -75,19 +76,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         }
-    }
-    
-    public void populateDoctorComboList() {
-        
-        for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
-            if (u.getAssociatedEnterprise() == enterprise) {
-                System.out.println(u.getRole());
-                if (u.getRole().toString() == "Business.Role.DoctorRole") {
-//                    System.out.println(u);
-                    bmcDoctorList.addItem(u.getUsername());
-                }
-            }
-        }  
     }
 
     /**

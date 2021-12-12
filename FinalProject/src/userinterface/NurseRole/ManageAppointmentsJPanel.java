@@ -213,7 +213,6 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         PatientAppointment appointment = appointments.get(currentSelectedRow);
         if (doctor != null && appointment != null) {
-            System.out.println("idhar bhai");
             appointment.setReceiver(doctor);
         }
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
