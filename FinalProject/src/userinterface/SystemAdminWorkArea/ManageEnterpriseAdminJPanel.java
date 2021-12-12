@@ -12,6 +12,8 @@ import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.Role.HospAdminRole;
+import Business.Role.LabAdminRole;
+import Business.Role.PharmacyAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -234,13 +236,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
 //                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
-                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);
-                    JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);                    
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalSupplies) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
-                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new VoluntaryUnitAdmin());
+                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new PharmacyAdminRole(), enterprise);
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Lab) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new LabAdminRole(), enterprise);
                 }
+                JOptionPane.showMessageDialog(null, "Account created sucessfully");
                 adminTxtName.setText("");
                 adminTxtUserName.setText("");
                 adminTxtPassword.setText("");

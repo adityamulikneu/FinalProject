@@ -13,6 +13,8 @@ import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.Role.DoctorRole;
 import Business.Role.HospAdminRole;
+import Business.Role.LabAdminRole;
+import Business.Role.LabDealerRole;
 import Business.Role.NurseRole;
 import Business.Role.PatientRole;
 import Business.Role.PharmacistRole;
@@ -64,14 +66,17 @@ public class StaticData {
         // Create Enterprise
         Enterprise e = network.getEnterpriseDirectory().createAndAddEnterprise("Apollo Clinics", EnterpriseType.MedicalServices);
         Enterprise e2 = network.getEnterpriseDirectory().createAndAddEnterprise("CVS", EnterpriseType.MedicalSupplies);
+        Enterprise e3 = network.getEnterpriseDirectory().createAndAddEnterprise("Cabot", EnterpriseType.Lab);
         
         // Create Employee
         Employee employee = e.getEmployeeDirectory().createEmployee("Apollo Admin");
         Employee cvsEmp = e2.getEmployeeDirectory().createEmployee("Cvs Admin");
+        Employee labDeal = e3.getEmployeeDirectory().createEmployee("Cabot Admin");
         
         // Create Enterprise Admin
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("apollo", "apollo", employee, new HospAdminRole(), e);
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
+        system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cabot", "cabot", labDeal, new LabAdminRole(), e3);
     
         /*
            Hospital Block
@@ -93,8 +98,16 @@ public class StaticData {
         */
         Employee employee5 = system.getEmployeeDirectory().createEmployee("CVS Dealer 1");
         Employee employee6 = system.getEmployeeDirectory().createEmployee("CVS Dealer 2");
-        system.getUserAccountDirectory().createUserAccount("cvsdealer1", "cvsdealer1", employee5, new PharmacistRole(), e);
-        system.getUserAccountDirectory().createUserAccount("cvsdealer2", "cvsdealer2", employee6, new PharmacistRole(), e);
+        system.getUserAccountDirectory().createUserAccount("cvsdealer1", "cvsdealer1", employee5, new PharmacistRole(), e2);
+        system.getUserAccountDirectory().createUserAccount("cvsdealer2", "cvsdealer2", employee6, new PharmacistRole(), e2);
+        
+        /*
+           Lab Tests/ Vital Signs Block
+        */
+        Employee employee7 = system.getEmployeeDirectory().createEmployee("Cabot 1");
+        Employee employee8 = system.getEmployeeDirectory().createEmployee("Cabot 2");
+        system.getUserAccountDirectory().createUserAccount("cabot1", "cabot1", employee7, new LabDealerRole(), e3);
+        system.getUserAccountDirectory().createUserAccount("cabot2", "cabot2", employee8, new LabDealerRole(), e3);
     }        
     
 }

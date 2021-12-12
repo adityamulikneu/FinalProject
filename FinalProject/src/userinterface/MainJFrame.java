@@ -382,6 +382,14 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
+                //HospAdmin login
+                else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
+                    System.out.println("This is HospAdmin role!");
+                    Employee e = user.getEmployee();
+                    container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }
                 //Doctor login
                 else if (user.getRole().toString() == "Business.Role.DoctorRole") {
                     System.out.println("This is doctor role!");
@@ -397,6 +405,14 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
+                }                                
+                //Pharmacy login
+                else if (user.getRole().toString() == "Business.Role.PharmacyAdminRole") {
+                    System.out.println("This is PharmacyAdmin role!");
+                    Employee e = user.getEmployee();
+                    container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
+                    layout.next(container);
+                    mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
                 //Pharmacist Role
                 else if (user.getRole().toString() == "Business.Role.PharmacistRole") {
@@ -406,23 +422,23 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-
-                //HospAdmin login
-                else if (user.getRole().toString() == "Business.Role.HospAdminRole") {
-                    System.out.println("This is HospAdmin role!");
+                //LabAdmin login
+                else if (user.getRole().toString() == "Business.Role.LabAdminRole") {
+                    System.out.println("This is LabAdmin role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
-                   //Pharmacy login
-                else if (user.getRole().toString() == "Business.Role.PharmacyAdminRole") {
-                    System.out.println("This is PharmacyAdmin role!");
+                //Lab dealer login
+                else if (user.getRole().toString() == "Business.Role.LabDealerRole") {
+                    System.out.println("This is LabDealer role!");
                     Employee e = user.getEmployee();
                     container.add("workArea", user.getRole().createWorkArea(container, user, network, organization, enterprise, system));
                     layout.next(container);
                     mainFrame.setWelcomeMessage("Welcome " + e.getName() + "!");
                 }
+                 
                 Thread t = new Thread(this);
                 t.start();
             }
