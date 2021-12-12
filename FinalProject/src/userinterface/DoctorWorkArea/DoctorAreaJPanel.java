@@ -29,7 +29,7 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
-    ManageNetworkJPanel manageNetworkPanel;
+    ManagePatientAppointmentJPanel managepatientPanel;
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Network network;
@@ -45,9 +45,9 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.network = network;
-        this.system = system;
-//        manageNetworkPanel = new ManageNetworkJPanel(sysAdminWorkAreaContainer, system);
-//        sysAdminWorkAreaContainer.add("network", manageNetworkPanel);
+        this.system = business;
+        managepatientPanel = new ManagePatientAppointmentJPanel(sysAdminWorkAreaContainer, system, enterprise);
+        sysAdminWorkAreaContainer.add(managepatientPanel);
     }
     
     public DoctorAreaJPanel() {
