@@ -19,6 +19,7 @@ import Business.Role.PharmacistRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import Constants.StringConstants;
 import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -66,7 +67,7 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
         appointments = apptDir.getAppointmentAccountList();
         
         for (PatientAppointment w: appointments) {
-            if (w.getStatus().equalsIgnoreCase("Patient needs medicines")) {
+            if (w.getStatus().equalsIgnoreCase(StringConstants.Status.GetMedications.toString()) && w.getReceiver() == null) {
                 // System.out.println(w);
                 Object[] row = new Object[5];
                 row[0] = w.getSender();
@@ -209,14 +210,14 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
         currentSelectedRow = tblWorkQueue.getSelectedRow();
         
         String selectedUser = bmcPharmacistList.getSelectedItem().toString();
-        UserAccount doctor = system.getUserAccountDirectory().getUserAccountList()
+        UserAccount pharmacist = system.getUserAccountDirectory().getUserAccountList()
                 .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
         
         PatientAppointment appointment = appointments.get(currentSelectedRow);
-        if (doctor != null && appointment != null) {
-            System.out.println("idhar bhai");
-            appointment.setReceiver(doctor);
+        if (pharmacist != null && appointment != null) {
+            appointment.setReceiver(pharmacist);
         }
+        populateWorkQueueTable();
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
     private void bmcPharmacistListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmcPharmacistListActionPerformed

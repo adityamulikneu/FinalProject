@@ -23,6 +23,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import Constants.StringConstants;
 
 /**
  *
@@ -65,7 +66,7 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         for (PatientAppointment w: appointments) {
             System.out.println(w);
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
-                System.out.println("flter passed" + w);
+               // System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -197,7 +198,15 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 //            System.out.println("Patient appt goes here!");
             if (p.getIssue().equals(issue)) {
                 if (bmcDoctorList.getSelectedItem() != "Select Message") {
-                    p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    String selectedUser = lblSender.getText();
+                    UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
+                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (patient != null && appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setStatus(StringConstants.Status.GetMedications.toString());
+                    }
                 }                
             }
         }
@@ -219,3 +228,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     private rojeru_san.complementos.RSTableMetro tblWorkQueue;
     // End of variables declaration//GEN-END:variables
 }
+
+
+

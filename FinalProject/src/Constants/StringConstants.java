@@ -12,6 +12,7 @@ public class StringConstants {
     public enum Status{
         Pending,
         Completed,
-        GetMedications;
+        GetMedications,
+        GetLabTests;
     }
 }
