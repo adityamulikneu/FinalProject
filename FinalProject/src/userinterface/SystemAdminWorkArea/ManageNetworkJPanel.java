@@ -121,7 +121,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         
         Network network = system.createAndAddNetwork();
         network.setName(city);
-        
+        JOptionPane.showMessageDialog(null, "City Added Successfully");
         populateNetworkTable();
     }//GEN-LAST:event_kButton1AddCityActionPerformed
 

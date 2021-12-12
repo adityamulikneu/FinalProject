@@ -5,7 +5,6 @@
  */
 package userinterface.DoctorWorkArea;
 
-import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -15,6 +14,8 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import Constants.StringConstants;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,10 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
+    private static final String SELECT_MESSAGE = "Select Message"; 
+    private static final String PATIENT_NORMAL = "Patient is Normal";
+    private static final String NEEDS_MEDICINES = "Patient needs medicines";
+    private static final String NEEDS_REPORTS = "Patient needs to do blood reports";
     JPanel container;
     private EcoSystem system;
     private Enterprise enterprise;
@@ -45,18 +50,13 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-        appointments = apptDir.getAppointmentAccountList();
+        appointments = new ArrayList<>();
         model.setRowCount(0);
         
-        for (PatientAppointment w: appointments) {
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
-               // System.out.println("flter passed" + w);
+                appointments.add(w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -187,17 +187,26 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
 //            System.out.println("Patient appt goes here!");
             if (p.getIssue().equals(issue)) {
-                if (bmcDoctorList.getSelectedItem() != "Select Message") {
+                if (bmcDoctorList.getSelectedItem().equals(NEEDS_MEDICINES)) {
                     //p.setMessage(bmcDoctorList.getSelectedItem().toString());
                     String selectedUser = lblSender.getText();
                     UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
-                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+                            .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
                     PatientAppointment appointment = appointments.get(currentSelectedRow);
                     if (patient != null && appointment != null) {
+                        JOptionPane.showMessageDialog(null, "Request updated!");
                         appointment.setReceiver(null);
                         appointment.setStatus(StringConstants.Status.GetMedications.toString());
                     }
-                }                
+                }
+                
+                if (bmcDoctorList.getSelectedItem().equals(PATIENT_NORMAL)) {
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (appointment != null) {
+                        JOptionPane.showMessageDialog(null, "Request updated!");
+                        appointment.setStatus(StringConstants.Status.Completed.toString());
+                    }
+                }
             }
         }
         populateWorkQueueTable();
