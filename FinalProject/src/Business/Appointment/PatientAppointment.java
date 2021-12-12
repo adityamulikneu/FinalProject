@@ -41,5 +41,5 @@ public class PatientAppointment extends WorkRequest{
     
     public PatientAppointment() {
         // fetch nurse from UserAccountDirectory, look for Role enum in UserAccount
-    }
+    }        
 }

@@ -34,7 +34,6 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount user;
     private Enterprise enterprise;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     public ManageHospitalEmployees(JPanel container, EcoSystem system, Enterprise enterprise) {
         initComponents();
@@ -54,6 +53,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         
         for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
             if (userAccount.getAssociatedEnterprise() == enterprise) {
+                System.out.println(userAccount);
                 Object[] row = new Object[2];
                 row[0] = userAccount.getEmployee().getName();
                 row[1] = userAccount.getRole().toString();

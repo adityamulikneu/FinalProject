@@ -15,6 +15,7 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -38,7 +39,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         this.system = system;
         this.user = user;
         
-        txtIssue.setText(this.user.getEmployee().getName());
+        txtName.setText(this.user.getEmployee().getName());
         
         populateCities();
     }
@@ -204,6 +205,11 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
     private void networkCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkCmbBoxActionPerformed
         // TODO add your handling code here:
+        try {
+            populateHospitals((Network) networkCmbBox.getSelectedItem());
+        } catch (Exception c) {
+            System.out.println("Error");
+        }
     }//GEN-LAST:event_networkCmbBoxActionPerformed
 
     private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
@@ -223,10 +229,9 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         
         AppointmentDirectory appointmentDirectory = system.getAppointmentDirectory();
         
-        appointmentDirectory.createAppointment(user, nurse , "Pending", new Date(2021,12,13), true, issue);
+        appointmentDirectory.createAppointment(user, null, "Pending", issue, new Date(), true, null);
         
-       
-        
+        JOptionPane.showMessageDialog(this, "Appointment successfully created!");        
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
 
     private void cmbBoxEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxEnterpriseListActionPerformed

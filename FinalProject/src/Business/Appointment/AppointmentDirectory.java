@@ -27,7 +27,7 @@ public class AppointmentDirectory {
         return appointmentAccountList;
     }
     
-    public PatientAppointment createAppointment(UserAccount sender, UserAccount receiver, String status, Date requestDate, boolean regularAppointment, String issue){
+    public PatientAppointment createAppointment(UserAccount sender, UserAccount receiver, String status,String issue, Date requestDate, boolean regularAppointment, String message){
 
         PatientAppointment appointment = new PatientAppointment();
         appointment.setSender(sender);
@@ -36,7 +36,9 @@ public class AppointmentDirectory {
         appointment.setIssue(issue);
         appointment.setRequestDate(requestDate);
         appointment.setType(regularAppointment);
+        appointment.setMessage(message);
         appointmentAccountList.add(appointment);
+//        System.out.println("Checkign if data is populated");
         return appointment;
     }
 }

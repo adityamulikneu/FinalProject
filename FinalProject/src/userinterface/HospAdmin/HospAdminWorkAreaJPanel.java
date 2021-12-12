@@ -46,7 +46,7 @@ public class HospAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.network = network;
         this.system = business;
-        this.enterprise = user.getAssociatedEnterprise();
+        this.enterprise = this.user.getAssociatedEnterprise();
         manageHospitalEmployees = new ManageHospitalEmployees(hospitalAdminWorkArea, system, this.enterprise);
         hospitalAdminWorkArea.add("network", manageHospitalEmployees);                        
     }
