@@ -54,7 +54,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         appointments = new ArrayList<>();
         
         for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
-            if (w.getStatus().equalsIgnoreCase("Pending")) {
+            if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null) {
                 // System.out.println(w);
                 appointments.add(w);
                 Object[] row = new Object[5];
@@ -204,7 +204,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         PatientAppointment appointment = appointments.get(currentSelectedRow);
         if (doctor != null && appointment != null) {
             appointment.setReceiver(doctor);
-            JOptionPane.showMessageDialog(null, appointment.toString());
+            JOptionPane.showMessageDialog(null, "Doctor assigned successfully");
         }
         
         populateWorkQueueTable();
