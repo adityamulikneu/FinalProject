@@ -15,6 +15,7 @@ import Business.Role.DoctorRole;
 import Business.Role.HospAdminRole;
 import Business.Role.NurseRole;
 import Business.Role.PatientRole;
+import Business.Role.PharmacistRole;
 import Business.Role.PharmacyAdminRole;
 
 /**
@@ -72,6 +73,9 @@ public class StaticData {
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("apollo", "apollo", employee, new HospAdminRole(), e);
         system.getUserAccountDirectory().createUserAccountEnterpriseAdmin("cvs", "cvs", cvsEmp, new PharmacyAdminRole(), e2);
     
+        /*
+           Hospital Block
+        */
         // Populate Doctor
         Employee employee1 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 1");
         Employee employee2 = system.getEmployeeDirectory().createEmployee("Apollo Doctor 2");
@@ -83,6 +87,14 @@ public class StaticData {
         Employee employee4 = system.getEmployeeDirectory().createEmployee("Apollo Nurse 2");
         system.getUserAccountDirectory().createUserAccount("nurse1", "nurse1", employee3, new NurseRole(), e);
         system.getUserAccountDirectory().createUserAccount("nurse2", "nurse2", employee4, new NurseRole(), e);
+        
+        /*
+           Pharma Block
+        */
+        Employee employee5 = system.getEmployeeDirectory().createEmployee("CVS Dealer 1");
+        Employee employee6 = system.getEmployeeDirectory().createEmployee("CVS Dealer 2");
+        system.getUserAccountDirectory().createUserAccount("cvsdealer1", "cvsdealer1", employee5, new PharmacistRole(), e);
+        system.getUserAccountDirectory().createUserAccount("cvsdealer2", "cvsdealer2", employee6, new PharmacistRole(), e);
     }        
     
 }
