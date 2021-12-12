@@ -31,8 +31,8 @@ public class EnterpriseDirectory {
         if (type == Enterprise.EnterpriseType.AccountsManagement) {
             enterprise = new AccountsManagement(name);
             enterpriseList.add(enterprise);
-        }else if (type == Enterprise.EnterpriseType.Emergency) {
-            enterprise = new Emergency(name);
+        }else if (type == Enterprise.EnterpriseType.Lab) {
+            enterprise = new Lab(name);
             enterpriseList.add(enterprise);
         }else if (type == Enterprise.EnterpriseType.MedicalServices) {
             enterprise = new MedicalServices(name);
