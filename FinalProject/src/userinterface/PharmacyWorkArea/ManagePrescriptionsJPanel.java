@@ -19,7 +19,9 @@ import Business.Patient.Employee;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import Constants.StringConstants;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +42,7 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
+    private List<PatientAppointment> appointments;
     
     public ManagePrescriptionsJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
@@ -59,12 +62,12 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
 //        System.out.println(apptDir.getAppointmentAccountList().size());
         
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-
+        appointments = apptDir.getAppointmentAccountList();
         model.setRowCount(0);
         
         for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
             System.out.println(w);
-            if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
+            if (w.getStatus().equals(StringConstants.Status.GetMedications.toString()) && w.getReceiver() != null && user.equals(w.getReceiver())) {
                 System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
@@ -160,7 +163,7 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
 
-        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Message", "Patient is Normal", "Patient needs medicines", "Patient needs to do blood reports" }));
+        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Message", "Medicines Provided", "Medicines Not Available" }));
         add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
         add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
 
@@ -178,6 +181,11 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
         add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
 
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignWorkQueueActionPerformed(evt);
+            }
+        });
         add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,6 +201,41 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_tblWorkQueueMouseClicked
+
+    private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
+        
+        
+        String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
+        String selectedUser = lblSender.getText();
+        UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
+        .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+        PatientAppointment appointment = appointments.get(currentSelectedRow);
+        
+        for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
+//            System.out.println("Patient appt goes here!");
+                if (bmcDoctorList.getSelectedItem().equals("Medicines Provided") ) {
+                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    if (patient != null && appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setMessage("Medicines Provided");
+                        appointment.setStatus(StringConstants.Status.Completed.toString());
+                    }
+                }
+                else 
+                    if (bmcDoctorList.getSelectedItem().equals("Medicines Not Available") ) {
+                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    if (patient != null && appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setMessage("Medicines Not Available");
+                        appointment.setStatus(StringConstants.Status.Completed.toString());
+                    }
+                }
+        }
+        populateWorkQueueTable();
+    }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

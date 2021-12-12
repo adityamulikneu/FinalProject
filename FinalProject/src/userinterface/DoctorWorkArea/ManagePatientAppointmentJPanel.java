@@ -19,9 +19,11 @@ import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import Constants.StringConstants;
 
 /**
  *
@@ -39,6 +41,7 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
+    private List<PatientAppointment> appointments;
     
     public ManagePatientAppointmentJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
@@ -48,7 +51,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         this.user = user;
         
         populateWorkQueueTable();
-        populateDoctorComboList();
     }       
     
     public void populateWorkQueueTable() {
@@ -58,13 +60,13 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 //        System.out.println(apptDir.getAppointmentAccountList().size());
         
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-
+        appointments = apptDir.getAppointmentAccountList();
         model.setRowCount(0);
         
-        for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
+        for (PatientAppointment w: appointments) {
             System.out.println(w);
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
-                System.out.println("flter passed" + w);
+               // System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -75,19 +77,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         }
-    }
-    
-    public void populateDoctorComboList() {
-        
-        for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
-            if (u.getAssociatedEnterprise() == enterprise) {
-                System.out.println(u.getRole());
-                if (u.getRole().toString() == "Business.Role.DoctorRole") {
-//                    System.out.println(u);
-                    bmcDoctorList.addItem(u.getUsername());
-                }
-            }
-        }  
     }
 
     /**
@@ -209,7 +198,15 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 //            System.out.println("Patient appt goes here!");
             if (p.getIssue().equals(issue)) {
                 if (bmcDoctorList.getSelectedItem() != "Select Message") {
-                    p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    //p.setMessage(bmcDoctorList.getSelectedItem().toString());
+                    String selectedUser = lblSender.getText();
+                    UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
+                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (patient != null && appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setStatus(StringConstants.Status.GetMedications.toString());
+                    }
                 }                
             }
         }
@@ -231,3 +228,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
     private rojeru_san.complementos.RSTableMetro tblWorkQueue;
     // End of variables declaration//GEN-END:variables
 }
+
+
+

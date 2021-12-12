@@ -144,11 +144,10 @@
     <Component class="javax.swing.JComboBox" name="bmcDoctorList">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="3">
             <StringItem index="0" value="Select Message"/>
-            <StringItem index="1" value="Patient is Normal"/>
-            <StringItem index="2" value="Patient needs medicines"/>
-            <StringItem index="3" value="Patient needs to do blood reports"/>
+            <StringItem index="1" value="Medicines Provided"/>
+            <StringItem index="2" value="Medicines Not Available"/>
           </StringArray>
         </Property>
       </Properties>
@@ -219,6 +218,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Assign"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignWorkQueueActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="360" y="580" width="140" height="30"/>
