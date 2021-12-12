@@ -55,7 +55,7 @@ public class ManagePharmacyEmployees extends javax.swing.JPanel {
         
         for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
             if (userAccount.getAssociatedEnterprise() == enterprise) {
-                System.out.println(userAccount);
+              //  System.out.println(userAccount);
                 Object[] row = new Object[2];
                 row[0] = userAccount.getEmployee().getName();
                 row[1] = userAccount.getRole().toString();

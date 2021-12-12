@@ -64,9 +64,9 @@ public class ManageLabJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
-            System.out.println(w);
+          //  System.out.println(w);
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
-                System.out.println("flter passed" + w);
+               // System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -83,7 +83,7 @@ public class ManageLabJPanel extends javax.swing.JPanel {
         
         for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {           
             if (u.getAssociatedEnterprise() == enterprise) {
-                System.out.println(u.getRole());
+               // System.out.println(u.getRole());
                 if (u.getRole().toString() == "Business.Role.DoctorRole") {
 //                    System.out.println(u);
                     bmcDoctorList.addItem(u.getUsername());

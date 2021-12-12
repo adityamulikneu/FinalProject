@@ -63,7 +63,7 @@ public class EcoSystem extends Organization{
     
     public boolean checkIfUserIsUnique(String userName, EcoSystem ecoSys){
         if(ecoSys==null){
-            System.out.println("BUSINESS IS NULL");
+          //  System.out.println("BUSINESS IS NULL");
         }
         for (Network network : ecoSys.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {

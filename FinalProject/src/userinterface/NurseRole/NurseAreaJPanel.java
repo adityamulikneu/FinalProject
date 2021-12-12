@@ -5,18 +5,14 @@
  */
 package userinterface.NurseRole;
 
-import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Patient.Employee;
 import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -41,7 +37,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public NurseAreaJPanel(JPanel userProcessContainer, UserAccount account, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public NurseAreaJPanel(JPanel userProcessContainer, UserAccount user, Network network, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
@@ -50,7 +46,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         this.network = network;
         this.system = business;
         
-        managePatients = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system, enterprise);
+        managePatients = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system, user);
         NurseWorkAreaContainer.add(managePatients);
         
         
@@ -169,7 +165,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         setStyleAssignPatients();
         
         NurseWorkAreaContainer.removeAll();
-        ManageAppointmentsJPanel manPat = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system, enterprise);
+        ManageAppointmentsJPanel manPat = new ManageAppointmentsJPanel(NurseWorkAreaContainer, system, user);
         NurseWorkAreaContainer.add("NurseWorkArea",manPat);
         
     }//GEN-LAST:event_lblManagePatientsMouseClicked
@@ -188,7 +184,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         setStyleRequestPrescriptions();
         
         NurseWorkAreaContainer.removeAll();        
-        RequestPrescriptionMedicines managePrescriptions = new RequestPrescriptionMedicines(NurseWorkAreaContainer, system, enterprise);                        
+        RequestPrescriptionMedicines managePrescriptions = new RequestPrescriptionMedicines(NurseWorkAreaContainer, system, user);                        
         NurseWorkAreaContainer.add("managePrescriptions", managePrescriptions);
     }//GEN-LAST:event_lblManagePatients1MouseClicked
 

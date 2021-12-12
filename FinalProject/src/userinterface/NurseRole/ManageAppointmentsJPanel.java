@@ -7,18 +7,11 @@ package userinterface.NurseRole;
 
 import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
-import userinterface.PatientView.*;
-import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.Enterprise.EnterpriseType;
-import Business.Patient.Employee;
 import Business.Role.DoctorRole;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -42,11 +35,12 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private int currentSelectedRow;
     private List<PatientAppointment> appointments;
     
-    public ManageAppointmentsJPanel(JPanel container, EcoSystem system, Enterprise enterprise) {
+    public ManageAppointmentsJPanel(JPanel container, EcoSystem system, UserAccount user) {
         initComponents();
         this.container = container;
         this.system = system;
-        this.enterprise = enterprise;
+        this.user = user;
+        this.enterprise = user.getAssociatedEnterprise();
         
         populateWorkQueueTable();
         populateDoctorComboList();
@@ -83,7 +77,7 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         for (UserAccount u: system.getUserAccountDirectory().getUserAccountList()) {  
             //System.out.println(u.getRole());
-            if (u.getRole() instanceof DoctorRole) {
+            if (u.getRole() instanceof DoctorRole && enterprise.equals(u.getAssociatedEnterprise())) {
 //                    System.out.println(u);
                 bmcDoctorList.addItem(u);
             }
@@ -213,8 +207,11 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         
         PatientAppointment appointment = appointments.get(currentSelectedRow);
         if (doctor != null && appointment != null) {
+            //System.out.println("Idhar aya");
             appointment.setReceiver(doctor);
         }
+        JOptionPane.showMessageDialog(null, "Doctor assigned!");
+        populateWorkQueueTable();
     }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
     private void bmcDoctorListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmcDoctorListActionPerformed

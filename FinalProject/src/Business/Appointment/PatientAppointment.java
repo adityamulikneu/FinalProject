@@ -45,7 +45,7 @@ public class PatientAppointment extends WorkRequest{
 
     @Override
     public String toString() {
-        return "Receiver = " + getReceiver(); //To change body of generated methods, choose Tools | Templates.
+        return String.format("Sender: %s, Receiver: %s", getSender(), getReceiver()); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -52,7 +52,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
     
     public void populateHospitals(Network network) {
         for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList()) {
-            System.out.println(e.getEnterpriseType().toString());
+           // System.out.println(e.getEnterpriseType().toString());
             if (e.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
                 cmbBoxEnterpriseList.addItem(e);
             }            
@@ -211,7 +211,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         try {
             populateHospitals((Network) networkCmbBox.getSelectedItem());
         } catch (Exception c) {
-            System.out.println("Error");
+           // System.out.println("Error");
         }
     }//GEN-LAST:event_networkCmbBoxActionPerformed
 
@@ -243,7 +243,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         try {
             populateHospitals((Network) networkCmbBox.getSelectedItem());
         } catch (Exception e) {
-            System.out.println("Choose correct option");
+           // System.out.println("Choose correct option");
         }
     }//GEN-LAST:event_cmbBoxEnterpriseListActionPerformed
 

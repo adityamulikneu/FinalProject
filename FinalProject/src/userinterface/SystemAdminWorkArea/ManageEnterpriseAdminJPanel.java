@@ -221,7 +221,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             
             Enterprise enterprise = (Enterprise) cmbBoxEnterpriseList.getSelectedItem();
             
-            System.out.println("Enterpriseeeeee" + enterprise + "\nEnt typeeeee: " + enterprise.getEnterpriseType());
+            //System.out.println("Enterpriseeeeee" + enterprise + "\nEnt typeeeee: " + enterprise.getEnterpriseType());
             
             String name = adminTxtName.getText();
             String userName = adminTxtUserName.getText();
@@ -232,7 +232,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             } else{                
                 UserAccount account = null;
                 Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-                System.out.println(enterprise.getEnterpriseType());
+               // System.out.println(enterprise.getEnterpriseType());
                 if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
 //                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
@@ -249,7 +249,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 populateTable();
             }
         } catch (ClassCastException c) {
-            System.out.println("Don't select, select network");
+            //System.out.println("Don't select, select network");
         }
     }//GEN-LAST:event_kButton1ActionPerformed
 

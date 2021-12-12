@@ -7,22 +7,13 @@ package userinterface.NurseRole;
 
 import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
-import userinterface.PatientView.*;
-import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.Enterprise.EnterpriseType;
-import Business.Patient.Employee;
-import Business.Role.DoctorRole;
 import Business.Role.PharmacistRole;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
 import Constants.StringConstants;
-import java.awt.CardLayout;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,11 +35,12 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
     private int currentSelectedRow;
     private List<PatientAppointment> appointments;
     
-    public RequestPrescriptionMedicines(JPanel container, EcoSystem system, Enterprise enterprise) {
+    public RequestPrescriptionMedicines(JPanel container, EcoSystem system, UserAccount user) {
         initComponents();
         this.container = container;
         this.system = system;
-        this.enterprise = enterprise;
+        this.user = user;
+        this.enterprise = user.getAssociatedEnterprise();
         
         populateWorkQueueTable();
         populatePharmacistComboList();
@@ -173,7 +165,7 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
         jLabel3.setText("Select Patient from Work Queue");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
-        jLabel4.setText("Select Doctor:");
+        jLabel4.setText("Select Pharmacist:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, -1, 20));
 
         jLabel5.setText("Issue:");
