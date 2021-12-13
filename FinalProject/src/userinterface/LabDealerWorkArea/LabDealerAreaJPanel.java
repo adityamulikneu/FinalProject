@@ -137,10 +137,10 @@ public class LabDealerAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 //        setStyleNetwork();
         
-        pharmacyWorkPanel.removeAll();
-        
-        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(pharmacyWorkPanel, system);                        
-        pharmacyWorkPanel.add("network", manageNetwork);
+//        pharmacyWorkPanel.removeAll();
+//        
+//        ManageNetworkJPanel manageNetwork = new ManageNetworkJPanel(pharmacyWorkPanel, system);                        
+//        pharmacyWorkPanel.add("network", manageNetwork);
     }//GEN-LAST:event_lblNetworkMousePressed
 
 //    public void setStyleNetwork() {

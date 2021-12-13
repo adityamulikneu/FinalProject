@@ -106,8 +106,10 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage Patient Work Requests");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 920, -1));
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,8 +148,12 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblWorkQueue);
+        if (tblWorkQueue.getColumnModel().getColumnCount() > 0) {
+            tblWorkQueue.getColumnModel().getColumn(2).setMinWidth(200);
+            tblWorkQueue.getColumnModel().getColumn(4).setMinWidth(200);
+        }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 180));
 
         bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Doctor" }));
         bmcDoctorList.addActionListener(new java.awt.event.ActionListener() {
@@ -155,29 +161,35 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
                 bmcDoctorListActionPerformed(evt);
             }
         });
-        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
-        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
+        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 390, -1));
+        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 360, 20));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Select Patient from Work Queue");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Select Doctor:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, -1, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, 20));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Issue:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, 20));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Sender:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, 20));
-        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, 20));
+        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 350, 20));
 
+        btnAssignWorkQueue.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignWorkQueueActionPerformed(evt);
             }
         });
-        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
+        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblWorkQueueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWorkQueueMouseClicked

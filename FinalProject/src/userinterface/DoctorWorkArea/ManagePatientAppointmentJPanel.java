@@ -98,8 +98,10 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage Patient Work Requests");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 920, -1));
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,32 +140,42 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblWorkQueue);
+        if (tblWorkQueue.getColumnModel().getColumnCount() > 0) {
+            tblWorkQueue.getColumnModel().getColumn(2).setMinWidth(200);
+            tblWorkQueue.getColumnModel().getColumn(5).setMinWidth(200);
+        }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 220));
 
-        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
-        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
+        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 390, -1));
+        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 360, 20));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Select Patient from Work Queue");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Message:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, 20));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Issue:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, 20));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Sender:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, 20));
-        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, 20));
+        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 350, 20));
 
+        btnAssignWorkQueue.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignWorkQueueActionPerformed(evt);
             }
         });
-        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
+        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblWorkQueueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWorkQueueMouseClicked
@@ -199,12 +211,14 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
                     PatientAppointment appointment = appointments.get(currentSelectedRow);
                     if (appointment != null) {
                         appointment.setReceiver(null);
+                        appointment.setMessage(NEEDS_MEDICINES);
                         appointment.setStatus(StringConstants.Status.GetMedications.toString());
                         JOptionPane.showMessageDialog(null, "Request updated!");
                     }
                 } else if (bmcDoctorList.getSelectedItem().equals(PATIENT_NORMAL)) {
                     PatientAppointment appointment = appointments.get(currentSelectedRow);
                     if (appointment != null) {
+                        appointment.setMessage(PATIENT_NORMAL);
                         appointment.setStatus(StringConstants.Status.Completed.toString());
                         JOptionPane.showMessageDialog(null, "Request updated!");
                     }
@@ -212,6 +226,7 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
                 else if (bmcDoctorList.getSelectedItem().equals(NEEDS_REPORTS)) {
                     PatientAppointment appointment = appointments.get(currentSelectedRow);
                     if (appointment != null) {
+                        appointment.setMessage(NEEDS_REPORTS);
                         appointment.setReceiver(null);
                         appointment.setStatus(StringConstants.Status.GetLabTests.toString());
                         JOptionPane.showMessageDialog(null, "Request updated!");

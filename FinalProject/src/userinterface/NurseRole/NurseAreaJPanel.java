@@ -153,7 +153,7 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
+       javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
         panelSelectionBg3.setLayout(panelSelectionBg3Layout);
         panelSelectionBg3Layout.setHorizontalGroup(
             panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,89 +233,6 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         NurseWorkAreaContainer.add("managePrescriptions", managePrescriptions);
     }//GEN-LAST:event_lblManagePatients1MouseClicked
 
-//    public void setStyleNetwork() {
-//        // Set Enterprise to RED
-//        lblManagePatients.setForeground(new Color(204,0,51));
-//        lblManagePatients.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-//        
-//        // Roll back others to white
-//        panel.setForeground(Color.white);
-//        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
-//        
-//        lblOrganizations.setForeground(Color.white);
-//        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        lblEmployees.setForeground(Color.white);
-//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        panelSelectionBg1.setBackground(Color.black);
-//        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
-//    }
-//    
-//    public void setStyleEnterprise() {
-//        // Set Enterprise to RED
-//        panel.setForeground(new Color(204,0,51));
-//        panel.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-//        
-//        // Roll back others to white
-//        lblManagePatients.setForeground(Color.white);
-//        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        lblOrganizations.setForeground(Color.white);
-//        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        lblEmployees.setForeground(Color.white);
-//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        panelSelectionBg1.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg2.setBackground(Color.black);
-//        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
-//    }
-//    
-//    public void setStyleOrganization() {
-//        // Set Enterprise to RED
-//        lblOrganizations.setForeground(new Color(204,0,51));
-//        lblOrganizations.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-//        
-//        // Roll back others to white
-//        lblManagePatients.setForeground(Color.white);
-//        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
-//        
-//        panel.setForeground(Color.white);
-//        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        lblEmployees.setForeground(Color.white);
-//        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        panelSelectionBg1.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg3.setBackground(Color.black);
-//        panelSelectionBg4.setBackground(new Color(51, 51, 51));
-//    }
-//    
-//    public void setStyleEmployee() {
-//        // Set Enterprise to RED
-//        lblEmployees.setForeground(new Color(204,0,51));
-//        lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-//        
-//        // Roll back others to white
-//        lblManagePatients.setForeground(Color.white);
-//        lblManagePatients.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        panel.setForeground(Color.white);
-//        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        lblOrganizations.setForeground(Color.white);
-//        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-//        
-//        panelSelectionBg1.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-//        panelSelectionBg4.setBackground(Color.black);
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NurseWorkAreaContainer;

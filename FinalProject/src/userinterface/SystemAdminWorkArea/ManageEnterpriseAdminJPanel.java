@@ -78,7 +78,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage Enterprise Admin Panel");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 30, 930, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 930, -1));
 
         enterpriseAdminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,13 +119,15 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         enterpriseAdminTable.setRowHeight(32);
         jScrollPane1.setViewportView(enterpriseAdminTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 140));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Password:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Enterprise Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, 20));
 
         kButton1.setText("Add Employee");
         kButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,31 +137,34 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Name:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
 
         adminTxtUserName.setBorder(null);
-        add(adminTxtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 370, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 370, -1));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 370, -1));
+        add(adminTxtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 370, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 370, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 370, -1));
 
         adminTxtPassword.setBorder(null);
-        add(adminTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 370, 30));
+        add(adminTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 370, 30));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Username:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
         adminTxtName.setBorder(null);
-        add(adminTxtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 370, 30));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 370, -1));
+        add(adminTxtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 370, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 370, -1));
 
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
         cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Enterprise" }));
-        add(cmbBoxEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 370, -1));
+        add(cmbBoxEnterpriseList, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 370, -1));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Network:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, 20));
 
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
@@ -169,7 +174,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 networkCmbBoxActionPerformed(evt);
             }
         });
-        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 370, -1));
+        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 370, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateNetwork() {
@@ -189,10 +194,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         for (Network network : system.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if (userAccount.getAssociatedEnterprise() == enterprise && 
+                    if (userAccount.getAssociatedEnterprise() != null 
+                            && userAccount.getAssociatedEnterprise().equals(enterprise) && 
                         (userAccount.getRole().toString() == "Business.Role.HospAdminRole" ||
-//                        userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole" &&
-//                        userAccount.getRole().toString() == "Business.Role.HospAdminRole" &&
+                        userAccount.getRole().toString() == "Business.Role.AccountsAdminRole" ||
+                        userAccount.getRole().toString() == "Business.Role.LabAdminRole" ||
                         userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole") 
                         ) {
                         Object[] row = new Object[3];
@@ -236,13 +242,16 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.AccountsManagement) {
 //                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new ());
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
-                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);                    
+                    account = system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(userName, password, employee, new HospAdminRole(), enterprise);
+                    JOptionPane.showMessageDialog(null, "Account created sucessfully");                    
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.MedicalSupplies) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new PharmacyAdminRole(), enterprise);
+                    account = system.getUserAccountDirectory().createUserAccount(userName, password, employee, new PharmacyAdminRole(), enterprise);
+                    JOptionPane.showMessageDialog(null, "Account created sucessfully");
                 } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Lab) {
-                    account = enterprise.getUserAccountDirectory().createUserAccount(userName, password, employee, new LabAdminRole(), enterprise);
+                    account = system.getUserAccountDirectory().createUserAccount(userName, password, employee, new LabAdminRole(), enterprise);
+                    JOptionPane.showMessageDialog(null, "Account created sucessfully");
                 }
-                JOptionPane.showMessageDialog(null, "Account created sucessfully");
+                
                 adminTxtName.setText("");
                 adminTxtUserName.setText("");
                 adminTxtPassword.setText("");

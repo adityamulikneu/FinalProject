@@ -14,6 +14,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Patient.Employee;
 import Business.Role.DoctorRole;
+import Business.Role.LabDealerRole;
 import Business.Role.NurseRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -131,31 +132,35 @@ public class ManageLabEmployees extends javax.swing.JPanel {
         tblHospitalEmployees.setRowHeight(32);
         jScrollPane1.setViewportView(tblHospitalEmployees);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 220));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Manage Lab Employees");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 920, -1));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
         txtEmployeeName.setBorder(null);
         add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 370, 30));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("User Name:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         txtUsername.setBorder(null);
         add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 370, 30));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Password:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, -1, -1));
 
         txtPassword.setBorder(null);
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 370, 40));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Role:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
 
@@ -185,13 +190,10 @@ public class ManageLabEmployees extends javax.swing.JPanel {
 
         Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
 
-        if (role == "Doctor") {
-            system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new DoctorRole(), enterprise);
+        if (role.equalsIgnoreCase("Lab Dealer")) {
+            system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new LabDealerRole(), enterprise);
             JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Doctor!");
-        } else if (role == "Nurse") {
-            system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new NurseRole(), enterprise);
-            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Nurse!");
-        }
+        } 
         populateTable();
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 

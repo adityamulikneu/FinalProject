@@ -81,11 +81,11 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(940, 663));
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Book An Appointment");
 
-        lblName.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblName.setText("Name:");
 
         txtIssue.setBorder(null);
@@ -95,13 +95,13 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
             }
         });
 
-        lblCity.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblCity.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblCity.setText("City:");
 
-        lblHospital.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblHospital.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblHospital.setText("Hospital:");
 
-        lblCity2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblCity2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblCity2.setText("Issue faced:");
 
         btnBookAppointment.setText("Book Appointment");
@@ -184,7 +184,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

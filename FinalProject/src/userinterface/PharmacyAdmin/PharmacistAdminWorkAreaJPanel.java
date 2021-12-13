@@ -77,12 +77,6 @@ public class PharmacistAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployeesHospitalAdminPanel = new javax.swing.JPanel();
         manageEmployeesHospAdmin = new javax.swing.JPanel();
         lblNetwork = new javax.swing.JLabel();
-        panelSelectionBg2 = new javax.swing.JPanel();
-        panel = new javax.swing.JLabel();
-        panelSelectionBg4 = new javax.swing.JPanel();
-        lblEmployees = new javax.swing.JLabel();
-        panelSelectionBg3 = new javax.swing.JPanel();
-        lblOrganizations = new javax.swing.JLabel();
         pharmacyAdminWorkArea = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
@@ -121,87 +115,6 @@ public class PharmacistAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         manageEmployeesHospitalAdminPanel.add(manageEmployeesHospAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 290, 50));
 
-        panelSelectionBg2.setBackground(new java.awt.Color(51, 51, 51));
-
-        panel.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        panel.setForeground(new java.awt.Color(255, 255, 255));
-        panel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enterprise.png"))); // NOI18N
-        panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg2Layout = new javax.swing.GroupLayout(panelSelectionBg2);
-        panelSelectionBg2.setLayout(panelSelectionBg2Layout);
-        panelSelectionBg2Layout.setHorizontalGroup(
-            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg2Layout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg2Layout.setVerticalGroup(
-            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        manageEmployeesHospitalAdminPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 290, 50));
-
-        panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblEmployees.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/employees.png"))); // NOI18N
-        lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblEmployeesMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg4Layout = new javax.swing.GroupLayout(panelSelectionBg4);
-        panelSelectionBg4.setLayout(panelSelectionBg4Layout);
-        panelSelectionBg4Layout.setHorizontalGroup(
-            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg4Layout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(lblEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg4Layout.setVerticalGroup(
-            panelSelectionBg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEmployees, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        manageEmployeesHospitalAdminPanel.add(panelSelectionBg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 50));
-
-        panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblOrganizations.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblOrganizations.setForeground(new java.awt.Color(255, 255, 255));
-        lblOrganizations.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblOrganizations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/organization.png"))); // NOI18N
-        lblOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblOrganizationsMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
-        panelSelectionBg3.setLayout(panelSelectionBg3Layout);
-        panelSelectionBg3Layout.setHorizontalGroup(
-            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg3Layout.createSequentialGroup()
-                .addGap(0, 14, Short.MAX_VALUE)
-                .addComponent(lblOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg3Layout.setVerticalGroup(
-            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblOrganizations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        manageEmployeesHospitalAdminPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 290, 50));
-
         pharmacyAdminWorkArea.setPreferredSize(new java.awt.Dimension(940, 663));
         pharmacyAdminWorkArea.setLayout(new java.awt.CardLayout());
 
@@ -229,39 +142,6 @@ public class PharmacistAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:                
     }//GEN-LAST:event_lblNetworkMouseClicked
 
-    private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
-        // TODO add your handling code here:
-        
-//        setStyleEnterprise();
-//        
-//        hospitalAdminWorkArea.removeAll();
-//        
-//        ManageEnterprisesJPanel manageEnterprises = new ManageEnterprisesJPanel(hospitalAdminWorkArea, system);                
-//        hospitalAdminWorkArea.add("enterprises", manageEnterprises);
-    }//GEN-LAST:event_panelMousePressed
-
-    private void lblOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOrganizationsMousePressed
-        // TODO add your handling code here:
-        
-//        setStyleOrganization();
-//        
-//        hospitalAdminWorkArea.removeAll();
-//        
-//        ManageEnterpriseAdminJPanel manageOrganizations = new ManageEnterpriseAdminJPanel(hospitalAdminWorkArea, system);       
-//        hospitalAdminWorkArea.add("organizations", manageOrganizations);
-    }//GEN-LAST:event_lblOrganizationsMousePressed
-
-    private void lblEmployeesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMousePressed
-        // TODO add your handling code here:
-        
-//        setStyleEmployee();
-//        
-//        hospitalAdminWorkArea.removeAll();
-//        
-//        ManageEmployeesJPanel manageEmployees = new ManageEmployeesJPanel(hospitalAdminWorkArea, system);                
-//        hospitalAdminWorkArea.add("employees", manageEmployees);
-    }//GEN-LAST:event_lblEmployeesMousePressed
-
     private void lblNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNetworkMousePressed
         // TODO add your handling code here:
         setStyleNetwork();
@@ -278,94 +158,49 @@ public class PharmacistAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblNetwork.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
-        panel.setForeground(Color.white);
-        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
+ 
         
-        lblOrganizations.setForeground(Color.white);
-        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+
         
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+
         
         manageEmployeesHospAdmin.setBackground(Color.black);
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
+
     }
     
     public void setStyleEnterprise() {
         // Set Enterprise to RED
-        panel.setForeground(new Color(204,0,51));
-        panel.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+
         
         // Roll back others to white
         lblNetwork.setForeground(Color.white);
         lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblOrganizations.setForeground(Color.white);
-        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
+               
         manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(Color.black);
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
     }
     
     public void setStyleOrganization() {
-        // Set Enterprise to RED
-        lblOrganizations.setForeground(new Color(204,0,51));
-        lblOrganizations.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         lblNetwork.setForeground(Color.white);
         lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
-        
-        panel.setForeground(Color.white);
-        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblEmployees.setForeground(Color.white);
-        lblEmployees.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(Color.black);
-        panelSelectionBg4.setBackground(new Color(51, 51, 51));
+
     }
     
     public void setStyleEmployee() {
-        // Set Enterprise to RED
-        lblEmployees.setForeground(new Color(204,0,51));
-        lblEmployees.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         lblNetwork.setForeground(Color.white);
         lblNetwork.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        panel.setForeground(Color.white);
-        panel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblOrganizations.setForeground(Color.white);
-        lblOrganizations.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+
         
         manageEmployeesHospAdmin.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));
-        panelSelectionBg4.setBackground(Color.black);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblNetwork;
-    private javax.swing.JLabel lblOrganizations;
     private javax.swing.JPanel manageEmployeesHospAdmin;
     private javax.swing.JPanel manageEmployeesHospitalAdminPanel;
-    private javax.swing.JLabel panel;
-    private javax.swing.JPanel panelSelectionBg2;
-    private javax.swing.JPanel panelSelectionBg3;
-    private javax.swing.JPanel panelSelectionBg4;
     private javax.swing.JPanel pharmacyAdminWorkArea;
     // End of variables declaration//GEN-END:variables
 }
