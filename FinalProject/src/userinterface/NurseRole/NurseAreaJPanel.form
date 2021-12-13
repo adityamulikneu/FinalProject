@@ -164,6 +164,9 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lblLabTests">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Grande" size="20" style="1"/>
             </Property>
@@ -182,7 +185,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="240" width="275" height="76"/>
+              <AbsoluteConstraints x="10" y="256" width="275" height="60"/>
             </Constraint>
           </Constraints>
         </Component>

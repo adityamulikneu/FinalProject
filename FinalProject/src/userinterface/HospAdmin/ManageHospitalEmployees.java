@@ -38,6 +38,8 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
     
     public ManageHospitalEmployees(JPanel container, EcoSystem system, Enterprise enterprise) {
         initComponents();
+        btnDeleteEmployee.setVisible(false);
+        btnUpdateEmployee.setVisible(false);
         this.container = container;
         this.system = system;   
         this.enterprise = enterprise;
@@ -125,31 +127,35 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
         tblHospitalEmployees.setRowHeight(32);
         jScrollPane1.setViewportView(tblHospitalEmployees);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 230));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Manage Hospital Employees");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 920, -1));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
         txtEmployeeName.setBorder(null);
         add(txtEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 370, 30));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("User Name:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         txtUsername.setBorder(null);
         add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 370, 30));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Password:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, -1, -1));
 
         txtPassword.setBorder(null);
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 370, 40));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Role:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
 
@@ -162,7 +168,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
                 btnAddEmployeeActionPerformed(evt);
             }
         });
-        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, -1, -1));
+        add(btnAddEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 370, -1));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 370, -1));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 370, -1));
@@ -174,7 +180,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
                 btnDeleteEmployeeActionPerformed(evt);
             }
         });
-        add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 600, -1, -1));
+        add(btnDeleteEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
 
         btnUpdateEmployee.setText("Update Employee");
         btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +188,7 @@ public class ManageHospitalEmployees extends javax.swing.JPanel {
                 btnUpdateEmployeeActionPerformed(evt);
             }
         });
-        add(btnUpdateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
+        add(btnUpdateEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed

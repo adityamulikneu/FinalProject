@@ -40,6 +40,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         this.setUndecorated(true);
         initComponents();       
         system = dB4OUtil.retrieveSystem();  
+        kButton1.setVisible(false);
         EcoSystem.setInstance(system);
         if (user != null) {
             if (user.getEmployee().getName() == "sysadmin") {
@@ -58,7 +59,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 //        this.progressBarjPanel.setVisible(false);
         for(int i=1; i<=100; i++) {
             try {
-                Thread.sleep(1);
+                Thread.sleep(10);
                 loginProgressBar.setValue(i);
             } catch (Exception e) {
                 System.out.println("Check thread!");

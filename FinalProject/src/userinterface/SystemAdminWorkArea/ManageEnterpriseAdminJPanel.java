@@ -194,10 +194,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         for (Network network : system.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if (userAccount.getAssociatedEnterprise() == enterprise && 
+                    if (userAccount.getAssociatedEnterprise() != null 
+                            && userAccount.getAssociatedEnterprise().equals(enterprise) && 
                         (userAccount.getRole().toString() == "Business.Role.HospAdminRole" ||
-//                        userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole" &&
-//                        userAccount.getRole().toString() == "Business.Role.HospAdminRole" &&
+                        userAccount.getRole().toString() == "Business.Role.AccountsAdminRole" ||
+                        userAccount.getRole().toString() == "Business.Role.LabAdminRole" ||
                         userAccount.getRole().toString() == "Business.Role.PharmacyAdminRole") 
                         ) {
                         Object[] row = new Object[3];

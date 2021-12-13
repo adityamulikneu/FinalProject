@@ -143,20 +143,23 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
             tblNetwork.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 150));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Name:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, -1, -1));
 
         txtEnterprise.setBorder(null);
-        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 370, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 370, -1));
+        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 370, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 370, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Network:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Enterprise Type:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +167,7 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 btnSaveActionPerformed(evt);
             }
         });
-        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, -1, -1));
+        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
 
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
@@ -174,12 +177,12 @@ public class ManageEnterprisesJPanel extends javax.swing.JPanel {
                 networkCmbBoxActionPerformed(evt);
             }
         });
-        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 210, -1));
+        add(networkCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 210, -1));
 
         enterpriseCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         enterpriseCmbBox.setForeground(new java.awt.Color(25, 56, 82));
         enterpriseCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 210, -1));
+        add(enterpriseCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 210, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

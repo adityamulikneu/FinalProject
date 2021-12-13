@@ -32,6 +32,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     
     public ManageNetworkJPanel(JPanel container, EcoSystem system) {
         initComponents();
+        kButton2UpdateCity.setVisible(false);
         this.container = container;
         this.system = system;
         
@@ -89,7 +90,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         tblNetwork.setRowHeight(32);
         jScrollPane1.setViewportView(tblNetwork);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 680, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 150));
 
         kButton1AddCity.setText("Add City");
         kButton1AddCity.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +104,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 370, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 370, -1));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("City Name:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
 

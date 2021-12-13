@@ -61,10 +61,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         PatientMenuPanel = new javax.swing.JPanel();
         panelSelectionBg1 = new javax.swing.JPanel();
         lblBookApt = new javax.swing.JLabel();
-        panelSelectionBg2 = new javax.swing.JPanel();
-        lblVaccination = new javax.swing.JLabel();
-        panelSelectionBg3 = new javax.swing.JPanel();
-        lblPrescriptions = new javax.swing.JLabel();
         panelSelectionBg4 = new javax.swing.JPanel();
         lblOldAppt = new javax.swing.JLabel();
         PatientWorkAreaContainer = new javax.swing.JPanel();
@@ -104,62 +100,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         );
 
         PatientMenuPanel.add(panelSelectionBg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 290, 50));
-
-        panelSelectionBg2.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblVaccination.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblVaccination.setForeground(new java.awt.Color(255, 255, 255));
-        lblVaccination.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVaccination.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Vaccinations.png"))); // NOI18N
-        lblVaccination.setText("Vaccinations & Injections");
-        lblVaccination.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblVaccinationMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg2Layout = new javax.swing.GroupLayout(panelSelectionBg2);
-        panelSelectionBg2.setLayout(panelSelectionBg2Layout);
-        panelSelectionBg2Layout.setHorizontalGroup(
-            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg2Layout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(lblVaccination, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg2Layout.setVerticalGroup(
-            panelSelectionBg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblVaccination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        PatientMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 290, 50));
-
-        panelSelectionBg3.setBackground(new java.awt.Color(51, 51, 51));
-
-        lblPrescriptions.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblPrescriptions.setForeground(new java.awt.Color(255, 255, 255));
-        lblPrescriptions.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblPrescriptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Prescription.png"))); // NOI18N
-        lblPrescriptions.setText("Refill Prescriptions");
-        lblPrescriptions.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblPrescriptionsMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
-        panelSelectionBg3.setLayout(panelSelectionBg3Layout);
-        panelSelectionBg3Layout.setHorizontalGroup(
-            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg3Layout.createSequentialGroup()
-                .addGap(0, 14, Short.MAX_VALUE)
-                .addComponent(lblPrescriptions, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelSelectionBg3Layout.setVerticalGroup(
-            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPrescriptions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        PatientMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 290, 50));
 
         panelSelectionBg4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -219,28 +159,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblBookAptMouseClicked
 
-    private void lblVaccinationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVaccinationMousePressed
-        // TODO add your handling code here:
-        
-        setStyleVaccination();
-        
-        PatientWorkAreaContainer.removeAll();
-        
-        VaccinationJPanel vaccPanel = new VaccinationJPanel(PatientWorkAreaContainer, system);                
-        PatientWorkAreaContainer.add("vaccination", vaccPanel);
-    }//GEN-LAST:event_lblVaccinationMousePressed
-
-    private void lblPrescriptionsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPrescriptionsMousePressed
-        // TODO add your handling code here:
-        
-        setStylePrescription();
-        
-        PatientWorkAreaContainer.removeAll();
-        
-        RefillPrescriptionsPanel refillPanel = new RefillPrescriptionsPanel(PatientWorkAreaContainer, system);       
-        PatientWorkAreaContainer.add("prescriptions", refillPanel);
-    }//GEN-LAST:event_lblPrescriptionsMousePressed
-
     private void lblBookAptMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookAptMousePressed
         // TODO add your handling code here:
         setStyleBookAppointment();
@@ -269,11 +187,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel PatientWorkAreaContainer;
     private javax.swing.JLabel lblBookApt;
     private javax.swing.JLabel lblOldAppt;
-    private javax.swing.JLabel lblPrescriptions;
-    private javax.swing.JLabel lblVaccination;
     private javax.swing.JPanel panelSelectionBg1;
-    private javax.swing.JPanel panelSelectionBg2;
-    private javax.swing.JPanel panelSelectionBg3;
     private javax.swing.JPanel panelSelectionBg4;
     // End of variables declaration//GEN-END:variables
 
@@ -282,16 +196,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         lblBookApt.setForeground(new Color(204,0,51));
         lblBookApt.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
-        // Roll back others to white
-        lblPrescriptions.setForeground(Color.white);
-        lblPrescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblVaccination.setForeground(Color.white);
-        lblVaccination.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        panelSelectionBg1.setBackground(Color.black);
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));        
+        panelSelectionBg1.setBackground(Color.black);       
     }
     
     private void setStyleOldAppointment() {
@@ -299,54 +204,29 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         lblOldAppt.setForeground(new Color(204,0,51));
         lblOldAppt.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
-        // Roll back others to white
-        lblPrescriptions.setForeground(Color.white);
-        lblPrescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
-        lblVaccination.setForeground(Color.white);
-        lblVaccination.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
         lblBookApt.setForeground(Color.white);
         lblBookApt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         
         panelSelectionBg4.setBackground(Color.black);
-        panelSelectionBg1.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));        
+        panelSelectionBg1.setBackground(new Color(51, 51, 51));       
     }
 
     private void setStyleVaccination() {
-        // Set Enterprise to RED
-        lblVaccination.setForeground(new Color(204,0,51));
-        lblVaccination.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-        
+   
         // Roll back others to white
         lblBookApt.setForeground(Color.white);
         lblBookApt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
         
-        lblPrescriptions.setForeground(Color.white);
-        lblPrescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-        
         panelSelectionBg1.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(Color.black);
-        panelSelectionBg3.setBackground(new Color(51, 51, 51));
     }
 
     private void setStylePrescription() {
-        lblPrescriptions.setForeground(new Color(204,0,51));
-        lblPrescriptions.setFont(new Font("Lucida Grande", Font.BOLD, 20));
         
         // Roll back others to white
         lblBookApt.setForeground(Color.white);
         lblBookApt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));        
         
-        lblVaccination.setForeground(Color.white);
-        lblVaccination.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-      
-        
         panelSelectionBg1.setBackground(new Color(51, 51, 51));
-        panelSelectionBg2.setBackground(new Color(51, 51, 51));
-        panelSelectionBg3.setBackground(Color.black);
     }
 
 }

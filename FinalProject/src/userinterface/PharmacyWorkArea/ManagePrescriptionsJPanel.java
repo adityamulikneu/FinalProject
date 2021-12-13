@@ -106,8 +106,10 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage Patient Work Requests");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 20, 910, -1));
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,33 +148,43 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblWorkQueue);
+        if (tblWorkQueue.getColumnModel().getColumnCount() > 0) {
+            tblWorkQueue.getColumnModel().getColumn(2).setMinWidth(200);
+            tblWorkQueue.getColumnModel().getColumn(5).setMinWidth(200);
+        }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 920, 180));
 
         bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Message", "Medicines Provided", "Medicines Not Available" }));
-        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
-        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
+        add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 390, -1));
+        add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 360, 20));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Select Patient from Work Queue");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Message:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, -1, 20));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Issue:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, 20));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Sender:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, 20));
-        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 360, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, 20));
+        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 360, 20));
 
+        btnAssignWorkQueue.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignWorkQueueActionPerformed(evt);
             }
         });
-        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
+        add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 500, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblWorkQueueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWorkQueueMouseClicked
