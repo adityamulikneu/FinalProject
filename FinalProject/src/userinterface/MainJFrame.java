@@ -257,6 +257,7 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
         container.setLayout(new java.awt.CardLayout());
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 1230, 660));
 
+        signUpJPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         signUpJPanel.setPreferredSize(new java.awt.Dimension(1230, 723));
         signUpJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -341,7 +342,8 @@ public class MainJFrame extends javax.swing.JFrame implements Runnable {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientView/Registration.png"))); // NOI18N
         jLabel6.setText("jLabel6");
-        signUpJPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1300, 720));
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        signUpJPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 10, 1300, 710));
         signUpJPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 130));
 
         getContentPane().add(signUpJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,7 +164,7 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Sender:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, 20));
-        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
+        add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 360, 20));
 
         btnAssignWorkQueue.setText("Assign");
         btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +192,11 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
-        
+        if(currentSelectedRow < 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select a row!");
+            return;
+        }      
         
         String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
         String selectedUser = lblSender.getText();

@@ -137,7 +137,7 @@ public class ManagePharmacyEmployees extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Manage Hospital Employees");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
@@ -183,6 +183,30 @@ public class ManagePharmacyEmployees extends javax.swing.JPanel {
 
         String username = txtUsername.getText();
         String password = String.valueOf(txtPassword.getPassword());
+        
+        if(cmbBoxRoles.getSelectedItem().toString().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please select a role!");
+            return;
+        }
+        
+        if(txtEmployeeName.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter your name!");
+            return;
+        }     
+        
+        if(txtUsername.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a username!");
+            return;
+        } 
+        
+        if(txtPassword.getPassword().toString().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a password!");
+            return;
+        }    
 
         Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
 
@@ -191,6 +215,7 @@ public class ManagePharmacyEmployees extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Pharmacist!");
         } 
         populateTable();
+        txtEmployeeName.setText("");
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
 

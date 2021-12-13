@@ -183,6 +183,12 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private void tblWorkQueueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWorkQueueMouseClicked
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
+        if(currentSelectedRow < 0)
+        {
+            JOptionPane.showMessageDialog(null, "Please select a row from Table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }        
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
         
         String sender = model.getValueAt(tblWorkQueue.getSelectedRow(), 0).toString();
         String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
@@ -196,6 +202,13 @@ public class ManageAppointmentsJPanel extends javax.swing.JPanel {
     private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
+        
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
+        if(currentSelectedRow < 0)
+        {
+            JOptionPane.showMessageDialog(null, "Please select a row from Table", "Warning", JOptionPane.WARNING_MESSAGE);  
+            return;
+        }
         
         String selectedUser = bmcDoctorList.getSelectedItem().toString();
         UserAccount doctor = system.getUserAccountDirectory().getUserAccountList()

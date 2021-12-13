@@ -183,6 +183,11 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
+        if(currentSelectedRow < 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
         
         String issue = model.getValueAt(tblWorkQueue.getSelectedRow(), 1).toString();
         
