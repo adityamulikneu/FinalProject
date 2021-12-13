@@ -14,6 +14,7 @@ import Business.Role.PharmacistRole;
 import Business.UserAccount.UserAccount;
 import Constants.StringConstants;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -110,8 +111,9 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(940, 663));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel2.setText("Manage Prescriptions");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         tblWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,7 +202,11 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
     private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
         DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
         currentSelectedRow = tblWorkQueue.getSelectedRow();
-        
+        if(currentSelectedRow < 0)
+        {
+            JOptionPane.showMessageDialog(null, "Please select a row from Table", "Warning", JOptionPane.WARNING_MESSAGE); 
+            return;
+        }
         String selectedUser = bmcPharmacistList.getSelectedItem().toString();
         UserAccount pharmacist = system.getUserAccountDirectory().getUserAccountList()
                 .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
