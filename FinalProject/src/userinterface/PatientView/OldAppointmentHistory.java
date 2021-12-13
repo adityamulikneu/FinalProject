@@ -9,14 +9,8 @@ import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Network.Network;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.UserAccount.UserAccountDirectory;
-import java.util.Date;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,13 +52,14 @@ public class OldAppointmentHistory extends javax.swing.JPanel {
         for (PatientAppointment w: appointments) {
             if (w.getSender().equals(this.user)) {
                 // System.out.println(w);
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
                 row[2] = w.getRequestDate().toString();
 //                row[3] = null;
                 row[3] = w.getReceiver();
-                row[4] = w.getMessage();
+                row[4] = w.getStatus();
+                row[5] = w.getMessage();
                 model.addRow(row);
             }
         }
@@ -92,17 +87,17 @@ public class OldAppointmentHistory extends javax.swing.JPanel {
 
         tblOldAppts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Issue", "Request Date", "Doctor", "Message"
+                "Name", "Issue", "Request Date", "Doctor", "Status", "Message"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

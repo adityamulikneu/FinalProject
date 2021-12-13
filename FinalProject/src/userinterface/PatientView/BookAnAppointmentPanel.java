@@ -5,15 +5,11 @@
  */
 package userinterface.PatientView;
 
-import Business.Appointment.AppointmentDirectory;
-import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.UserAccount.UserAccountDirectory;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -51,6 +47,7 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
     }
     
     public void populateHospitals(Network network) {
+        cmbBoxEnterpriseList.removeAllItems();
         for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList()) {
            // System.out.println(e.getEnterpriseType().toString());
             if (e.getEnterpriseType() == Enterprise.EnterpriseType.MedicalServices) {
@@ -116,7 +113,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
         networkCmbBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         networkCmbBox.setForeground(new java.awt.Color(25, 56, 82));
-        networkCmbBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select City" }));
         networkCmbBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkCmbBoxActionPerformed(evt);
@@ -125,12 +121,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
 
         cmbBoxEnterpriseList.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         cmbBoxEnterpriseList.setForeground(new java.awt.Color(25, 56, 82));
-        cmbBoxEnterpriseList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Hospital" }));
-        cmbBoxEnterpriseList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbBoxEnterpriseListActionPerformed(evt);
-            }
-        });
 
         txtName.setBorder(null);
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -242,16 +232,6 @@ public class BookAnAppointmentPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Appointment successfully created!");
         txtIssue.setText("");
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
-
-    private void cmbBoxEnterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxEnterpriseListActionPerformed
-        // TODO add your handling code here:
-        
-        try {
-            populateHospitals((Network) networkCmbBox.getSelectedItem());
-        } catch (Exception e) {
-           // System.out.println("Choose correct option");
-        }
-    }//GEN-LAST:event_cmbBoxEnterpriseListActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:

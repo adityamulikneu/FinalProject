@@ -5,7 +5,6 @@
  */
 package userinterface.NurseRole;
 
-import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -17,6 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,20 +48,13 @@ public class RequestPrescriptionMedicines extends javax.swing.JPanel {
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-
+        appointments = new ArrayList<>();
         model.setRowCount(0);
-        
-        appointments = apptDir.getAppointmentAccountList();
-        
-        for (PatientAppointment w: appointments) {
+
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
             if (w.getStatus().equalsIgnoreCase(StringConstants.Status.GetMedications.toString()) && w.getReceiver() == null) {
-                // System.out.println(w);
+                appointments.add(w);
                 Object[] row = new Object[5];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();

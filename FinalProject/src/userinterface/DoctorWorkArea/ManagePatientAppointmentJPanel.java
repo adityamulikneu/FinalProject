@@ -5,7 +5,6 @@
  */
 package userinterface.DoctorWorkArea;
 
-import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -16,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import Constants.StringConstants;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +27,9 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
      * Creates new form Login
      */
     
+    private static final String PATIENT_NORMAL = "Patient is Normal";
+    private static final String NEEDS_MEDICINES = "Patient needs medicines";
+    private static final String NEEDS_REPORTS = "Patient needs to do blood reports";
     JPanel container;
     private EcoSystem system;
     private Enterprise enterprise;
@@ -42,22 +45,21 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         this.user = user;
         this.enterprise = user.getAssociatedEnterprise();
         
+        bmcDoctorList.addItem(PATIENT_NORMAL);
+        bmcDoctorList.addItem(NEEDS_MEDICINES);
+        bmcDoctorList.addItem(NEEDS_REPORTS);
+        
         populateWorkQueueTable();
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
-        appointments = apptDir.getAppointmentAccountList();
+        appointments = new ArrayList<>();
         model.setRowCount(0);
         
-        for (PatientAppointment w: appointments) {
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
             if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
-               // System.out.println("flter passed" + w);
+                appointments.add(w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
                 row[1] = w.getIssue();
@@ -139,7 +141,6 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 680, 220));
 
-        bmcDoctorList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Message", "Patient is Normal", "Patient needs medicines", "Patient needs to do blood reports" }));
         add(bmcDoctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 390, -1));
         add(lblSender, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 360, 20));
 
@@ -193,17 +194,29 @@ public class ManagePatientAppointmentJPanel extends javax.swing.JPanel {
         for (PatientAppointment p: system.getAppointmentDirectory().getAppointmentAccountList()) { 
 //            System.out.println("Patient appt goes here!");
             if (p.getIssue().equals(issue)) {
-                if (bmcDoctorList.getSelectedItem() != "Select Message") {
+                if (bmcDoctorList.getSelectedItem().equals(NEEDS_MEDICINES)) {
                     //p.setMessage(bmcDoctorList.getSelectedItem().toString());
-                    String selectedUser = lblSender.getText();
-                    UserAccount patient = system.getUserAccountDirectory().getUserAccountList()
-                    .stream().filter(x -> x.getUsername().equals(selectedUser)).findFirst().orElse(null);
                     PatientAppointment appointment = appointments.get(currentSelectedRow);
-                    if (patient != null && appointment != null) {
+                    if (appointment != null) {
                         appointment.setReceiver(null);
                         appointment.setStatus(StringConstants.Status.GetMedications.toString());
+                        JOptionPane.showMessageDialog(null, "Request updated!");
                     }
-                }                
+                } else if (bmcDoctorList.getSelectedItem().equals(PATIENT_NORMAL)) {
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (appointment != null) {
+                        appointment.setStatus(StringConstants.Status.Completed.toString());
+                        JOptionPane.showMessageDialog(null, "Request updated!");
+                    }
+                }
+                else if (bmcDoctorList.getSelectedItem().equals(NEEDS_REPORTS)) {
+                    PatientAppointment appointment = appointments.get(currentSelectedRow);
+                    if (appointment != null) {
+                        appointment.setReceiver(null);
+                        appointment.setStatus(StringConstants.Status.GetLabTests.toString());
+                        JOptionPane.showMessageDialog(null, "Request updated!");
+                    }
+                }
             }
         }
         populateWorkQueueTable();

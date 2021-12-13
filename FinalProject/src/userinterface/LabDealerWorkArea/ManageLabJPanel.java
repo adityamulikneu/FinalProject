@@ -5,25 +5,16 @@
  */
 package userinterface.LabDealerWorkArea;
 
-import userinterface.PharmacyWorkArea.*;
-import userinterface.DoctorWorkArea.*;
-import userinterface.NurseRole.*;
 import Business.Appointment.AppointmentDirectory;
 import Business.Appointment.PatientAppointment;
-import userinterface.PatientView.*;
-import userinterface.SystemAdminWorkArea.*;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.Enterprise.EnterpriseType;
-import Business.Patient.Employee;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,6 +32,8 @@ public class ManageLabJPanel extends javax.swing.JPanel {
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private int currentSelectedRow;
+    private List<PatientAppointment> appointments;
+
     
     public ManageLabJPanel(JPanel container, EcoSystem system, Enterprise enterprise, UserAccount user) {
         initComponents();
@@ -54,18 +47,16 @@ public class ManageLabJPanel extends javax.swing.JPanel {
     }       
     
     public void populateWorkQueueTable() {
-        
-        AppointmentDirectory apptDir = system.getAppointmentDirectory();
-        
-//        System.out.println(apptDir.getAppointmentAccountList().size());
-        
         DefaultTableModel model = (DefaultTableModel) tblWorkQueue.getModel();
 
         model.setRowCount(0);
         
-        for (PatientAppointment w: apptDir.getAppointmentAccountList()) {
+        appointments = new ArrayList<>();
+        
+        for (PatientAppointment w: system.getAppointmentDirectory().getAppointmentAccountList()) {
           //  System.out.println(w);
-            if (w.getStatus().equalsIgnoreCase("Pending") && w.getReceiver() != null && user.equals(w.getReceiver())) {
+            if ( w.getReceiver() != null && user.equals(w.getReceiver())) {
+                appointments.add(w);
                // System.out.println("flter passed" + w);
                 Object[] row = new Object[6];
                 row[0] = w.getSender();
@@ -179,6 +170,11 @@ public class ManageLabJPanel extends javax.swing.JPanel {
         add(lblIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 350, 20));
 
         btnAssignWorkQueue.setText("Assign");
+        btnAssignWorkQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignWorkQueueActionPerformed(evt);
+            }
+        });
         add(btnAssignWorkQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,6 +190,20 @@ public class ManageLabJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_tblWorkQueueMouseClicked
+
+    private void btnAssignWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignWorkQueueActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblWorkQueue.getModel();
+        currentSelectedRow = tblWorkQueue.getSelectedRow();
+        
+        PatientAppointment appointment = appointments.get(currentSelectedRow);
+        if (appointment != null) {
+            appointment.setMessage("Reports available");
+            appointment.setStatus(Constants.StringConstants.Status.Completed.toString());
+            appointment.setReceiver(null);
+        }
+        populateWorkQueueTable();
+    }//GEN-LAST:event_btnAssignWorkQueueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
