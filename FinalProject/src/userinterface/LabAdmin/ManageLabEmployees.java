@@ -192,7 +192,7 @@ public class ManageLabEmployees extends javax.swing.JPanel {
 
         if (role.equalsIgnoreCase("Lab Dealer")) {
             system.getUserAccountDirectory().createUserAccountEnterpriseAdmin(username, password, employee, new LabDealerRole(), enterprise);
-            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Doctor!");
+            JOptionPane.showMessageDialog(this, employee.getName() + " successfully registered as Lab Dealer!");
         } 
         populateTable();
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
