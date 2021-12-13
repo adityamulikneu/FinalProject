@@ -215,7 +215,7 @@ public class ManagePrescriptionsJPanel extends javax.swing.JPanel {
                     if (patient != null && appointment != null) {
                         appointment.setReceiver(null);
                         appointment.setMessage("Medicines Not Available");
-                        appointment.setStatus(StringConstants.Status.Completed.toString());
+                        appointment.setStatus(StringConstants.Status.GetMedications.toString());
                     }
                 }
         }

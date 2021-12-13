@@ -68,6 +68,8 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
         lblManagePatients = new javax.swing.JLabel();
         panelSelectionBg2 = new javax.swing.JPanel();
         lblManagePatients1 = new javax.swing.JLabel();
+        panelSelectionBg3 = new javax.swing.JPanel();
+        lblLabTests = new javax.swing.JLabel();
         NurseWorkAreaContainer = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1230, 663));
@@ -137,6 +139,35 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
 
         sysAdminMenuPanel.add(panelSelectionBg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
 
+        lblLabTests.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
+        lblLabTests.setForeground(new java.awt.Color(255, 255, 255));
+        lblLabTests.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblLabTests.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/network.png"))); // NOI18N
+        lblLabTests.setText("Lab Reports");
+        lblLabTests.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblLabTestsMouseClicked(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLabTestsMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSelectionBg3Layout = new javax.swing.GroupLayout(panelSelectionBg3);
+        panelSelectionBg3.setLayout(panelSelectionBg3Layout);
+        panelSelectionBg3Layout.setHorizontalGroup(
+            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionBg3Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(lblLabTests, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelSelectionBg3Layout.setVerticalGroup(
+            panelSelectionBg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblLabTests, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        sysAdminMenuPanel.add(panelSelectionBg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
+
         NurseWorkAreaContainer.setPreferredSize(new java.awt.Dimension(940, 663));
         NurseWorkAreaContainer.setLayout(new java.awt.CardLayout());
 
@@ -178,6 +209,20 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
     private void lblManagePatients1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManagePatients1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblManagePatients1MousePressed
+
+    private void lblLabTestsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLabTestsMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblLabTestsMousePressed
+
+    private void lblLabTestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLabTestsMouseClicked
+
+        setStyleRequestPrescriptions();
+
+        NurseWorkAreaContainer.removeAll();
+        RequestLabTests managelabTests = new RequestLabTests(NurseWorkAreaContainer, system, user);
+        NurseWorkAreaContainer.add("managelabTests", managelabTests);
+    }//GEN-LAST:event_lblLabTestsMouseClicked
+
 
     private void lblManagePatients1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManagePatients1MouseClicked
 
@@ -274,10 +319,12 @@ public class NurseAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NurseWorkAreaContainer;
+    private javax.swing.JLabel lblLabTests;
     private javax.swing.JLabel lblManagePatients;
     private javax.swing.JLabel lblManagePatients1;
     private javax.swing.JPanel panelSelectionBg1;
     private javax.swing.JPanel panelSelectionBg2;
+    private javax.swing.JPanel panelSelectionBg3;
     private javax.swing.JPanel sysAdminMenuPanel;
     // End of variables declaration//GEN-END:variables
 
